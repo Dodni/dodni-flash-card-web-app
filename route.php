@@ -8,7 +8,9 @@ $routes = [
     '/' . $url . '/' => 'home_controller.php',
     '/' . $url .'/home' => 'home_controller.php',
     '/' . $url . '/about' => 'about_controller.php',
-    '/' . $url . '/contact' => 'contact_controller.php'
+    '/' . $url . '/contact' => 'contact_controller.php',
+    '/' . $url . '/register' => 'register_controller.php',
+    '/' . $url . '/login' => 'login_controller.php',
 ];
 
 // Ellenőrizze, hogy létezik-e a kívánt útvonal
