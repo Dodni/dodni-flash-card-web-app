@@ -1,12 +1,15 @@
 <!-- home_view.php -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Home page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
 </head>
 <?php include_once 'header_view.php'; ?>
 <body>
-    <h1>Dodni Flash Card Web App</h1>
+    <h1>Dodni's Flash Card Web App</h1>
+    <a href="<?php echo BASE_URL;?>home">Home</a><br>
     <a href="<?php echo BASE_URL;?>about">About</a><br>
     <a href="<?php echo BASE_URL;?>contact">Contact</a><br>
     <a href="<?php echo BASE_URL;?>register">Register</a><br>
