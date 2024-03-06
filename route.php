@@ -1,10 +1,14 @@
+<!-- route.php -->
+
 <?php
 // Könyvtár az útvonalakhoz és vezérlőkhöz
+$url = "card";
+
 $routes = [
-    '/mvc/' => 'home_controller.php',
-    '/mvc/home' => 'home_controller.php',
-    '/mvc/about' => 'about_controller.php',
-    '/mvc/contact' => 'contact_controller.php'
+    '/' . $url . '/' => 'home_controller.php',
+    '/' . $url .'/home' => 'home_controller.php',
+    '/' . $url . '/about' => 'about_controller.php',
+    '/' . $url . '/contact' => 'contact_controller.php'
 ];
 
 // Ellenőrizze, hogy létezik-e a kívánt útvonal
