@@ -1,15 +1,12 @@
 function toggleTheme() {
     var body = document.body;
-    var sunIcon = document.getElementById("sunIcon");
-    var moonIcon = document.getElementById("moonIcon");
+    var themeButton = document.getElementById("themeButton");
 
     if (body.classList.contains("dark-theme")) {
         body.classList.remove("dark-theme");
-        sunIcon.style.display = "block";
-        moonIcon.style.display = "none";
+        themeButton.textContent = "☼"; // Nap ikon
     } else {
         body.classList.add("dark-theme");
-        sunIcon.style.display = "none";
-        moonIcon.style.display = "block";
+        themeButton.textContent = "☾"; // Hold ikon
     }
 }
