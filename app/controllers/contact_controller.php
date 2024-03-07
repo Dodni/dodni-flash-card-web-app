@@ -1,10 +1,8 @@
-<!-- home_controller.php -->
-
 <?php
 class ContactController {
     public function showContactPage() {
         
-        $viewPath = 'app/views/contact_view.php';
+        $viewPath = 'app/views/en/contact_view.php';
         
         // Ellenőrizzük, hogy a fájl létezik-e
         if (file_exists($viewPath)) {

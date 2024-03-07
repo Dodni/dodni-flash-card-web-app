@@ -1,7 +1,7 @@
 <?php
 class RegisterController {
     public function showRegisterPage() {
-        $viewPath = 'app/views/register_view.php';
+        $viewPath = 'app/views/en/register_view.php';
         
         // Ellenőrizzük, hogy a fájl létezik-e
         if (file_exists($viewPath)) {

@@ -1,11 +1,9 @@
-<!-- home_controller.php -->
-
 <?php
 class AboutController {
     public function showAboutPage() {
         
         // Az elérési út a home_view.php fájlhoz
-        $viewPath = 'app/views/about_view.php';
+        $viewPath = 'app/views/en/about_view.php';
         
         // Ellenőrizzük, hogy a fájl létezik-e
         if (file_exists($viewPath)) {

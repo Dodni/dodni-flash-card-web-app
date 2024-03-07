@@ -1,7 +1,7 @@
 <?php
 class LoginController {
     public function showLoginPage() {
-        $viewPath = 'app/views/login_view.php';
+        $viewPath = 'app/views/en/login_view.php';
         
         // Ellenőrizzük, hogy a fájl létezik-e
         if (file_exists($viewPath)) {

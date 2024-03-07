@@ -6,7 +6,7 @@ class HomeController {
     public function showHomePage() {
         
         // Az elérési út a home_view.php fájlhoz
-        $viewPath = 'app/views/home_view.php';
+        $viewPath = 'app/views/en/home_view.php';
         
         // Ellenőrizzük, hogy a fájl létezik-e
         if (file_exists($viewPath)) {
