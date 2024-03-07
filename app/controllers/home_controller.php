@@ -19,7 +19,7 @@ class HomeController {
         $testModel = new TestModel();
         
         $testModel->connectToDatabase();
-        $testModel->connectOtherWay();
+        //$testModel->connectOtherWay();
     }
 }
 
