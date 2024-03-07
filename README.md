@@ -1,5 +1,6 @@
 # Dodni's flash card web app
- I used one flash card app, but it's not free anymore so I decided that, I'm gonna create an own one
+ I used one flash card app, but it's not free anymore so I decided that, I'm gonna create an own one.
+ 
 ![Total Downloads](https://img.shields.io/github/downloads/USER/REPO/total)
 
 ![Total Users](https://img.shields.io/github/forks/USER/REPO?style=social)
