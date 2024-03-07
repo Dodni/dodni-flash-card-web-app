@@ -8,21 +8,16 @@
         <?php include_once 'header_view.php'; ?>
         <main>
             <h1>Decks</h1>
-            <a href="<?php echo BASE_URL;?>home">Home</a><br>
-            <a href="<?php echo BASE_URL;?>about">About</a><br>
-            <a href="<?php echo BASE_URL;?>contact">Contact</a><br>
-            <a href="<?php echo BASE_URL;?>logout">Log Out</a><br>
-            <br>
-            <input type="text" name="search" id="search" placeholder="Search"><br>
-            <br>
-
-            <form id="deckForm" action="deck" method="post">
-                <a href="#" onclick="submitDeck('1')">First Deck</a><br>
-                <a href="#" onclick="submitDeck('2')">Second Deck</a><br>
-                <a href="#" onclick="submitDeck('3')">Third Deck</a><br>
-                <input type="hidden" id="selectedDeck" name="deck" value="">
-            </form>
-
+            <div class="container">
+                <input type="text" name="search" id="search" placeholder="Search"><br>
+                <br>
+                <form id="deckForm" action="deck" method="post">
+                    <a href="#" onclick="submitDeck('1')">First Deck</a><br>
+                    <a href="#" onclick="submitDeck('2')">Second Deck</a><br>
+                    <a href="#" onclick="submitDeck('3')">Third Deck</a><br>
+                    <input type="hidden" id="selectedDeck" name="deck" value="">
+                </form>
+            </div>
             <script>
                 function submitDeck(deckValue) {
                     // Beállítjuk a rejtett input mező értékét a kiválasztott pakli értékére
