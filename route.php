@@ -30,6 +30,6 @@ if (array_key_exists($requestURI, $routes)) {
     // Hibakezelés: 404 oldal
     http_response_code(404);
     var_dump($_SERVER);
-    echo '404 - The side d';
+    echo '404 - The side does not found.';
 }
 ?>
