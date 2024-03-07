@@ -1,10 +1,17 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Dark theme style */
 .dark-theme {
     background-color: #333; 
     color: #fff; 
 }
 
-/* Main view style*/
+/* Main view style */
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
@@ -17,6 +24,13 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    text-align: center; /* Az elemeket középre igazítja */
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 header {
@@ -28,6 +42,14 @@ header {
 
 header h1 {
     margin: 0;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 nav {
