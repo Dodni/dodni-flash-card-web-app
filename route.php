@@ -1,5 +1,4 @@
 <!-- route.php -->
-
 <?php
 // Könyvtár az útvonalakhoz és vezérlőkhöz
 $url = "card";
@@ -11,6 +10,8 @@ $routes = [
     '/' . $url . '/contact' => 'contact_controller.php',
     '/' . $url . '/register' => 'register_controller.php',
     '/' . $url . '/login' => 'login_controller.php',
+    '/' . $url . '/decks' => 'deck_controller.php',
+    '/' . $url . '/deck' => 'deck_controller.php',
 ];
 
 // Ellenőrizze, hogy létezik-e a kívánt útvonal
@@ -28,6 +29,7 @@ if (array_key_exists($requestURI, $routes)) {
 } else {
     // Hibakezelés: 404 oldal
     http_response_code(404);
-    echo '404 - Az oldal nem található';
+    var_dump($_SERVER);
+    echo '404 - The side d';
 }
 ?>
