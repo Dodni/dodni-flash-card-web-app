@@ -12,9 +12,6 @@ class AboutController {
         } else {
             echo "A megadott nézetfájl nem található.";
         }
-        
-
-        
     }
 }
 
