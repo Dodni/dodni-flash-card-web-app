@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include_once 'head-main_view.php'; ?>
     <title>Deck's name here</title>
 </head>
 <?php include_once 'header_view.php'; ?>
