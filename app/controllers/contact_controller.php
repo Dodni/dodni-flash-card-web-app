@@ -11,9 +11,6 @@ class ContactController {
         } else {
             echo "A megadott nézetfájl nem található.";
         }
-        
-
-        
     }
 }
 
