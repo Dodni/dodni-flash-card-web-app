@@ -1,3 +1,9 @@
+/* Dark theme style */
+.dark-theme {
+    background-color: #333; 
+    color: #fff; 
+}
+
 /* Main view style*/
 body {
     font-family: Arial, sans-serif;
