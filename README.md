@@ -10,4 +10,4 @@
 ![Total Stars](https://img.shields.io/github/stars/Dodni/dodni-flash-card-web-app?style=social)
 
 # Sources used:
-- **very_simple_skeleton_php_8_mvc_framework [(Link)](https://github.com/Dodni/very_simple_skeleton_php_8_mvc_framework/tree/main)**: This eb app based on my php 8 MVC skeleton framework
+- **very_simple_skeleton_php_8_mvc_framework [(Link)](https://github.com/Dodni/very_simple_skeleton_php_8_mvc_framework/tree/main)**: This web app based on my php 8 MVC skeleton framework
