@@ -11,7 +11,8 @@
     <a href="<?php echo BASE_URL;?>about">About</a><br>
     <a href="<?php echo BASE_URL;?>contact">Contact</a><br>
     <a href="<?php echo BASE_URL;?>register">Register</a><br>
-    <a href="<?php echo BASE_URL;?>login">Login</a>
+    <a href="<?php echo BASE_URL;?>login">Login</a><br>
+    <p>Coming soon..</p>
 </body>
 <?php include_once 'footer_view.php'; ?>
 </html>
