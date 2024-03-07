@@ -1,2 +1,2 @@
 # Dodni's flash card web app
- I used one flashcard app but it's not free anymore so i decided im gonna create an own one
+ I used one flash card app, but it's not free anymore so I decided that, I'm gonna create an own one
