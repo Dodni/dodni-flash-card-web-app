@@ -8,13 +8,10 @@
         <?php include_once 'header_view.php'; ?>
         <main>
             <h1>Deck's name here</h1>
-            <a href="<?php echo BASE_URL;?>home">Home</a><br>
-            <a href="<?php echo BASE_URL;?>about">About</a><br>
-            <a href="<?php echo BASE_URL;?>contact">Contact</a><br>
-            <a href="<?php echo BASE_URL;?>logout">Log Out</a><br>
-            <br>
-            ide kellene egy statisztika, hogyan áll a deck szétválogatása
+            <div class="container">
+            <p>Ide kellene egy statisztika, hogyan áll a deck szétválogatása</p>
             <form action="#123"><input type="submit" value="Start Flipping Cards" /></form>
+            </div>
         </main>
         <?php include_once 'footer_view.php'; ?>
     </body>

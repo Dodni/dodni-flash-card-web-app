@@ -8,11 +8,6 @@
         <?php include_once 'header_view.php'; ?>
         <main>
             <h1>Contact</h1>
-            <a href="<?php echo BASE_URL;?>home">Home</a><br>
-            <a href="<?php echo BASE_URL;?>about">About</a><br>
-            <a href="<?php echo BASE_URL;?>contact">Contact</a><br>
-            <a href="<?php echo BASE_URL;?>register">Register</a><br>
-            <a href="<?php echo BASE_URL;?>login">Login</a><br>
             <div class="contact_container">
                 <h2>Contact Us</h2>
                 <form action="submit.php" method="post">

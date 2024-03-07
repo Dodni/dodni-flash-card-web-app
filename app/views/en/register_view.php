@@ -8,11 +8,6 @@
         <?php include_once 'header_view.php'; ?>
         <main>
         <h1>Register</h1>
-            <a href="<?php echo BASE_URL;?>home">Home</a><br>
-            <a href="<?php echo BASE_URL;?>about">About</a><br>
-            <a href="<?php echo BASE_URL;?>contact">Contact</a><br>
-            <a href="<?php echo BASE_URL;?>register">Register</a><br>
-            <a href="<?php echo BASE_URL;?>login">Login</a><br>
             <br>
             <div class="container">
                 <form action="login" method="post">
@@ -24,7 +19,11 @@
                 <br>
                 <input type="password" id="password-again" name="password-again" placeholder="Password Again"><br>
                 <br>
-                <input id="login" type="submit" value="Login">
+                <input type="checkbox" id="termsCheckbox" name="termsCheckbox">
+                <label for="termsCheckbox">I accept the Terms of Service and Privacy Policy</label>
+                <br>
+                <br>
+                <input id="login" type="submit" value="Register">
                 </form>
             </div>
         </main>
