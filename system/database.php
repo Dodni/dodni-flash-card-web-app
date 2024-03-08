@@ -9,6 +9,14 @@ class Database {
         }
     }
 
+    public static function disconnect() {
+        if (isset(self::$connection)) {
+            self::$connection->close();
+            self::$connection = null;
+        }
+    }
+
+
     public static function query($sql) {
         self::connect(); // Csatlakozás az adatbázishoz
         $result = self::$connection->query($sql); // Lekérdezés végrehajtása
