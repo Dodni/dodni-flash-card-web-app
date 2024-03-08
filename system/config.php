@@ -5,7 +5,7 @@
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');
-define('DB_NAME', 'qr_kod_app'); 
+define('DB_NAME', 'card'); 
 
 // Alap(gyökér) URL beállítása
 define('BASE_URL', 'http://localhost/card/');
