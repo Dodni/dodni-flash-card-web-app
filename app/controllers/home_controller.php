@@ -16,8 +16,8 @@ class HomeController {
             echo "A megadott nézetfájl nem található.";
         }
         
-        //$testModel = new TestModel();
-        //$testModel->connectToDatabase();
+        $testModel = new TestModel();
+        $testModel->connectToDatabase();
         //$testModel->connectOtherWay();
     }
 }
