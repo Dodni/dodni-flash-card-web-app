@@ -3,7 +3,7 @@
 
 # The full readme coming soon
 
- Contributer: **Valentín Franyó** **[(Link)](https://github.com/Valentin-Franyo)**
+ Design Contributor: **Valentín Franyó** **[(Link)](https://github.com/Valentin-Franyo)**
  
 ![Total Downloads](https://img.shields.io/github/downloads/Dodni/dodni-flash-card-web-app/total)
 
