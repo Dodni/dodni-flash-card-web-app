@@ -11,20 +11,16 @@
             <div class="container">
                 <input type="text" name="search" id="search" placeholder="Search"><br><br>
                 <?php
-                    // Serialize the entire array
-                    $data = serialize($decks);
-                    var_dump($data);
-
-                    // Creating a form to send the serialized data
-                    echo "<form action='deck' method='post'>";
-                    echo "<input type='hidden' name='serialized_data' value='" . htmlspecialchars($data) . "'>";
-
-                    // Adding submit button with deck_name as its value
-                    foreach ($decks as $deck) {
-                        echo "<input type='submit' name='deck_name' value='" . htmlspecialchars($deck["deck_name"]) . "'><br>";
+                    // A $decks változó tartalmazza az adatokat
+                    foreach ($decks as $item) {
+                        // Deck adatok kiírása és egy gomb, ami POST kérést küld
+                        ?>
+                        <form action="deck" method="post">
+                            <input type="hidden" name="deck_id" value="<?php echo $item["deck_id"]; ?>">
+                            <input type="submit" value="<?php echo $item["deck_name"]; ?>">
+                        </form>
+                        <?php
                     }
-
-                    echo "</form>";
                 ?>
             </div>
         </main>
