@@ -10,8 +10,11 @@ class Database {
     }
 
     public static function disconnect() {
+        // Check if the connection exists
         if (isset(self::$connection)) {
+            // Close the database connection
             self::$connection->close();
+            // Remove the connection from the static variable
             self::$connection = null;
         }
     }
