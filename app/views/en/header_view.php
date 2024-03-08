@@ -13,6 +13,6 @@
         <a href="<?php echo BASE_URL;?>register">Register</a><br>
         <a href="<?php echo BASE_URL;?>login">Login</a><br>
         <a href="<?php echo BASE_URL;?>logout">Log Out</a><br>
-        <a href="<?php echo BASE_URL;?>deck">Decks (delete later)</a>
+        <a href="<?php echo BASE_URL;?>deck">Decks</a>
     </dir>
 </header>
