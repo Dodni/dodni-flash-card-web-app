@@ -19,7 +19,7 @@ class DeckController {
     public function showOneDeck($deckID) {
         $viewPath = 'app/views/en/deck_view.php';
 
-        var_dump($deckID);
+        //var_dump($deckID);
 
         $decksModel = new DecksModel();
         $oneDeck = $decksModel->get10Cards($deckID);
@@ -36,7 +36,7 @@ class DeckController {
 }
 
 $controller = new DeckController();
-var_dump($_POST);
+//var_dump($_POST);
 // Processing the POST request
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if deck_id is sent
@@ -44,7 +44,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $deck_id = $_POST["deck_id"];
         // Here you can continue with operations related to the POST request
         // such as database operations, etc.
-        echo "The selected deck ID is: $deck_id";
 
         $controller->showOneDeck($deck_id);
     } else {

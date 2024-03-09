@@ -13,3 +13,4 @@ function checkIfChecked() {
         submitButton.disabled = true;
     }
 }
+

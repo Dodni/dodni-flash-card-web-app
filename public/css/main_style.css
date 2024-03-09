@@ -127,3 +127,31 @@ footer {
 .contact_container button[type="submit"]:hover {
     background-color: #0056b3;
 }
+
+/* card-flipping view style */
+.fail-button {
+    background-color: red;
+    color: white;
+}
+
+.hard-button {
+    background-color: orange;
+    color: white;
+}
+
+.good-button {
+    background-color: blue;
+    color: white;
+}
+
+.easy-button {
+    background-color: green;
+    color: white;
+}
+
+.button-container {
+    display: flex; 
+    justify-content: center; /* A gombok elosztása egyenletesen a sorban */
+    align-items: center; /* A gombok középre igazítása a konténerben */
+    
+}

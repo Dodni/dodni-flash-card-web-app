@@ -10,6 +10,7 @@
             <h1>Decks</h1>
             <div class="container">
                 <input type="text" name="search" id="search" placeholder="Search"><br><br>
+                <button>Import new Deck</button><br><br>
                 <?php
                     // A $decks változó tartalmazza az adatokat
                     foreach ($decks as $item) {
