@@ -10,7 +10,7 @@
         <h1>About Us</h1>
             <p class="centered container">Our website is a flash card web application. Learn faster than 
                 everyone else with the technology.</p>
-            <p class="centered container">The name is got from the creator by Dodni.</p>
+            <p class="centered container">The name was given by Dodni, the creator.</p>
         </main>
         <?php include_once 'footer_view.php'; ?>
     </body>
