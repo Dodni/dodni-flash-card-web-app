@@ -4,6 +4,7 @@
 # The full documentation is coming soon
 
  Design and Front-End Contributor: **Valentín Franyó** **[(Link)](https://github.com/Valentin-Franyo)**
+ Software design, Software Requirements Specification and Back-End development: **Donát Fehér** **[(Link)](https://github.com/dodni)**
  
 ![Total Downloads](https://img.shields.io/github/downloads/Dodni/dodni-flash-card-web-app/total)
 
