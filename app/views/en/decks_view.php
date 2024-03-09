@@ -12,12 +12,11 @@
                 <input type="text" name="search" id="search" placeholder="Search"><br><br>
                 <button>Import new Deck</button><br><br>
                 <?php
-                    // A $decks változó tartalmazza az adatokat
                     foreach ($decks as $item) {
-                        // Deck adatok kiírása és egy gomb, ami POST kérést küld
                         ?>
                         <form action="deck" method="post">
                             <input type="hidden" name="deck_id" value="<?php echo $item["deck_id"]; ?>">
+                            <input type="hidden" name="deck_name" value="<?php echo $item["deck_name"]; ?>">
                             <input type="submit" value="<?php echo $item["deck_name"]; ?>">
                         </form>
                         <?php

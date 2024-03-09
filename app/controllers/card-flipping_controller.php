@@ -7,21 +7,15 @@ class CardFlippingController {
 
         if (file_exists($viewPath)) {
             include_once $viewPath;
-            $cardsMaxAmount--;
             array_shift($decks);
         } else {
             echo "The file did not found.";
         }
     }
 
-    public function flipCard() {
-        
-    }
-
 }
 
 $controller = new CardFlippingController();
-
 
 //deck to card-flipping view
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -31,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Now that deck_id is available, you can proceed with processing
         
         $cardsKnown = $_POST['options'];
-        $cardsMaxAmount = 100;
+        $cardsMaxAmount = $_POST["cardsMaxAmount"];
         $decksModel = new DecksModel();
         $decks = $decksModel->getGivenAmountCards($deck_id, $cardsKnown, $cardsMaxAmount);
 
@@ -41,19 +35,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (isset($_POST["card_id"]) && isset($_POST["card_known"]) && isset($_POST["decks"]) && isset($_POST["cardsMaxAmount"])) {
-        $card_id = $_POST["card_id"];
-        
+        $card_id = $_POST["card_id"]; 
         $card_known = $_POST["card_known"];
-
-        $decks = unserialize($_POST["decks"]);
-        
+        $decks = unserialize($_POST["decks"]);     
         $cardsMaxAmount = $_POST["cardsMaxAmount"];
+
+
+
+        $decksModel = new DecksModel();
+        //$savingIsSuccess = $decksModel->updateCardKnownState();
+
+        array_shift($decks); // Delete first (uses) deck
         $cardsMaxAmount--;
 
-        var_dump ($cardsMaxAmount);
-
-        echo "here i am";
-        //now do sth
+        
+        if ($cardsMaxAmount > 0) {
+            $controller->showNewCard($decks, $cardsMaxAmount);
+        } else {
+            echo "No more cards";
+            // We send it back to the deck where we started.
+        }
     }
 }
 

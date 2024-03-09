@@ -9,25 +9,24 @@
         <main>
             <h1>Card Flipping</h1>
             <div class="container">
+                <p>Cards left more: <?php echo $cardsMaxAmount;?></p><br>
                 <?php echo $decks[0]["card_first"]; ?>
                 <br>
-                <p>voice</p>
+                <p>(voice)</p><br>
+                <br><br><br>
                 <button onclick="flipCard()">Flip</button>
-                <br><br>
-                <p>Left more: X</p>
                 <br>
             </div>
-            <?php var_dump($cardsMaxAmount);?>
             <script>
                 function flipCard() {
                     var container = document.querySelector(".container");
                     container.innerHTML = `
                         <div class="container">
                             <?php echo $decks[0]["card_first"]; ?>
-                            <p>voice</p>
+                            <p>(voice)</p>
                             <p>----------</p>
                             <?php echo $decks[0]["card_second"]; ?>
-                            <p>voice</p><br>
+                            <p>(voice)</p><br>
                         </div>
                         <div class="button-container"> 
                             <form action="card-flipping" method="post" onsubmit="return card-flipping">

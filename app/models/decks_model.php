@@ -91,5 +91,12 @@ class DecksModel {
         return $data;
     }
 
+    public static function updateCardKnownState($deckID, $cardID, $cardKnown)
+    {
+        $savingIsSuccess = false;
+        
+        return $isSuccess;
+    }
+
 }
 ?>
