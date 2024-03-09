@@ -13,6 +13,7 @@ $routes = [
     '/' . $url . '/decks' => 'deck_controller.php',
     '/' . $url . '/deck' => 'deck_controller.php',
     '/' . $url . '/deck/card-flipping' => 'card-flipping_controller.php',
+    '/' . $url . '/settings' => 'settings_controller.php',
 ];
 
 // Ellenőrizze, hogy létezik-e a kívánt útvonal
