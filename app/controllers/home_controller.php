@@ -1,7 +1,7 @@
 <!-- home_controller.php -->
 
 <?php
-include_once 'app/models/test_model.php';
+//include_once 'app/models/test_model.php';
 class HomeController {
     public function showHomePage() {
         
@@ -16,8 +16,8 @@ class HomeController {
             echo "A megadott nézetfájl nem található.";
         }
         
-        $testModel = new TestModel();
-        $testModel->connectToDatabase();
+        //$testModel = new TestModel();
+        //$testModel->connectToDatabase();
         //$testModel->connectOtherWay();
     }
 }
