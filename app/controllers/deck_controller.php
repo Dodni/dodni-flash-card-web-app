@@ -1,7 +1,9 @@
 <?php
-include_once'app/models/decks_model.php';
+include_once 'app/models/decks_model.php';
+include_once 'app/models/deck-settings_model.php';
 
 class DeckController {
+    /*
     public function showDecks() {
         $viewPath = 'app/views/en/decks_view.php';
 
@@ -15,18 +17,22 @@ class DeckController {
             echo "The file did not found.";
         }
     }
+    */
 
-    public function showOneDeck($deckID, $deckName) {
+    public function showOneDeck($deckID) {
         $viewPath = 'app/views/en/deck_view.php';
 
-        //var_dump($deckID);
-
         $decksModel = new DecksModel();
+        $deckName = $decksModel->getDeckNameByID($deckID);
         $oneDeck = $decksModel->get10Cards($deckID);
-        //var_dump($oneDeck);
         //$tenCards = $decksModel->getGivenAmountCards(1,15);
-        //var_dump($tenCards);
-        
+
+        $deckSettingsModel = new DeckSettingsModel();
+        $deckSettingsData = $deckSettingsModel->getDeckSettingsData(1,1); // ideiglenes adattal feltoltve
+        //var_dump ($deckSettingsData);
+
+        $knownCardsNumber = $decksModel->getKnownCardsNumber($deckID);
+
         if (file_exists($viewPath)) {
             include_once $viewPath;
         } else {
@@ -35,8 +41,8 @@ class DeckController {
     }
 }
 
-$controller = new DeckController();
-//var_dump($_POST);
+$controller = new DeckController($deck_id);
+
 // Processing the POST request
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if deck_id is sent
@@ -48,13 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // such as database operations, etc.
 
         $controller->showOneDeck($deck_id, $deck_name);
-    } else {
-        echo "No deck_id sent in the POST request!";
-    }
-} else {
-    // Show decks if not a POST request
-    $controller->showDecks();
-}   
+    } 
+} 
 
 
 
