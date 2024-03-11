@@ -1,7 +1,6 @@
 <?php
 include_once 'app/models/decks_model.php';
 
-
 class CardFlippingController {
     public function showNewCard($decks, $cardsNumberForTheSession) {
         $viewPath = 'app/views/en/card-flipping_view.php';
@@ -12,13 +11,6 @@ class CardFlippingController {
         } else {
             echo "The file did not found.";
         }
-    }
-
-    // It gives back the chosen cards number
-    function getFlippingCardsNumber($value) {
-        
-
-        return $value;
     }
 }
 
@@ -33,12 +25,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cardsKnown = $_POST['options'];
         $cardsMaxAmount = $_POST["cardsMaxAmount"];
         $cardsNumberForTheSession = $_POST["cardsNumberForTheSession"];
-        $decksModel = new DecksModel();        
+        $decksModel = new DecksModel();    
         $decks = $decksModel->getGivenAmountCards($deck_id, $cardsKnown, $cardsMaxAmount);
-
-        //var_dump($decks);
-        //var_dump ($cardsNumberForTheSession);
-        $controller->showNewCard($decks, $cardsNumberForTheSession);
+        if ($cardsNumberForTheSession < $cardsMaxAmount) {
+            $controller->showNewCard($decks, $cardsNumberForTheSession);
+        }else {
+            $controller->showNewCard($decks, $cardsMaxAmount);
+        }
     }
 
     if (isset($_POST["card_id"]) && isset($_POST["card_known"]) && isset($_POST["decks"]) && isset($_POST["cardsNumberForTheSession"])) {
@@ -68,8 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             include_once 'app/controllers/deck_controller.php';
             $deckController = new DeckController();
             $deckController->showOneDeck($deck_id, "asd");
-
-            // We send it back to the deck where we started.
         }
     }
 }
