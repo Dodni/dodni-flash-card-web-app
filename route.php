@@ -11,6 +11,7 @@ $routes = [
     '/' . $url . '/register' => 'register_controller.php',
     '/' . $url . '/login' => 'login_controller.php',
     '/' . $url . '/decks' => 'decks_controller.php',
+    '/' . $url . '/decks/deck-import' => 'deck-import_controller.php',
     '/' . $url . '/deck' => 'deck_controller.php',
     '/' . $url . '/deck/card-flipping' => 'card-flipping_controller.php',
     '/' . $url . '/settings' => 'settings_controller.php',
@@ -31,7 +32,7 @@ if (array_key_exists($requestURI, $routes)) {
 } else {
     // Hibakezelés: 404 oldal
     http_response_code(404);
-    var_dump($_SERVER);
+    //var_dump($_SERVER);
     echo '404 - The side does not found.';
 }
 ?>

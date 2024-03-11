@@ -8,7 +8,7 @@ class DecksModel {
         $data = [];
     
         // Prepare and execute the query using a prepared statement
-        $query = "SELECT * FROM decks";
+        $query = "SELECT * FROM decks ORDER BY deck_last_time_used DESC";
         $statement = Database::$connection->prepare($query);
         $statement->execute();
         
@@ -153,7 +153,6 @@ class DecksModel {
         $statement = Database::$connection->prepare($query);
         $statement->bind_param("i", $deckID); // Bind the parameters
         $statement->execute();
-        
     
         // Get the result set
         $result = $statement->get_result();
@@ -168,6 +167,74 @@ class DecksModel {
             return $row['deck_name']; // Return the deck name if found
         } else {
             return null; // Return null if no deck found with the given ID
+        }
+    }
+
+    public function createDeck($csvFile, $csvFileName, $deckCreator, $deckOwnerId) {
+        $start = microtime(true);
+        try {
+            // Connect to the database
+            Database::connect();
+    
+            // Tranzakció megkezdése
+            Database::$connection->begin_transaction();
+    
+            // Insert a new deck
+            $query = "INSERT INTO decks (deck_name, deck_create_date, deck_creator, deck_owner_id, deck_last_time_used) VALUES (?, ?, ?, ?, ?)";
+            $statement = Database::$connection->prepare($query);
+            $currentDate = date("Y-m-d");
+            $statement->bind_param("sssss", $csvFileName, $currentDate, $deckCreator, $deckOwnerId, $currentDate);
+            $statement->execute();
+    
+            // Get the inserted deck id
+            $newDeckId = $statement->insert_id;
+            $statement->close();
+    
+            // Insert cards from CSV
+            $this->insertCardsFromCsv($csvFile, $newDeckId);
+    
+            // Commit the transaction
+            Database::$connection->commit();
+            // Végidőpont
+            $end = microtime(true);
+
+            // A két időpont közötti különbség
+            $executionTime = $end - $start;
+
+            // Az eredmény kiírása
+            echo "A műveletek végrehajtási ideje: " . $executionTime . " másodperc";
+            echo "A tranzakció sikeresen befejeződött.";
+        } catch (Exception $e) {
+            // Rollback transaction on error
+            Database::$connection->rollback();
+            echo "Hiba történt a tranzakció során: " . $e->getMessage();
+        }
+    
+        // Disconnect from the database
+        Database::disconnect();
+    }
+    
+    private function insertCardsFromCsv($csvFile, $deckId) {
+        $fileHandle = fopen($csvFile, "r");
+        if ($fileHandle !== false) {
+            while (($data = fgetcsv($fileHandle)) !== false) {
+                // Check if the row is valid
+                if (count($data) == 2) {
+                    $column1 = $data[0]; // First column
+                    $column2 = $data[1]; // Second column
+    
+                    // Insert the card
+                    $query = "INSERT INTO cards (card_id, card_first, card_second, card_known, deck_id) VALUES (NULL, ?, ?, 0, ?)";
+                    $statement = Database::$connection->prepare($query);
+                    $statement->bind_param("ssi", $column1, $column2, $deckId);
+                    $statement->execute();
+                } else {
+                    echo "Hiba: Nem megfelelő formátumú sor: " . implode(",", $data);
+                }
+            }
+            fclose($fileHandle);
+        } else {
+            echo "Hiba: Nem sikerült megnyitni a CSV fájlt.";
         }
     }
 }
