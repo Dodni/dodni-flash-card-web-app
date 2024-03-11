@@ -19,16 +19,5 @@ class Database {
         }
     }
 
-
-    public static function query($sql) {
-        self::connect(); // Csatlakozás az adatbázishoz
-        $result = self::$connection->query($sql); // Lekérdezés végrehajtása
-
-        if (!$result) {
-            die("Query failed: " . self::$connection->error);
-        }
-        
-        return $result;
-    }
 }
 ?>
