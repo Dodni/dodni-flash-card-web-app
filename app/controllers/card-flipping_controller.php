@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cardsNumberForTheSession = $_POST["cardsNumberForTheSession"];
 
         $decksModel = new DecksModel();
-        $decksModel->updateCardKnownState($card_id, $card_known);
+        $decksModel->updateCardKnownState($card_id, $card_known, $deck_id);
 
         array_shift($decks); // Delete first (uses) deck
         $cardsNumberForTheSession--;
