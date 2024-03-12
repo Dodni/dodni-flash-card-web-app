@@ -91,23 +91,43 @@ class DecksModel {
         return $data;
     }
 
-    public function updateCardKnownState($cardID, $cardKnown)
+    public function updateCardKnownState($cardID, $cardKnown, $deckID)
     {
-        // Establish database connection
-        Database::connect();
-
-        // Prepare and execute the query using a prepared statement
-        $query = "UPDATE cards SET card_known = ? WHERE card_id = ?";
-        $statement = Database::$connection->prepare($query);
-        $statement->bind_param("ii", $cardKnown, $cardID); // Bind the parameters
-        $statement->execute();
-        
-        // Get the result set
-        $result = $statement->get_result();
+        try {
+            // Establish database connection
+            Database::connect();
+            $currentDate = date("Y-m-d");
+            
+            // Update card_known field
+            $queryCard = "UPDATE cards SET card_known = ?, card_flipped_last_date = ? WHERE card_id = ?";
+            $statementCard = Database::$connection->prepare($queryCard);
+            if (!$statementCard) {
+                throw new Exception("Error preparing card update statement: " . Database::$connection->error);
+            }
+            $statementCard->bind_param("isi", $cardKnown, $currentDate, $cardID); // Bind the parameters
+            if (!$statementCard->execute()) {
+                throw new Exception("Error updating card: " . $statementCard->error);
+            }
+            $statementCard->close();
     
-        // Close statement and database connection
-        $statement->close();
-        Database::disconnect();
+            // Update deck_last_time_used field
+            $queryDeck = "UPDATE decks SET deck_last_time_used = NOW() WHERE deck_id = ?";
+            $statementDeck = Database::$connection->prepare($queryDeck);
+            if (!$statementDeck) {
+                throw new Exception("Error preparing deck update statement: " . Database::$connection->error);
+            }
+            $statementDeck->bind_param("i", $deckID); // Assuming $deckID is defined somewhere
+            if (!$statementDeck->execute()) {
+                throw new Exception("Error updating deck: " . $statementDeck->error);
+            }
+            $statementDeck->close();
+    
+            // Close database connection
+            Database::disconnect();
+        } catch (Exception $e) {
+            // Handle any exceptions
+            echo "Error updating card state: " . $e->getMessage();
+        }
     }
 
     public function getKnownCardsNumber($deckID)

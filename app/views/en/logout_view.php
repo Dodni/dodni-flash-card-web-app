@@ -7,7 +7,10 @@
     <body>
         <?php include_once 'header_view.php'; ?>
         <main>
-            <h1>Logged out</h1>
+            <div class="container text-center mt-2">
+                <h1>Logged out</h1>
+                <p>Coming soon..</p>
+            </div>
         </main>
         <?php include_once 'footer_view.php'; ?>
     </body>

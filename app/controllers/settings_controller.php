@@ -12,6 +12,5 @@ class SettingsController {
 }
 
 $controller = new SettingsController();
-
 $controller->showSettingsPage();
 ?>

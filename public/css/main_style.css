@@ -8,41 +8,28 @@
 /* Dark theme style */
 .dark-theme {
     background-color: #333; 
-    color: #fff; 
+    color: #eee; 
 }
 
 /* Main view style */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     color: #333;
     margin: 0;
     padding: 0;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center; /* Az elemeket középre igazítja */
-}
-
-.centered {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 header {
-    background-color: #007bff;
+    background-color: #4CAF50; /* Zöld szín */
     color: #fff;
-    padding: 10px 0;
-    text-align: center;
+    padding: 10px 10px;
+    text-align: left; /* Balra igazítás */
 }
 
-header h1 {
-    margin: 0;
-}
 
 h1 {
     display: flex;
@@ -50,37 +37,62 @@ h1 {
     align-items: center;
     padding-top: 5px;
     padding-bottom: 5px;
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #4CAF50;
 }
 
 nav {
     text-align: center;
+    background-color: #333; /* Zöld szín */
     margin-top: 10px;
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
-nav a:hover {
-    text-decoration: underline;
+*/
+p {
+    font-size: 1.2em;
+    margin-top: 0;
+    line-height: 1.6;
 }
 
-footer {
-    background-color: #007bff;
+a {
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+    transition: color 0.3s;
+}
+
+nav > a:hover {
+    color: #00457a;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #4CAF50 !important;
     color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+}
+
+.btn:hover {
+    background-color: #45a049;
 }
 
 /* header view style */
 .header-item {
     padding: 0px;
-    background-color: #007bff;
+    background-color: #4CAF50; /* Zöld szín */
     color: white;
     border: none;
     border-radius: 0px;
@@ -88,44 +100,95 @@ footer {
     display: inline-block;
 }
 
-/* Contact view style*/
-.contact_container {
-    width: 50%;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.contact_container form {
-    margin-top: 20px;
-}
-
-.contact_container label,
-.contact_container input,
-.contact_container textarea {
-    display: block;
-    margin-bottom: 10px;
-}
-
-.contact_container input[type="text"],
-.contact_container input[type="email"],
-.contact_container textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.contact_container button[type="submit"] {
+footer {
+    background-color: #4CAF50; /* Zöld szín */
+    color: #fff;
+    text-align: center;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* card view style */
+.card-checkbox {
+    /* Minden alap tulajdonság törlése */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
     border: none;
-    border-radius: 5px;
+    outline: none;
+    margin: 0;
+    padding: 0;
     cursor: pointer;
 }
 
-.contact_container button[type="submit"]:hover {
-    background-color: #0056b3;
+/* Decks view */
+@media (min-width: 576px) {
+    .custom-button {
+        width: 50%;
+        margin: 0 auto;
+        transition: background-color 0.3s, color 0.3s; /* Átmenet az egér fölötti állapotban */
+        background-color: #4CAF50; /* Alapértelmezett zöld háttérszín */
+        color: #ffffff; /* Alapértelmezett fehér szövegszín */
+        height: 40px; /* Függőlegesen nagyobb gomb */
+        border-radius: 5px; /* Lekerekített sarkok */
+        border: 1px solid #2196F3; /* Kék körvonal */
+        text-align: center; /* Szöveg középre igazítása */
+        line-height: 40px; /* Szöveg függőleges középre igazítása */
+    }
+
+    .custom-button:hover {
+        background-color: #2E7D32; /* Sötétebb zöld szín egér fölött */
+    }
+}
+
+@media (max-width: 575px) {
+    .custom-button {
+        width: 95%;
+        margin: 0 auto;
+        transition: background-color 0.3s, color 0.3s; /* Átmenet az egér fölötti állapotban */
+        background-color: #4CAF50; /* Alapértelmezett zöld háttérszín */
+        color: #ffffff; /* Alapértelmezett fehér szövegszín */
+        height: 40px; /* Függőlegesen nagyobb gomb */
+        border-radius: 5px; /* Lekerekített sarkok */
+        border: 1px solid #2196F3; /* Kék körvonal */
+        text-align: center; /* Szöveg középre igazítása */
+        line-height: 40px; /* Szöveg függőleges középre igazítása */
+    }
+
+    .custom-button:hover {
+        background-color: #2E7D32; /* Sötétebb zöld szín egér fölött */
+    }
+}
+
+/* Piros keret stílus a kattintás után */
+.card-checkbox:checked + .card-label {
+    background-color: red; /* Piros háttérszín, melyet gombnak látszik */
+    border: 1px solid red;
+    padding: 5px; /* Opcionális: Ha szükséges padding a címkéhez */
+}
+
+/* Stílusok a címkékhez, hogy hasonlítsanak a gombokra */
+.card-label {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff; /* Piros háttérszín, melyet gombnak látszik */
+    border: 1px solid #000000; /* Piros keret */
+    border-radius: 0.25rem; /* Kerekített sarkok */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
+}
+
+/* Amikor az egér fölött van a címke */
+.card-label:hover {
+    background-color: #c82333; /* Sötétebb piros háttérszín */
+    border-color: #c82333; /* Sötétebb piros keret */
 }
 
 /* card-flipping view style */
@@ -147,11 +210,4 @@ footer {
 .easy-button {
     background-color: green;
     color: white;
-}
-
-.button-container {
-    display: flex; 
-    justify-content: center; /* A gombok elosztása egyenletesen a sorban */
-    align-items: center; /* A gombok középre igazítása a konténerben */
-    
 }
