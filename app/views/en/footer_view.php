@@ -1,5 +1,5 @@
-<footer>
-    <small class="mb-0">All rights reserved &copy; <span id="currentYear"></span> Dodni's Flash Card Web App</small>
+<footer class="">
+    <small class="mb-0">Dodni's Flash Card World!</small>
     <script src="<?php echo BASE_URL; ?>app/js/main.js"></script>
     <script src="<?php echo BASE_URL; ?>app/js/card-flipping.js"></script>
     <script>document.getElementById("currentYear").textContent = new Date().getFullYear();</script>

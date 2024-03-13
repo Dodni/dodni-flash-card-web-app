@@ -188,9 +188,20 @@ footer {
 
 /* Piros keret stílus a kattintás után */
 .card-checkbox:checked + .card-label {
-    background-color: red; /* Piros háttérszín, melyet gombnak látszik */
-    border: 1px solid red;
+    background-color: #c82333; /* Sötétebb piros háttérszín */
+    border-color: #c82333; /* Sötétebb piros keret */
+    text-align: center;
     padding: 5px; /* Opcionális: Ha szükséges padding a címkéhez */
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    border-radius: 0.25rem; /* Kerekített sarkok */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
+    text-align: center;
 }
 
 /* Stílusok a címkékhez, hogy hasonlítsanak a gombokra */
@@ -206,12 +217,13 @@ footer {
     border: 1px solid #000000; /* Piros keret */
     border-radius: 0.25rem; /* Kerekített sarkok */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
+    text-align: center;
 }
 
 /* Amikor az egér fölött van a címke */
 .card-label:hover {
-    background-color: #c82333; /* Sötétebb piros háttérszín */
-    border-color: #c82333; /* Sötétebb piros keret */
+    background-color: red; /* Piros háttérszín, melyet gombnak látszik */
+    border: 1px solid red;
 }
 
 /* card-flipping view style */

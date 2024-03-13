@@ -7,7 +7,7 @@
     <body>
         <?php include_once 'header_view.php'; ?>
         <main>
-            <div class="container text-center mt-2">
+            <div class="container text-center mt-2 mb-5">
                 <h1>My Decks</h1>
                 <div class="row ">
                     <div class="col">
