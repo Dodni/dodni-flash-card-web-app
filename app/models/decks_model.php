@@ -99,12 +99,12 @@ class DecksModel {
             $currentDate = date("Y-m-d");
             
             // Update card_known field
-            $queryCard = "UPDATE cards SET card_known = ?, card_flipped_last_date = ? WHERE card_id = ?";
+            $queryCard = "UPDATE cards SET card_known = ? WHERE card_id = ?";
             $statementCard = Database::$connection->prepare($queryCard);
             if (!$statementCard) {
                 throw new Exception("Error preparing card update statement: " . Database::$connection->error);
             }
-            $statementCard->bind_param("isi", $cardKnown, $currentDate, $cardID); // Bind the parameters
+            $statementCard->bind_param("ii", $cardKnown, $cardID); // Bind the parameters
             if (!$statementCard->execute()) {
                 throw new Exception("Error updating card: " . $statementCard->error);
             }
@@ -192,22 +192,31 @@ class DecksModel {
 
     public function createDeck($csvFile, $csvFileName, $deckCreator, $deckOwnerId) {
         $start = microtime(true);
+        $newDeckId = 0;
         try {
             // Connect to the database
             Database::connect();
     
             // Tranzakció megkezdése
             Database::$connection->begin_transaction();
-    
+            
+            // Query to get the maximum deck_id
+            $maxIdQuery = "SELECT MAX(deck_id) AS max_id FROM decks";
+            $result = Database::$connection->query($maxIdQuery);
+            $row = $result->fetch_assoc();
+            $maxId = $row['max_id'];    
+
+            // Increment the maximum deck_id or set to 1 if there are no existing records
+            $newDeckId = ($maxId === null) ? 1 : $maxId + 1;
+
+            var_dump ($newDeckId);
             // Insert a new deck
-            $query = "INSERT INTO decks (deck_name, deck_create_date, deck_creator, deck_owner_id, deck_last_time_used) VALUES (?, ?, ?, ?, ?)";
+            $query = "INSERT INTO decks (deck_id, deck_name, deck_create_date, deck_creator, deck_owner_id, deck_last_time_used) VALUES (?, ?, ?, ?, ?, NOW() );";
             $statement = Database::$connection->prepare($query);
             $currentDate = date("Y-m-d");
-            $statement->bind_param("sssss", $csvFileName, $currentDate, $deckCreator, $deckOwnerId, $currentDate);
+            $statement->bind_param("isssi", $newDeckId, $csvFileName, $currentDate, $deckCreator, $deckOwnerId);
             $statement->execute();
-    
-            // Get the inserted deck id
-            $newDeckId = $statement->insert_id;
+            
             $statement->close();
     
             // Insert cards from CSV
