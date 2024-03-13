@@ -7,45 +7,58 @@
                 function flipCard() {
                     var container = document.querySelector(".container");
                     container.innerHTML = `
-                            <?php echo $decks[0]["card_first"]; ?>
+                <div class="container mt-4">
+                    <div class="centered-container">
+                        <div class="text-center">
+                            <?php echo "<h2>" . $decks[0]["card_first"] . "</h2>"; ?>
                             <p>(voice)</p>
                             <p>----------</p>
-                            <?php echo $decks[0]["card_second"]; ?>
+                            <?php echo "<h2>" .  $decks[0]["card_second"]  . "</h2>"; ?>
                             <p>(voice)</p>
-                        
-                            <div class="button-container"> 
-                                <form action="card-flipping" method="post" onsubmit="return card-flipping">
-                                    <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
-                                    <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
-                                    <input type="hidden" name="card_id" value="<?php echo $decks[0]["card_id"];?>">
-                                    <input type="hidden" name="card_known" value="1">
-                                    <input type="submit" class="fail-button" value="Fail">
-                                </form>
-
-                                <form action="card-flipping" method="post" onsubmit="return card-flipping">
-                                    <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
-                                    <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
-                                    <input type="hidden" name="card_id" value="<?php echo $decks[0]["card_id"];?>">
-                                    <input type="hidden" name="card_known" value="2">
-                                    <input type="submit" class="hard-button" value="Hard">
-                                </form>
-
-                                <form action="card-flipping" method="post" onsubmit="return card-flipping">
-                                    <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
-                                    <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
-                                    <input type="hidden" name="card_id" value="<?php echo $decks[0]["card_id"];?>">
-                                    <input type="hidden" name="card_known" value="3">
-                                    <input type="submit" class="good-button" value="Good">
-                                </form>
-
-                                <form action="card-flipping" method="post" onsubmit="return card-flipping">
-                                    <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
-                                    <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
-                                    <input type="hidden" name="card_id" value="<?php echo $decks[0]["card_id"];?>">
-                                    <input type="hidden" name="card_known" value="4">
-                                    <input type="submit" class="easy-button" value="Easy">
-                                </form>
-                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+                <div class="container-fluid joined-buttons fixed-bottom">
+                    <div class="row">
+                        <div class="col p-0">
+                            <form action="card-flipping" method="post" onsubmit="return card-flipping">
+                                <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
+                                <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
+                                <input type="hidden" name="card_id" value="<?php echo $decks[0]["card_id"];?>">
+                                <input type="hidden" name="card_known" value="1">
+                                <input type="submit" class="fail-button" value="Fail">
+                            </form>
+                        </div>
+                        <div class="col p-0">
+                            <form action="card-flipping" method="post" onsubmit="return card-flipping">
+                                <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
+                                <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
+                                <input type="hidden" name="card_id" value="<?php echo $decks[0]["card_id"];?>">
+                                <input type="hidden" name="card_known" value="2">
+                                <input type="submit" class="hard-button" value="Hard">
+                            </form>        
+                        </div>
+                        <div class="col p-0">
+                            <form action="card-flipping" method="post" onsubmit="return card-flipping">
+                                <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
+                                <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
+                                <input type="hidden" name="card_id" value="<?php echo $decks[0]["card_id"];?>">
+                                <input type="hidden" name="card_known" value="3">
+                                <input type="submit" class="good-button" value="Good">
+                            </form>
+                        </div>
+                        <div class="col p-0">
+                            <form action="card-flipping" method="post" onsubmit="return card-flipping">
+                                <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
+                                <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
+                                <input type="hidden" name="card_id" value="<?php echo $decks[0]["card_id"];?>">
+                                <input type="hidden" name="card_known" value="4">
+                                <input type="submit" class="easy-button" value="Easy">
+                            </form>
+                        </div>
+                    </div>
+                </div>
                     `;
                 }
             </script>
@@ -54,14 +67,14 @@
         <?php include_once 'header_view.php'; ?>
         <main>
             <div class="container">
-                <h1>Card Flipping</h1>
-                <p>Cards left more: <?php echo $cardsNumberForTheSession;?></p>
-                <?php echo $decks[0]["card_first"]; ?>
-                
-                <p>(voice)</p>
-                
-                <button onclick="flipCard()">Flip</button>
-                
+                <div class="centered-container">
+                    <div class="text-center">
+                        <p>Cards left more: <?php echo $cardsNumberForTheSession;?></p>
+                        <?php echo "<h2>" . $decks[0]["card_first"] . "</h2>"; ?>
+                        <p>(voice)</p>
+                        <button class="flip-button fixed-bottom" onclick="flipCard()">Flip</button>
+                    </div>
+                </div>
             </div>
         </main>
         <?php include_once 'footer_view.php'; ?>

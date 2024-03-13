@@ -3,6 +3,7 @@
     <head>
         <?php include_once 'head-main_view.php'; ?>
         <title><?php echo $deckName ?></title>
+
     </head>
     <body>
         <?php include_once 'header_view.php'; ?>
@@ -35,6 +36,7 @@
                         <input type="submit" id="submitButton" value="Start Flipping Cards" disabled>
                     </form>
                 </div>
+                
 
                 
                 <p>Settings:</p>

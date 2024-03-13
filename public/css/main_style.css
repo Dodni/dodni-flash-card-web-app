@@ -73,7 +73,7 @@ nav > a:hover {
     color: #00457a;
 }
 
-.btn {
+.green-button {
     display: inline-block;
     background-color: #4CAF50 !important;
     color: #fff;
@@ -85,7 +85,7 @@ nav > a:hover {
     word-spacing: 0.1em;
 }
 
-.btn:hover {
+.green-button:hover {
     background-color: #45a049;
 }
 
@@ -163,6 +163,29 @@ footer {
     }
 }
 
+.flip-button {
+    width: 100%;
+    margin: 0px;
+    transition: background-color 0.3s, color 0.3s; /* Átmenet az egér fölötti állapotban */
+    background-color: #525252; /* Alapértelmezett zöld háttérszín */
+    color: #ffffff; /* Alapértelmezett fehér szövegszín */
+    height: 80px; /* Függőlegesen nagyobb gomb */
+    text-align: center; /* Szöveg középre igazítása */
+    line-height: 80px; /* Szöveg függőleges középre igazítása */
+    font-size: 1.5rem;
+}
+
+.flip-button:hover {
+    background-color: #3b3b3b; /* Sötétebb zöld szín egér fölött */
+}
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh; /* Az ablak magasságának feléig terjed */
+}
+
 /* Piros keret stílus a kattintás után */
 .card-checkbox:checked + .card-label {
     background-color: red; /* Piros háttérszín, melyet gombnak látszik */
@@ -193,21 +216,57 @@ footer {
 
 /* card-flipping view style */
 .fail-button {
-    background-color: red;
+    background-color: #ee4266;
     color: white;
+    text-align: center;
+    width: 100%;
+    height: 80px;
+    padding: 0px;
+    margin: 0px;
+    border-top: solid black;
+    border-right: solid black;
+    border-left: none;
+    font-size: 1.5rem;
 }
 
 .hard-button {
-    background-color: orange;
+    background-color: #ffd23f;
     color: white;
+    text-align: center;
+    width: 100%;
+    height: 80px;
+    padding: 0px;
+    margin: 0px;
+    border-top: solid black;
+    border-right: solid black;
+    border-left: none;
+    font-size: 1.5rem;
 }
 
 .good-button {
-    background-color: blue;
+    background-color: #2ac2e0;
     color: white;
+    text-align: center;
+    width: 100%;
+    height: 80px;
+    padding: 0px;
+    margin: 0px;
+    border-top: solid black;
+    border-right: solid black;
+    border-left: none;
+    font-size: 1.5rem;
 }
 
 .easy-button {
-    background-color: green;
+    background-color: #20c670;
     color: white;
+    text-align: center;
+    width: 100%;
+    height: 80px;
+    padding: 0px;
+    margin: 0px;
+    border-top: solid black;
+    border-right: none;
+    border-left: none;
+    font-size: 1.5rem;
 }

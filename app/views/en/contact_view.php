@@ -33,8 +33,9 @@
                                     <input class="form-check-input" type="checkbox" id="termsCheckbox" name="termsCheckbox" required>
                                     <label class="form-check-label" for="termsCheckbox">I accept the Terms of Service and Privacy Policy</label>
                                 </div>
-                                                
-                                <button type="submit" class="btn btn-primary">Send Message</button>
+                                <div class="text-center container">
+                                    <button type="submit" class="btn btn-primary">Send Message</button>
+                                </div>
                             </form>
                         </div>
                     </div>
