@@ -1,9 +1,9 @@
 # This project is currently under development!!!
 
-# Dodni's flash card web app
+# Dodni's Flash Card Web App
  I used one flash card app, but it's not free anymore so I decided that, I'm gonna create an own one.
 
-# The full documentation is coming soon
+# The full documentation is coming soon!
 
  Software Design, Software Requirements Specification and Back-End, Front-End development: **Donát Fehér** **[(Link)](https://github.com/dodni)**
  
