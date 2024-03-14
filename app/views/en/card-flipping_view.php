@@ -7,14 +7,14 @@
                 function flipCard() {
                     var container = document.querySelector(".container");
                     container.innerHTML = `
-                <div class="container mt-4">
+                <div class="container mt-2">
                     <div class="centered-container">
                         <div class="text-center">
                             <?php echo "<h2>" . $decks[0]["card_first"] . "</h2>"; ?>
-                            <p>(voice)</p>
-                            <p>----------</p>
+                            <p>(voice coming soon..)</p>
+                            <p>------------------</p>
                             <?php echo "<h2>" .  $decks[0]["card_second"]  . "</h2>"; ?>
-                            <p>(voice)</p>
+                            <p>(voice coming soon..)</p>
                         </div>
                     </div>
                 </div>
@@ -69,9 +69,9 @@
             <div class="container">
                 <div class="centered-container">
                     <div class="text-center">
-                        <p>Cards left more: <?php echo $cardsNumberForTheSession;?></p>
+                        <p class="text-monospace " >Cards more left : <?php echo $cardsNumberForTheSession;?></p>
                         <?php echo "<h2>" . $decks[0]["card_first"] . "</h2>"; ?>
-                        <p>(voice)</p>
+                        <p>(voice coming soon..)</p>
                         <button class="flip-button fixed-bottom" onclick="flipCard()">Flip</button>
                     </div>
                 </div>

@@ -9,7 +9,7 @@
         <main>
             <div class="container mt-2">
                 <h1>Sign Up</h1>
-                <div class="container mt-5">
+                <div class="container mt-2">
                     <div class="row justify-content-center">
                         <div class="col-md-6">
                             <form action="<?php echo BASE_URL; ?>sign-up" method="post">

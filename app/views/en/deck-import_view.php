@@ -9,7 +9,7 @@
         <main>
             <div class="container text-center mt-2 mb-5">
                 <h1>Import new Deck</h1>
-                <div class="container-fluid mt-5 col-md-8">
+                <div class="container-fluid mt-2 col-md-8">
                     <div class="row justify-content-center">
                         <form action="<?php echo BASE_URL; ?>decks/deck-import" method="post" enctype="multipart/form-data">
                             <div class="col">

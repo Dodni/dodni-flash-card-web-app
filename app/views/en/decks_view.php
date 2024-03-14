@@ -9,12 +9,12 @@
         <main>
             <div class="container text-center mt-2 mb-5">
                 <h1>My Decks</h1>
-                <div class="row ">
+                <div class="row mt-4">
                     <div class="col">
                         <form action="<?php echo BASE_URL; ?>decks/deck-import" method="post"><input type="submit" class="btn btn-danger custom-button"value="Import new Deck"></form>
                     </div>
                 </div>
-                <div class="row mt-2">
+                <div class="row mt-3">
                     <div class="col">
                         <input type="text" class="btn btn-light custom-button"name="search" id="search" placeholder="Search">
                     </div>

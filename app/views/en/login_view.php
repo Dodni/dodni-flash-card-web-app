@@ -9,7 +9,7 @@
         <main>
             <div class="container mt-2">
                 <h1>Log In</h1>
-                <div class="container mt-5">
+                <div class="container mt-2">
                     <div class="row justify-content-center">
                         <div class="col-md-6">
                             <form action="login" method="post" >
