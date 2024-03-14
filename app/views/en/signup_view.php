@@ -12,21 +12,21 @@
                 <div class="container mt-2">
                     <div class="row justify-content-center">
                         <div class="col-md-6">
-                            <form action="<?php echo BASE_URL; ?>sign-up" method="post">
+                            <form action="<?php echo BASE_URL; ?>signup" method="post">
                                 <div class="form-group">
                                     <label for="username">Username</label>
-                                    <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email address</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Password" required>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="termsCheckbox" required>
+                                    <input type="checkbox" class="form-check-input" id="termsCheckbox" name="termsCheckbox" required>
                                     <label class="form-check-label" for="termsCheckbox">I accept the Terms of Service and Privacy Policy</label>
                                 </div>
                                 <div class="form-group text-center">
