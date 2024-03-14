@@ -173,7 +173,7 @@ footer {
     width: 100%;
     margin: 0px;
     transition: background-color 0.3s, color 0.3s; /* Átmenet az egér fölötti állapotban */
-    background-color: #525252; /* Alapértelmezett zöld háttérszín */
+    background-color: #6b4ca4;
     color: #ffffff; /* Alapértelmezett fehér szövegszín */
     height: 80px; /* Függőlegesen nagyobb gomb */
     text-align: center; /* Szöveg középre igazítása */
@@ -181,7 +181,7 @@ footer {
     font-size: 1.5rem;
 }
 
-.flip-button:hover {
+.flip-button:hover, .flip-button:active  {
     background-color: #3b3b3b; /* Sötétebb zöld szín egér fölött */
 }
 
@@ -226,11 +226,26 @@ footer {
     text-align: center;
 }
 
-/* Amikor az egér fölött van a címke */
-.card-label:hover {
-    background-color: red; /* Piros háttérszín, melyet gombnak látszik */
-    border: 1px solid red;
+@media (min-width: 575px) {
+    /* Amikor az egér fölött van a címke */
+    .card-label:hover {
+        background-color: red; /* Piros háttérszín, melyet gombnak látszik */
+        border: 1px solid red;
+    }
 }
+
+@media (max-width: 575px) {
+    /* Amikor az egér fölött van a címke */
+    .card-label:hover {
+        background-color: none; /* Piros háttérszín, melyet gombnak látszik */
+        border: 1px solid white;
+    }
+    .card-label:active {
+        background-color: red; /* Piros háttérszín, melyet gombnak látszik */
+        border: 1px solid red;
+    }
+}
+
 
 /* card-flipping view style */
 .fail-button {
@@ -262,7 +277,7 @@ footer {
 }
 
 .good-button {
-    background-color: #2ac2e0;
+    background-color: #45c8e2;
     color: white;
     text-align: center;
     width: 100%;
@@ -288,3 +303,20 @@ footer {
     border-left: none;
     font-size: 1.5rem;
 }
+
+.fail-button:hover, .fail-button:active {
+    background-color: #ee1111;
+}
+
+.hard-button:hover, .hard-button:active {
+    background-color: #ffb300;
+}
+
+.good-button:hover, .good-button:active {
+    background-color: #00d5ff;
+}
+
+.easy-button:hover, .easy-button:active {
+    background-color: #0cea77;
+}
+

@@ -51,19 +51,3 @@
         </div>
     </nav>
 </header>
-<!-- 
-                    <li class="nav-item dropdown">
-                    <div class="nav-item dropdown ">
-                        <form id="languageForm" action="submit.php" method="post" class="form-inline">
-                            <select class="custom-select" name="language" id="languageSelect" onchange="submitForm()">
-                                <option value="EN">EN</option>
-                                <option value="HU">HU</option>
-                                <option value="DE">DE</option>
-                            </select>
-                        </form>
-                    </div>
-                </li>
-                <li>
-                    <button id="themeButton" onclick="toggleTheme()" class="btn btn-light">☼</button>
-                </li>
- -->
