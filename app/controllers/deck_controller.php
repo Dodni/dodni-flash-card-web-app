@@ -25,7 +25,7 @@ class DeckController {
     }
 }
 
-$controller = new DeckController;
+$controller = new DeckController();
 
 // Processing the POST request
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -39,7 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $controller->showOneDeck($deck_id, $deck_name);
     } 
-} 
+} else {
+    include_once "app/controllers/decks_controller.php";
+}
 
 
 

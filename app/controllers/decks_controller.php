@@ -1,7 +1,7 @@
 <?php
 include_once 'app/models/decks_model.php';
 
-class DeckController {
+class DecksController {
     public function showDecks() {
         $viewPath = 'app/views/en/decks_view.php';
 
@@ -17,7 +17,7 @@ class DeckController {
     }
 }
 
-$controller = new DeckController();
+$controller = new DecksController();
 $controller->showDecks();
 
 ?>
