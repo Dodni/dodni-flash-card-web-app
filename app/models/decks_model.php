@@ -195,7 +195,7 @@ class DecksModel {
         }
     }
 
-    public function createDeck($csvFile, $csvFileName, $deckCreator, $deckOwnerId) {
+    public function createDeck($csvFile, $csvFileName, $deckCreator, $userId) {
         $start = microtime(true);
         $newDeckId = 0;
         try {
@@ -214,18 +214,21 @@ class DecksModel {
             // Increment the maximum deck_id or set to 1 if there are no existing records
             $newDeckId = ($maxId === null) ? 1 : $maxId + 1;
 
-            var_dump ($newDeckId);
+            //var_dump ($newDeckId);
             // Insert a new deck
             $query = "INSERT INTO decks (deck_id, deck_name, deck_create_date, deck_creator, deck_owner_id, deck_last_time_used) VALUES (?, ?, ?, ?, ?, NOW() );";
             $statement = Database::$connection->prepare($query);
             $currentDate = date("Y-m-d");
-            $statement->bind_param("isssi", $newDeckId, $csvFileName, $currentDate, $deckCreator, $deckOwnerId);
+            $statement->bind_param("isssi", $newDeckId, $csvFileName, $currentDate, $deckCreator, $userId);
             $statement->execute();
             
             $statement->close();
     
             // Insert cards from CSV
             $this->insertCardsFromCsv($csvFile, $newDeckId);
+
+            // Insert card settings
+            $this->insertCardSettings($newDeckId, $userId);
     
             // Commit the transaction
             Database::$connection->commit();
@@ -249,26 +252,50 @@ class DecksModel {
     }
     
     private function insertCardsFromCsv($csvFile, $deckId) {
-        $fileHandle = fopen($csvFile, "r");
-        if ($fileHandle !== false) {
-            while (($data = fgetcsv($fileHandle)) !== false) {
-                // Check if the row is valid
-                if (count($data) == 2) {
-                    $column1 = $data[0]; // First column
-                    $column2 = $data[1]; // Second column
-    
-                    // Insert the card
-                    $query = "INSERT INTO cards (card_id, card_first, card_second, card_known, deck_id) VALUES (NULL, ?, ?, 0, ?)";
-                    $statement = Database::$connection->prepare($query);
-                    $statement->bind_param("ssi", $column1, $column2, $deckId);
-                    $statement->execute();
-                } else {
-                    echo "Hiba: Nem megfelelő formátumú sor: " . implode(",", $data);
+        try {
+            $fileHandle = fopen($csvFile, "r");
+            if ($fileHandle !== false) {
+                while (($data = fgetcsv($fileHandle)) !== false) {
+                    // Check if the row is valid
+                    if (count($data) == 2) {
+                        $column1 = $data[0]; // First column
+                        $column2 = $data[1]; // Second column
+        
+                        // Insert the card
+                        $query = "INSERT INTO cards (card_id, card_first, card_second, card_known, deck_id) VALUES (NULL, ?, ?, 0, ?)";
+                        $statement = Database::$connection->prepare($query);
+                        $statement->bind_param("ssi", $column1, $column2, $deckId);
+                        $statement->execute();
+                    } else {
+                        echo "Hiba: Nem megfelelő formátumú sor: " . implode(",", $data);
+                    }
                 }
+                fclose($fileHandle);
+            } else {
+                echo "Hiba: Nem sikerült megnyitni a CSV fájlt.";
             }
-            fclose($fileHandle);
-        } else {
-            echo "Hiba: Nem sikerült megnyitni a CSV fájlt.";
+        } catch (Exception $e) {
+            // Rollback transaction on error
+            Database::$connection->rollback();
+            echo "Hiba történt a tranzakció során: " . $e->getMessage();
+        }
+    }
+
+    private function insertCardSettings($deckId, $userId) {
+        try {
+            // Temporary data
+            $deckMaxFlip = 100;
+            $deckPublic = "N";
+
+            // Insert the card
+            $query = "INSERT INTO `deck_settings` (`deck_settings_id`, `deck_settings_max_flip`, `user_id`, `deck_id`, `desk_settings_public`) VALUES (NULL, ?, ?, ?, ?);";
+            $statement = Database::$connection->prepare($query);
+            $statement->bind_param("iiis", $deckMaxFlip, $userId, $deckId, $deckPublic);
+            $statement->execute();
+        } catch (Exception $e) {
+            // Rollback transaction on error
+            Database::$connection->rollback();
+            echo "Hiba történt a tranzakció során: " . $e->getMessage();
         }
     }
 }
