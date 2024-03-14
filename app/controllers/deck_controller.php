@@ -25,7 +25,7 @@ class DeckController {
     }
 }
 
-$controller = new DeckController($deck_id);
+$controller = new DeckController;
 
 // Processing the POST request
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
