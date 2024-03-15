@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-custom mt-0">
         <div class="d-flex justify-content-start">
-            <a class="navbar-brand" href="<?php echo BASE_URL;?>decks">LEARN!</a>
+            <a class="navbar-brand mr-1" href="<?php echo BASE_URL;?>decks">LEARN!</a>
             <div class="nav-item dropdown d-flex justify-content-start">
                 <form id="languageForm" action="submit.php" method="post" class="form-inline">
                     <select class="custom-select" name="language" id="languageSelect" onchange="submitForm()">
