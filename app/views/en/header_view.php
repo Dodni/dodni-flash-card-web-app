@@ -11,7 +11,9 @@
                     </select>
                 </form>
             </div>
-            <button id="themeButton" onclick="toggleTheme()" class="btn btn-light ml-1">☼</button>
+            <div class = "border ml-1 rounded">
+                <button id="themeButton" onclick="toggleTheme()" class="btn btn-light ">☼</button> 
+            </div>
         </div>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
