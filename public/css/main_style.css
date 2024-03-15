@@ -116,20 +116,6 @@ footer {
     }
 }
 
-/* card view style */
-.card-checkbox {
-    /* Minden alap tulajdonság törlése */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: none;
-    border: none;
-    outline: none;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-}
-
 /* Decks view */
 @media (min-width: 576px) {
     .custom-button {
@@ -192,10 +178,24 @@ footer {
     min-height: 50vh; /* Az ablak magasságának feléig terjed */
 }
 
+/* card view style */
+.card-checkbox {
+    /* Minden alap tulajdonság törlése */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
 /* Piros keret stílus a kattintás után */
-.card-checkbox:checked + .card-label {
-    background-color: #c82333; /* Sötétebb piros háttérszín */
-    border-color: #c82333; /* Sötétebb piros keret */
+.card-checkbox:checked + .card-label-new, .card-checkbox:checked + .card-label-fail, .card-checkbox:checked + .card-label-hard, .card-checkbox:checked + .card-label-good, .card-checkbox:checked + .card-label-easy {
+    background-color: red; /* Sötétebb piros háttérszín */
+    border-color: red; /* Sötétebb piros keret */
     text-align: center;
     padding: 5px; /* Opcionális: Ha szükséges padding a címkéhez */
     display: inline-block;
@@ -208,23 +208,12 @@ footer {
     border-radius: 0.25rem; /* Kerekített sarkok */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
     text-align: center;
+    color: white;
+    font-weight: bold;
+    border: 1px solid black;
 }
 
 /* Stílusok a címkékhez, hogy hasonlítsanak a gombokra */
-.card-label {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    margin: 0.2rem;
-    font-size: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    background-color: #ffffff; /* Piros háttérszín, melyet gombnak látszik */
-    border: 1px solid #000000; /* Piros keret */
-    border-radius: 0.25rem; /* Kerekített sarkok */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
-    text-align: center;
-}
 
 @media (min-width: 575px) {
     /* Amikor az egér fölött van a címke */
@@ -246,6 +235,100 @@ footer {
     }
 }
 
+.card-label-new {
+    display: inline-block;
+    height: 70px;
+    width: 80px;
+    padding: 0.5rem 1rem;
+    margin: 0.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color: #6b4ca4; /* Piros háttérszín, melyet gombnak látszik */
+    border: 1px solid #000000; /* Piros keret */
+    border-radius: 0.25rem; /* Kerekített sarkok */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.card-label-fail {
+    display: inline-block;
+    height: 70px;
+    width: 80px;
+    padding: 0.5rem 1rem;
+    margin: 0.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color: #ee4266; /* Piros háttérszín, melyet gombnak látszik */
+    border: 1px solid #000000; /* Piros keret */
+    border-radius: 0.25rem; /* Kerekített sarkok */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.card-label-hard {
+    display: inline-block;
+    height: 70px;
+    width: 80px;
+    padding: 0.5rem 1rem;
+    margin: 0.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color: #ffd23f; /* Piros háttérszín, melyet gombnak látszik */
+    border: 1px solid #000000; /* Piros keret */
+    border-radius: 0.25rem; /* Kerekített sarkok */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.card-label-good {
+    display: inline-block;
+    height: 70px;
+    width: 80px;
+    padding: 0.5rem 1rem;
+    margin: 0.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color: #45c8e2; /* Piros háttérszín, melyet gombnak látszik */
+    border: 1px solid #000000; /* Piros keret */
+    border-radius: 0.25rem; /* Kerekített sarkok */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.card-label-easy {
+    display: inline-block;
+    height: 70px;
+    width: 80px;
+    padding: 0.5rem 1rem;
+    margin: 0.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color: #20c670; /* Piros háttérszín, melyet gombnak látszik */
+    border: 1px solid #000000; /* Piros keret */
+    border-radius: 0.25rem; /* Kerekített sarkok */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
 
 /* card-flipping view style */
 .fail-button {
