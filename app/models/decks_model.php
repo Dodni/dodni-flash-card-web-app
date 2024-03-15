@@ -195,64 +195,88 @@ class DecksModel {
         }
     }
 
-    public function createDeck($csvFile, $csvFileName, $deckCreator, $userId) {
-        $start = microtime(true);
-        $newDeckId = 0;
-        try {
-            // Connect to the database
-            Database::connect();
-    
-            // Tranzakció megkezdése
-            Database::$connection->begin_transaction();
-            
-            // Query to get the maximum deck_id
-            $maxIdQuery = "SELECT MAX(deck_id) AS max_id FROM decks";
-            $result = Database::$connection->query($maxIdQuery);
-            $row = $result->fetch_assoc();
-            $maxId = $row['max_id'];    
+public function createDeck($csvFile, $csvFileName, $deckCreator, $userId) {
+    $start = microtime(true);
+    $newDeckId = 0;
+    try {
+        // Connect to the database
+        Database::connect();
 
-            // Increment the maximum deck_id or set to 1 if there are no existing records
-            $newDeckId = ($maxId === null) ? 1 : $maxId + 1;
-
-            //var_dump ($newDeckId);
-            // Insert a new deck
-            $query = "INSERT INTO decks (deck_id, deck_name, deck_create_date, deck_creator, deck_owner_id, deck_last_time_used) VALUES (?, ?, ?, ?, ?, NOW() );";
-            $statement = Database::$connection->prepare($query);
-            $currentDate = date("Y-m-d");
-            $statement->bind_param("isssi", $newDeckId, $csvFileName, $currentDate, $deckCreator, $userId);
-            $statement->execute();
-            
-            $statement->close();
-    
-            // Insert cards from CSV
-            $this->insertCardsFromCsv($csvFile, $newDeckId);
-
-            // Insert card settings
-            $this->insertCardSettings($newDeckId, $userId);
-    
-            // Commit the transaction
-            Database::$connection->commit();
-            // Végidőpont
-            $end = microtime(true);
-
-            // A két időpont közötti különbség
-            $executionTime = $end - $start;
-
-            // Az eredmény kiírása
-            echo "A műveletek végrehajtási ideje: " . $executionTime . " másodperc";
-            echo "A tranzakció sikeresen befejeződött.";
-        } catch (Exception $e) {
-            // Rollback transaction on error
-            Database::$connection->rollback();
-            echo "Hiba történt a tranzakció során: " . $e->getMessage();
+        // Begin transaction
+        Database::$connection->begin_transaction();
+        
+        // Query to get the maximum deck_id
+        $maxIdQuery = "SELECT MAX(deck_id) AS max_id FROM decks";
+        $result = Database::$connection->query($maxIdQuery);
+        if (!$result) {
+            throw new Exception("Failed to get the maximum deck_id.");
         }
-    
+        $row = $result->fetch_assoc();
+        $maxId = $row['max_id'];    
+
+        // Increment the maximum deck_id or set to 1 if there are no existing records
+        $newDeckId = ($maxId === null) ? 1 : $maxId + 1;
+
+        // Insert a new deck
+        $query = "INSERT INTO decks (deck_id, deck_name, deck_create_date, deck_creator, deck_owner_id, deck_last_time_used) VALUES (?, ?, ?, ?, ?, NOW() )";
+        $statement = Database::$connection->prepare($query);
+        if (!$statement) {
+            throw new Exception("Failed to prepare the insert statement: " . Database::$connection->error);
+        }
+        $currentDate = date("Y-m-d");
+        $bind_result = $statement->bind_param("isssi", $newDeckId, $csvFileName, $currentDate, $deckCreator, $userId);
+        if (!$bind_result) {
+            throw new Exception("Failed to bind parameters: " . $statement->error);
+        }
+        $execute_result = $statement->execute();
+        if (!$execute_result) {
+            throw new Exception("Failed to execute the query: " . $statement->error);
+        }
+        $statement->close();
+        
+        //Insert cards from CSV
+        $insertCardsResult = $this->insertCardsFromCsv($csvFile, $newDeckId);
+        if (!$insertCardsResult) {
+            throw new Exception("Failed to insert cards from CSV.");
+        }
+
+        // Insert card settings
+        $insertSettingsResult = $this->insertCardSettings($newDeckId, $userId);
+        if (!$insertSettingsResult) {
+            throw new Exception("Failed to insert card settings.");
+        }
+
+        // Commit the transaction
+        Database::$connection->commit();
+
+        // End time
+        $end = microtime(true);
+
+        // Execution time
+        $executionTime = $end - $start;
+
+        // Print the result
+        echo "Execution time: " . $executionTime . " seconds";
+        echo "Transaction successfully completed.";
+
+        // Return the new deck ID
+        return $newDeckId;
+    } catch (Exception $e) {
+        // Rollback transaction on error
+        Database::$connection->rollback();
+        echo "Error occurred during transaction: " . $e->getMessage();
+        return false;
+    } finally {
         // Disconnect from the database
         Database::disconnect();
     }
-    
+}
+
     private function insertCardsFromCsv($csvFile, $deckId) {
         try {
+            if ($csvFile == NULL) {
+                throw new Exception("The CSV file cannot be NULL!");
+            }
             $fileHandle = fopen($csvFile, "r");
             if ($fileHandle !== false) {
                 while (($data = fgetcsv($fileHandle)) !== false) {
@@ -264,20 +288,34 @@ class DecksModel {
                         // Insert the card
                         $query = "INSERT INTO cards (card_id, card_first, card_second, card_known, deck_id) VALUES (NULL, ?, ?, 0, ?)";
                         $statement = Database::$connection->prepare($query);
-                        $statement->bind_param("ssi", $column1, $column2, $deckId);
-                        $statement->execute();
+                        if (!$statement) {
+                            throw new Exception("Failed to prepare the insert statement.");
+                        }
+                        $bind_result = $statement->bind_param("ssi", $column1, $column2, $deckId);
+                        if (!$bind_result) {
+                            throw new Exception("Failed to bind parameters: " . $statement->error);
+                        }
+                        $execute_result = $statement->execute();
+                        if (!$execute_result) {
+                            throw new Exception("Failed to execute the query: " . $statement->error);
+                        }
+                        $statement->close();
                     } else {
-                        echo "Hiba: Nem megfelelő formátumú sor: " . implode(",", $data);
+                        fclose($fileHandle);
+                        echo "Error: Invalid format row: " . implode(",", $data);
+                        return false;
                     }
                 }
                 fclose($fileHandle);
+                return true; // Success
             } else {
-                echo "Hiba: Nem sikerült megnyitni a CSV fájlt.";
+                throw new Exception("Failed to open the CSV file.");
             }
         } catch (Exception $e) {
             // Rollback transaction on error
             Database::$connection->rollback();
-            echo "Hiba történt a tranzakció során: " . $e->getMessage();
+            echo "Error occurred during transaction: " . $e->getMessage();
+            return false;
         }
     }
 
@@ -286,16 +324,33 @@ class DecksModel {
             // Temporary data
             $deckMaxFlip = 100;
             $deckPublic = "N";
-
-            // Insert the card
+    
+            // Insert the card settings
             $query = "INSERT INTO `deck_settings` (`deck_settings_id`, `deck_settings_max_flip`, `user_id`, `deck_id`, `desk_settings_public`) VALUES (NULL, ?, ?, ?, ?);";
             $statement = Database::$connection->prepare($query);
-            $statement->bind_param("iiis", $deckMaxFlip, $userId, $deckId, $deckPublic);
-            $statement->execute();
+            if (!$statement) {
+                throw new Exception("Failed to prepare the insert statement.");
+            }
+            $bind_result = $statement->bind_param("iiis", $deckMaxFlip, $userId, $deckId, $deckPublic);
+            if (!$bind_result) {
+                throw new Exception("Failed to bind parameters: " . $statement->error);
+            }
+            $execute_result = $statement->execute();
+            if (!$execute_result) {
+                throw new Exception("Failed to execute the query: " . $statement->error);
+            }
+            $statement->close();
+    
+            // Return true on success
+            return true;
         } catch (Exception $e) {
+            // Handle exceptions
             // Rollback transaction on error
             Database::$connection->rollback();
-            echo "Hiba történt a tranzakció során: " . $e->getMessage();
+            echo "Error occurred during transaction: " . $e->getMessage();
+    
+            // Return false on failure
+            return false;
         }
     }
 }

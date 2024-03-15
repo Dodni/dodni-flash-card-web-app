@@ -20,10 +20,15 @@ class DeckImportController {
         $csvFilePath = $csvFile['tmp_name']; // Temporary file path
     
         $decksModel = new DecksModel();
-        $decksModel->createDeck($csvFilePath, $csvFileName, $deck_creator, $deck_owner_id);
+        $result = $decksModel->createDeck($csvFilePath, $csvFileName, $deck_creator, $deck_owner_id);
         
-        echo "Deck created successfully. ";
-        include_once 'app/controllers/decks_controller.php';
+        if ($result == true) {
+            echo "The deck created successfully.";
+            include_once 'app/controllers/decks_controller.php';
+        } else {
+            echo "Error: The deck creation is not successful!";
+            include_once 'app/controllers/decks_controller.php';
+        }
     }
     
 }
