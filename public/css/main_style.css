@@ -304,19 +304,21 @@ footer {
     font-size: 1.5rem;
 }
 
-.fail-button:hover, .fail-button:active {
-    background-color: #ee1111;
-}
-
-.hard-button:hover, .hard-button:active {
-    background-color: #ffb300;
-}
-
-.good-button:hover, .good-button:active {
-    background-color: #00d5ff;
-}
-
-.easy-button:hover, .easy-button:active {
-    background-color: #0cea77;
+@media (min-width: 575px) {
+    .fail-button:hover, .fail-button:active {
+        background-color: #ee1111;
+    }
+    
+    .hard-button:hover, .hard-button:active {
+        background-color: #ffb300;
+    }
+    
+    .good-button:hover, .good-button:active {
+        background-color: #00d5ff;
+    }
+    
+    .easy-button:hover, .easy-button:active {
+        background-color: #0cea77;
+    }
 }
 
