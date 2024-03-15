@@ -178,6 +178,20 @@ footer {
     min-height: 50vh; /* Az ablak magasságának feléig terjed */
 }
 
+.centered-container-one-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20vh 0 20vh 0;
+}
+
+.centered-container-two-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15vh 0 15vh 0;
+}
+
 /* card view style */
 .card-checkbox {
     /* Minden alap tulajdonság törlése */
@@ -194,8 +208,6 @@ footer {
 
 /* Piros keret stílus a kattintás után */
 .card-checkbox:checked + .card-label-new, .card-checkbox:checked + .card-label-fail, .card-checkbox:checked + .card-label-hard, .card-checkbox:checked + .card-label-good, .card-checkbox:checked + .card-label-easy {
-    background-color: red; /* Sötétebb piros háttérszín */
-    border-color: red; /* Sötétebb piros keret */
     text-align: center;
     padding: 5px; /* Opcionális: Ha szükséges padding a címkéhez */
     display: inline-block;
@@ -210,7 +222,7 @@ footer {
     text-align: center;
     color: white;
     font-weight: bold;
-    border: 1px solid black;
+    border: 2px solid white;
 }
 
 /* Stílusok a címkékhez, hogy hasonlítsanak a gombokra */

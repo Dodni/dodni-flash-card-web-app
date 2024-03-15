@@ -5,20 +5,24 @@
         <title>Card Flipping</title>
         <script>
                 function flipCard() {
-                    var container = document.querySelector(".container");
+                    var container = document.querySelector(".x");
                     container.innerHTML = `
-                <div class="container mt-2">
-                    <div class="centered-container">
-                        <div class="text-center">
-                            <?php echo "<h2>" . $decks[0]["card_first"] . "</h2>"; ?>
-                            <p>(voice coming soon..)</p>
-                            <p>------------------</p>
-                            <?php echo "<h2>" .  $decks[0]["card_second"]  . "</h2>"; ?>
-                            <p>(voice coming soon..)</p>
-                        </div>
+                <div class="centered-container-two-side">
+                    <div class="text-center">
+                        <?php echo "<h2>" . $decks[0]["card_first"] . "</h2>"; ?>
+                        <p>(voice coming soon..)</p>
                     </div>
                 </div>
-                    
+
+                <div class="border pl-5 m-0"></div>
+                
+                <div class="centered-container-two-side">
+                    <div class="text-center">
+                        <?php echo "<h2>" .  $decks[0]["card_second"]  . "</h2>"; ?>
+                        <p>(voice coming soon..)</p>
+                    </div>
+                </div>
+
                 <div class="container-fluid joined-buttons fixed-bottom">
                     <div class="row">
                         <div class="col p-0">
@@ -66,10 +70,10 @@
     <body>
         <?php include_once 'header_view.php'; ?>
         <main>
-            <div class="container">
-                <div class="centered-container">
+            <div class="x">
+                <div class="centered-container-one-side">
                     <div class="text-center">
-                        <p class="text-monospace " >Cards more left : <?php echo $cardsNumberForTheSession;?></p>
+                        <p class="text-monospace pb-5" >Cards more left : <?php echo $cardsNumberForTheSession;?></p>
                         <?php echo "<h2>" . $decks[0]["card_first"] . "</h2>"; ?>
                         <p>(voice coming soon..)</p>
                         <button class="flip-button fixed-bottom" onclick="flipCard()">Flip</button>
