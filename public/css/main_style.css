@@ -198,7 +198,7 @@ footer {
     width: 18vw; 
     height: 17vw;
     padding: 0;
-    margin: 0 0.5vw; /* 1% -os margó a viewport szélességéhez képest */
+    margin: 0 1vw; /* 1% -os margó a viewport szélességéhez képest */
     text-decoration: none;
     border-radius: 0.25rem; /* Kerekített sarkok */
 }
@@ -240,29 +240,9 @@ footer {
     text-align: center;
     color: white;
     font-weight: bold;
-    border: 2px solid white;
-}
-
-/* Stílusok a címkékhez, hogy hasonlítsanak a gombokra */
-
-@media (min-width: 575px) {
-    /* Amikor az egér fölött van a címke */
-    .card-label:hover {
-        background-color: red; /* Piros háttérszín, melyet gombnak látszik */
-        border: 1px solid red;
-    }
-}
-
-@media (max-width: 575px) {
-    /* Amikor az egér fölött van a címke */
-    .card-label:hover {
-        background-color: none; /* Piros háttérszín, melyet gombnak látszik */
-        border: 1px solid white;
-    }
-    .card-label:active {
-        background-color: red; /* Piros háttérszín, melyet gombnak látszik */
-        border: 1px solid red;
-    }
+    box-shadow: 
+    0 0 0 3px rgb(255, 255, 255), /* Első border - piros */
+    0 0 0 4px rgb(0, 0, 0); /* Második border - kék */
 }
 
 .card-label-new {
@@ -274,11 +254,9 @@ footer {
     font-size: 1em;
     cursor: pointer;
     text-decoration: none;
-    color: rgb(0, 0, 0);
     background-color: #6b4ca4; /* Piros háttérszín, melyet gombnak látszik */
-    border: 1px solid #000000; /* Piros keret */
+    border: none; /* Piros keret */
     border-radius: 0.25rem; /* Kerekített sarkok */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
     text-align: center;
     color: white;
     font-weight: bold;
@@ -293,11 +271,9 @@ footer {
     font-size: 1em;
     cursor: pointer;
     text-decoration: none;
-    color: rgb(0, 0, 0);
     background-color: #ee4266; /* Piros háttérszín, melyet gombnak látszik */
-    border: 1px solid #000000; /* Piros keret */
+    border: none; /* Piros keret */
     border-radius: 0.25rem; /* Kerekített sarkok */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
     text-align: center;
     color: white;
     font-weight: bold;
@@ -312,11 +288,9 @@ footer {
     font-size: 1em;
     cursor: pointer;
     text-decoration: none;
-    color: rgb(0, 0, 0);
     background-color: #ffd23f; /* Piros háttérszín, melyet gombnak látszik */
-    border: 1px solid #000000; /* Piros keret */
+    border: none; /* Piros keret */
     border-radius: 0.25rem; /* Kerekített sarkok */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
     text-align: center;
     color: white;
     font-weight: bold;
@@ -331,11 +305,9 @@ footer {
     font-size: 1em;
     cursor: pointer;
     text-decoration: none;
-    color: rgb(0, 0, 0);
     background-color: #45c8e2; /* Piros háttérszín, melyet gombnak látszik */
-    border: 1px solid #000000; /* Piros keret */
+    border: none; /* Piros keret */
     border-radius: 0.25rem; /* Kerekített sarkok */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
     text-align: center;
     color: white;
     font-weight: bold;
@@ -350,11 +322,10 @@ footer {
     font-size: 1em;
     cursor: pointer;
     text-decoration: none;
-    color: rgb(0, 0, 0);
     background-color: #20c670; /* Piros háttérszín, melyet gombnak látszik */
-    border: 1px solid #000000; /* Piros keret */
+    border: none; /* Piros keret */
     border-radius: 0.25rem; /* Kerekített sarkok */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
+    text-align: center;
     color: white;
     font-weight: bold;
 }
