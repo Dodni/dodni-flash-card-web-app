@@ -110,12 +110,6 @@ footer {
     width: 100%;
 }
 
-@media (max-width: 576px) {
-    small {
-        display: none !important;
-    }
-}
-
 /* Decks view */
 @media (min-width: 576px) {
     .custom-button {
@@ -155,6 +149,7 @@ footer {
     }
 }
 
+/* Deck view */
 .flip-button {
     width: 100%;
     margin: 0px;
@@ -193,6 +188,29 @@ footer {
 }
 
 /* card view style */
+.card-box-flex-container {
+    display: flex;
+    justify-content: center; /* Vízszintes középre igazítás */
+    align-items: center; /* Függőleges középre igazítás */
+}
+
+.card-box {
+    width: 18vw; 
+    height: 17vw;
+    padding: 0;
+    margin: 0 0.5vw; /* 1% -os margó a viewport szélességéhez képest */
+    text-decoration: none;
+    border-radius: 0.25rem; /* Kerekített sarkok */
+}
+
+/* @media (max-width: 600px) {
+    .card-box {
+      width: 30vw; 
+      height: 30vw;
+    }
+} 
+*/
+
 .card-checkbox {
     /* Minden alap tulajdonság törlése */
     -webkit-appearance: none;
@@ -208,12 +226,12 @@ footer {
 
 /* Piros keret stílus a kattintás után */
 .card-checkbox:checked + .card-label-new, .card-checkbox:checked + .card-label-fail, .card-checkbox:checked + .card-label-hard, .card-checkbox:checked + .card-label-good, .card-checkbox:checked + .card-label-easy {
-    text-align: center;
-    padding: 5px; /* Opcionális: Ha szükséges padding a címkéhez */
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    margin: 0.2rem;
-    font-size: 1rem;
+    display: inline-flex; /* inline-flex az inline-block helyett */
+    justify-content: center; /* Szöveg középre igazítása vízszintesen */
+    align-items: center; /* Szöveg középre igazítása függőlegesen */
+    padding: 0;
+    margin: 0;
+    font-size: 1em;
     cursor: pointer;
     text-decoration: none;
     color: rgb(0, 0, 0);
@@ -248,12 +266,12 @@ footer {
 }
 
 .card-label-new {
-    display: inline-block;
-    height: 70px;
-    width: 80px;
-    padding: 0.5rem 1rem;
-    margin: 0.2rem;
-    font-size: 1rem;
+    display: inline-flex; /* inline-flex az inline-block helyett */
+    justify-content: center; /* Szöveg középre igazítása vízszintesen */
+    align-items: center; /* Szöveg középre igazítása függőlegesen */
+    width: 18vw; 
+    height: 17vw;
+    font-size: 1em;
     cursor: pointer;
     text-decoration: none;
     color: rgb(0, 0, 0);
@@ -267,12 +285,12 @@ footer {
 }
 
 .card-label-fail {
-    display: inline-block;
-    height: 70px;
-    width: 80px;
-    padding: 0.5rem 1rem;
-    margin: 0.2rem;
-    font-size: 1rem;
+    display: inline-flex; /* inline-flex az inline-block helyett */
+    justify-content: center; /* Szöveg középre igazítása vízszintesen */
+    align-items: center; /* Szöveg középre igazítása függőlegesen */
+    width: 18vw; 
+    height: 17vw;
+    font-size: 1em;
     cursor: pointer;
     text-decoration: none;
     color: rgb(0, 0, 0);
@@ -286,12 +304,12 @@ footer {
 }
 
 .card-label-hard {
-    display: inline-block;
-    height: 70px;
-    width: 80px;
-    padding: 0.5rem 1rem;
-    margin: 0.2rem;
-    font-size: 1rem;
+    display: inline-flex; /* inline-flex az inline-block helyett */
+    justify-content: center; /* Szöveg középre igazítása vízszintesen */
+    align-items: center; /* Szöveg középre igazítása függőlegesen */
+    width: 18vw; 
+    height: 17vw;
+    font-size: 1em;
     cursor: pointer;
     text-decoration: none;
     color: rgb(0, 0, 0);
@@ -305,12 +323,12 @@ footer {
 }
 
 .card-label-good {
-    display: inline-block;
-    height: 70px;
-    width: 80px;
-    padding: 0.5rem 1rem;
-    margin: 0.2rem;
-    font-size: 1rem;
+    display: inline-flex; /* inline-flex az inline-block helyett */
+    justify-content: center; /* Szöveg középre igazítása vízszintesen */
+    align-items: center; /* Szöveg középre igazítása függőlegesen */
+    width: 18vw; 
+    height: 17vw;
+    font-size: 1em;
     cursor: pointer;
     text-decoration: none;
     color: rgb(0, 0, 0);
@@ -324,12 +342,12 @@ footer {
 }
 
 .card-label-easy {
-    display: inline-block;
-    height: 70px;
-    width: 80px;
-    padding: 0.5rem 1rem;
-    margin: 0.2rem;
-    font-size: 1rem;
+    display: inline-flex; /* inline-flex az inline-block helyett */
+    justify-content: center; /* Szöveg középre igazítása vízszintesen */
+    align-items: center; /* Szöveg középre igazítása függőlegesen */
+    width: 18vw; 
+    height: 17vw;
+    font-size: 1em;
     cursor: pointer;
     text-decoration: none;
     color: rgb(0, 0, 0);
@@ -337,7 +355,6 @@ footer {
     border: 1px solid #000000; /* Piros keret */
     border-radius: 0.25rem; /* Kerekített sarkok */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
-    text-align: center;
     color: white;
     font-weight: bold;
 }

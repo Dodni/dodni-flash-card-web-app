@@ -33,35 +33,41 @@
                     */
                 ?>
             </div>
-            <div class="container pt-2">
-                <form action="<?php echo BASE_URL; ?>deck/card-flipping" method="post" onsubmit="return validateForm()">
+            <form action="<?php echo BASE_URL; ?>deck/card-flipping" method="post" onsubmit="return validateForm()">
+                <div class="container pt-2">
                     <div class="row justify-content-center   " >
                         <input type="hidden" name="deck_id" value="<?php echo $oneDeck[0]["deck_id"]; ?>">
                         <input type="hidden" id="knownCardsNumber" data-known-cards="<?php echo htmlspecialchars(json_encode($knownCardsNumber)); ?>">
                         <input type="hidden" id="cardsMaxAmount" name="cardsMaxAmount" value="<?php echo $deckSettingsData[0]["deck_settings_max_flip"]?>">
-                        
                         <input type="hidden" id="cardsNumberForTheSession" name="cardsNumberForTheSession" value="">
-                        
-                        <input type="checkbox" class="card-checkbox" id="all" name="options[]" value="0" onchange="updateKnownCardsNumber()">
+                    </div>
+                </div>
+                <div class="card-box-flex-container">
+                    <div class="card-box ">
+                        <input type="checkbox" class="card-checkbox" id="all" name="options[]" value="0" onchange="updateKnownCardsNumber()" hidden>
                         <label for="all" class="card-label-new">NEW (<?php echo $knownCardsNumber[0]?>)</label>
-                        
-                        <input type="checkbox" class="card-checkbox" id="fail" name="options[]" value="1" onchange="updateKnownCardsNumber()">
+                    </div>
+                    <div class="card-box ">
+                        <input type="checkbox" class="card-checkbox" id="fail" name="options[]" value="1" onchange="updateKnownCardsNumber()" hidden>
                         <label for="fail" class="card-label-fail">FAIL (<?php echo $knownCardsNumber[1]?>)</label>
-                        
-                        <input type="checkbox" class="card-checkbox" id="bad" name="options[]" value="2" onchange="updateKnownCardsNumber()">
+                    </div>
+                    <div class="card-box ">
+                        <input type="checkbox" class="card-checkbox" id="bad" name="options[]" value="2" onchange="updateKnownCardsNumber()" hidden>
                         <label for="bad" class="card-label-hard">HARD (<?php echo $knownCardsNumber[2]?>)</label>
-                        
-                        <input type="checkbox" class="card-checkbox" id="good" name="options[]" value="3" onchange="updateKnownCardsNumber()">
+                    </div>
+                    <div class="card-box ">
+                        <input type="checkbox" class="card-checkbox" id="good" name="options[]" value="3" onchange="updateKnownCardsNumber()" hidden>
                         <label for="good" class="card-label-good">GOOD (<?php echo $knownCardsNumber[3]?>)</label>
-                        
-                        <input type="checkbox" class="card-checkbox" id="easy" name="options[]" value="4" onchange="updateKnownCardsNumber()">
+                    </div>
+                    <div class="card-box">
+                        <input type="checkbox" class="card-checkbox" id="easy" name="options[]" value="4" onchange="updateKnownCardsNumber()" hidden>
                         <label for="easy" class="card-label-easy">EASY (<?php echo $knownCardsNumber[4]?>)</label>
                     </div>
-                    <div class="container-fluid ">
-                        <input class="flip-button fixed-bottom" type="submit" id="submitButton" value="Start" disabled>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="container-fluid ">
+                    <input class="flip-button fixed-bottom" type="submit" id="submitButton" value="Start" disabled>
+                </div>
+            </form>
         </main>
         <?php include_once 'footer_view.php'; ?>
     </body>
