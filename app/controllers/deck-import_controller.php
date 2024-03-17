@@ -13,8 +13,9 @@ class DeckImportController {
 
     function uploadCsvToDatabase($csvFile) {
         // I'll do these later 
-        $deck_creator = "Dodni";
-        $deck_owner_id = 1;
+        
+        $deck_creator = $_SESSION['username'];
+        $deck_owner_id = $_SESSION['user_id'];
         
         $csvFileName = substr($csvFile["name"], 0, -4); // Extracting file name
         $csvFilePath = $csvFile['tmp_name']; // Temporary file path

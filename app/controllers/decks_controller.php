@@ -6,8 +6,7 @@ class DecksController {
         $viewPath = 'app/views/en/decks_view.php';
 
         $decksModel = new DecksModel();
-        $decks = $decksModel->getDecks();
-        //var_dump($decks);
+        $decks = $decksModel->getDecksById($_SESSION['user_id']);
         
         if (file_exists($viewPath)) {
             include_once $viewPath;

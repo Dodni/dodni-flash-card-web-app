@@ -1,6 +1,6 @@
 <?php
 class DecksModel {
-    public function getDecks() {
+    public function getDecksById($userId) {
         try {
             // Establish database connection
             Database::connect();
@@ -9,9 +9,20 @@ class DecksModel {
             $data = [];
         
             // Prepare and execute the query using a prepared statement
-            $query = "SELECT * FROM decks ORDER BY deck_last_time_used DESC";
+            // deck_owner_id is here the user_id i just had a mistake
+            $query = "SELECT * FROM decks WHERE deck_owner_id = ?";
             $statement = Database::$connection->prepare($query);
-            $statement->execute();
+            if (!$statement) {
+                throw new Exception("Prepare statement failed: " . Database::$connection->error);
+            }
+            
+            // Bind parameters
+            $statement->bind_param("i", $userId); // Assuming user_id is an integer
+            
+            // Execute the statement
+            if (!$statement->execute()) {
+                throw new Exception("Execute statement failed: " . $statement->error);
+            }
             
             // Get the result set
             $result = $statement->get_result();
@@ -29,10 +40,10 @@ class DecksModel {
             return $data;
         } catch (Exception $e) {
             // Handle any exceptions
-            echo "Error updating card state: " . $e->getMessage();
+            echo "Error fetching decks by user ID: " . $e->getMessage();
+            return false;
         }
     }
-
     public function get10Cards($deckID) {
         // Establish database connection
         Database::connect();

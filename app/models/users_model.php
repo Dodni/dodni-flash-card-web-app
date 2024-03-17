@@ -37,6 +37,12 @@
 
                 $statement->close();
 
+                // Set up session for the logged-in user
+                session_start();
+                $_SESSION['user_id'] = $user_id;
+                $_SESSION['username'] = $username;
+                $_SESSION['loggedIn'] = "yes";
+
                 return true; // Successful insertion
 
             }  catch (Exception $e) {
@@ -79,7 +85,6 @@
 
         public function checkAndLogIn($username, $password){
             try {
-                
                 // Connect to the database
                 Database::connect();
         
@@ -89,7 +94,7 @@
                 }
                 
                 // Prepare statement
-                $query = "SELECT user_pw FROM users WHERE user_name = ?";
+                $query = "SELECT user_id, user_pw FROM users WHERE user_name = ?";
                 $statement = Database::$connection->prepare($query);
                 if (!$statement) {
                     throw new Exception("Prepare statement failed: " . Database::$connection->error);
@@ -104,7 +109,7 @@
                 }
                 
                 // Fetch result
-                $statement->bind_result($hashed_password);
+                $statement->bind_result($user_id, $hashed_password);
                 $statement->fetch();
                 $statement->close();
                 
@@ -115,6 +120,7 @@
                 
                 // Set up session for the logged-in user
                 session_start();
+                $_SESSION['user_id'] = $user_id;
                 $_SESSION['username'] = $username;
                 $_SESSION['loggedIn'] = "yes";
                 
@@ -130,5 +136,6 @@
                 Database::disconnect();
             }
         }
+
     }
 ?>
