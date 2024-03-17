@@ -6,12 +6,13 @@ session_start();
 $isLoggedIn = isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === "yes";
 
 $routes = [
-    '/' . $url . '/' => 'home_controller.php',
-    '/' . $url .'/home' => 'home_controller.php',
-    '/' . $url . '/about' => 'about_controller.php',
-    '/' . $url . '/contact' => 'contact_controller.php',
-    '/' . $url . '/signup' => 'signup_controller.php',
-    '/' . $url . '/login' => 'login_controller.php',
+    // Ha $isLoggedIn true akkor a decks-et nyissa meg kulonben a vezerloket
+    '/' . $url . '/' => ($isLoggedIn ? 'decks_controller.php' : 'home_controller.php') ,
+    '/' . $url .'/home' => ($isLoggedIn ? 'decks_controller.php' : 'home_controller.php') ,
+    '/' . $url . '/about' => ($isLoggedIn ? 'decks_controller.php' : 'about_controller.php') ,
+    '/' . $url . '/contact' => ($isLoggedIn ? 'decks_controller.php' : 'contact_controller.php'),
+    '/' . $url . '/signup' => ($isLoggedIn ? 'decks_controller.php' : 'signup_controller.php') ,
+    '/' . $url . '/login' => ($isLoggedIn ? 'decks_controller.php' : 'login_controller.php'),
     '/' . $url . '/logout' => ($isLoggedIn ? 'logout_controller.php' : 'login_controller.php'),
     // A bejelentkezési státustól függetlenül ugyanazt a vezérlőt használó útvonalak
     '/' . $url . '/decks' => ($isLoggedIn ? 'decks_controller.php' : 'login_controller.php') ,

@@ -22,7 +22,7 @@
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <li class="nav-item <?php echo !isset($_SESSION['username']) ? '' : 'd-none'; ?>">
                     <a class="nav-link" href="<?php echo BASE_URL;?>home">Home</a>
                 </li>
                 <li class="nav-item <?php echo isset($_SESSION['username']) ? '' : 'd-none'; ?>">
@@ -34,10 +34,10 @@
                 <li class="nav-item <?php echo isset($_SESSION['username']) ? '' : 'd-none'; ?>">
                     <a class="nav-link" href="<?php echo BASE_URL;?>settings">Setting</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <?php echo !isset($_SESSION['username']) ? '' : 'd-none'; ?>">
                     <a class="nav-link" href="<?php echo BASE_URL;?>about">About</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <?php echo !isset($_SESSION['username']) ? '' : 'd-none'; ?>">
                     <a class="nav-link" href="<?php echo BASE_URL;?>contact">Contact</a>
                 </li>
                 <li class="nav-item <?php echo !isset($_SESSION['username']) ? '' : 'd-none'; ?>">
