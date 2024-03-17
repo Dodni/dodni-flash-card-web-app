@@ -235,7 +235,7 @@ footer {
     cursor: pointer;
     text-decoration: none;
     color: rgb(0, 0, 0);
-    border-radius: 0.25rem; /* Kerekített sarkok */
+    border-radius: 0.50rem; /* Kerekített sarkok */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
     text-align: center;
     color: white;
@@ -256,7 +256,7 @@ footer {
     text-decoration: none;
     background-color: #6b4ca4; /* Piros háttérszín, melyet gombnak látszik */
     border: none; /* Piros keret */
-    border-radius: 0.25rem; /* Kerekített sarkok */
+    border-radius: 0.50rem; /* Kerekített sarkok */
     text-align: center;
     color: white;
     font-weight: bold;
@@ -273,7 +273,7 @@ footer {
     text-decoration: none;
     background-color: #ee4266; /* Piros háttérszín, melyet gombnak látszik */
     border: none; /* Piros keret */
-    border-radius: 0.25rem; /* Kerekített sarkok */
+    border-radius: 0.50rem; /* Kerekített sarkok */
     text-align: center;
     color: white;
     font-weight: bold;
@@ -290,7 +290,7 @@ footer {
     text-decoration: none;
     background-color: #ffd23f; /* Piros háttérszín, melyet gombnak látszik */
     border: none; /* Piros keret */
-    border-radius: 0.25rem; /* Kerekített sarkok */
+    border-radius: 0.50rem; /* Kerekített sarkok */
     text-align: center;
     color: white;
     font-weight: bold;
@@ -307,7 +307,7 @@ footer {
     text-decoration: none;
     background-color: #45c8e2; /* Piros háttérszín, melyet gombnak látszik */
     border: none; /* Piros keret */
-    border-radius: 0.25rem; /* Kerekített sarkok */
+    border-radius: 0.50rem; /* Kerekített sarkok */
     text-align: center;
     color: white;
     font-weight: bold;
@@ -324,7 +324,7 @@ footer {
     text-decoration: none;
     background-color: #20c670; /* Piros háttérszín, melyet gombnak látszik */
     border: none; /* Piros keret */
-    border-radius: 0.25rem; /* Kerekített sarkok */
+    border-radius: 0.50rem; /* Kerekített sarkok */
     text-align: center;
     color: white;
     font-weight: bold;
