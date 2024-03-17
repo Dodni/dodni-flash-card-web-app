@@ -3,7 +3,7 @@
         public function createUser($username, $email, $password) {
             try {
                 // Default values:
-
+        
                 // Check if the username already exists in the database
                 if ($this->isUsernameExists($username)) {
                     throw new Exception("The provided username is already taken.");
@@ -13,13 +13,13 @@
                 if ($this->isEmailExists($email)) {
                     throw new Exception("The provided email is already registered.");
                 }
-
+        
                 // Hash the password
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                 
                 // Connect to the database
                 Database::connect();
-
+        
                 // Insert a new user
                 $query = "INSERT INTO users (user_id, user_name, user_email, user_pw, user_tos_privacy_policy_date) VALUES (NULL, ?, ?, ?, NOW());";
                 $statement = Database::$connection->prepare($query);
@@ -34,17 +34,20 @@
                 if (!$execute_result) {
                     throw new Exception("Failed to execute the query: " . $statement->error);
                 }
-
+        
+                // Get the user_id of the inserted user
+                $user_id = $statement->insert_id;
+        
                 $statement->close();
-
+        
                 // Set up session for the logged-in user
                 session_start();
                 $_SESSION['user_id'] = $user_id;
                 $_SESSION['username'] = $username;
                 $_SESSION['loggedIn'] = "yes";
-
+        
                 return true; // Successful insertion
-
+        
             }  catch (Exception $e) {
                 // Handle any exceptions
                 echo "Error: user creating: " . $e->getMessage();
