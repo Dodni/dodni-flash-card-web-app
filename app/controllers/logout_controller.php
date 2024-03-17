@@ -1,18 +1,23 @@
 <?php
 class LogOutController {
-    public function showLogOutPage() {
-        $viewPath = 'app/views/en/logout_view.php';
+    public function logOut() {
+        // Indítjuk a session-t
+        session_start();
         
-        // Ellenőrizzük, hogy a fájl létezik-e
-        if (file_exists($viewPath)) {
-            // Betöltjük és megjelenítjük a nézetet
-            include_once $viewPath;
-        } else {
-            echo "A megadott nézetfájl nem található.";
-        }
+        // Töröljük a session változókat
+        $_SESSION = array();
+        
+        // Lezárjuk a session-t
+        session_destroy();
+        
+        // Átirányítjuk a felhasználót a kijelentkezés utáni oldalra
+        echo "You logged out successfully!";
+        
+        include_once "app/controllers/home_controller.php";
     }
+    
 }
 
 $controller = new LogOutController();
-$controller->showLogOutPage();
+$controller->logOut();
 ?>

@@ -12,15 +12,15 @@
                 <div class="container mt-2">
                     <div class="row justify-content-center">
                         <div class="col-md-6">
-                            <form action="login" method="post" >
+                            <form action="<?php echo BASE_URL; ?>login" method="post" >
                                 <div class="form-group">
-                                    <label for="contact_name">Username</label>
-                                    <input type="text" id="contact_name" class="form-control" name="contact_name" placeholder="John Doe" required>
+                                    <label for="user_name">Username</label>
+                                    <input type="text" id="user_name" class="form-control" name="user_name" placeholder="John Doe" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" placeholder="Password">
+                                    <input type="password" id="password" class="form-control" name="password"  placeholder="Password">
                                 </div>
                                 <div class="form-group text-center">
                                     <button type="submit" class="btn btn-primary">Log In</button>

@@ -25,13 +25,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo BASE_URL;?>home">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <?php echo isset($_SESSION['username']) ? '' : 'd-none'; ?>">
                     <a class="nav-link" href="<?php echo BASE_URL;?>decks">Decks</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <?php echo isset($_SESSION['username']) ? '' : 'd-none'; ?>">
                     <a class="nav-link" href="<?php echo BASE_URL;?>decks/public">Public Decks</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <?php echo isset($_SESSION['username']) ? '' : 'd-none'; ?>">
                     <a class="nav-link" href="<?php echo BASE_URL;?>settings">Setting</a>
                 </li>
                 <li class="nav-item">
@@ -40,13 +40,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo BASE_URL;?>contact">Contact</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <?php echo !isset($_SESSION['username']) ? '' : 'd-none'; ?>">
                     <a class="nav-link" href="<?php echo BASE_URL;?>signup">Sign Up</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <?php echo !isset($_SESSION['username']) ? '' : 'd-none'; ?>">
                     <a class="nav-link" href="<?php echo BASE_URL;?>login">Log In</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item <?php echo isset($_SESSION['username']) ? '' : 'd-none'; ?>">
                     <a class="nav-link" href="<?php echo BASE_URL;?>logout">Log Out</a>
                 </li>
             </ul>

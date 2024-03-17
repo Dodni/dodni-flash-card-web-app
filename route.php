@@ -2,6 +2,8 @@
 <?php
 // Könyvtár az útvonalakhoz és vezérlőkhöz
 $url = "card";
+session_start();
+$isLoggedIn = ($_SESSION['loggedIn'] != "yes") ? false : true ;
 
 $routes = [
     '/' . $url . '/' => 'home_controller.php',
@@ -10,13 +12,14 @@ $routes = [
     '/' . $url . '/contact' => 'contact_controller.php',
     '/' . $url . '/signup' => 'signup_controller.php',
     '/' . $url . '/login' => 'login_controller.php',
-    '/' . $url . '/logout' => 'logout_controller.php',
-    '/' . $url . '/decks' => 'decks_controller.php',
-    '/' . $url . '/decks/deck-import' => 'deck-import_controller.php',
-    '/' . $url . '/decks/public' => 'public-decks_controller.php',
-    '/' . $url . '/deck' => 'deck_controller.php',
-    '/' . $url . '/deck/card-flipping' => 'card-flipping_controller.php',
-    '/' . $url . '/settings' => 'settings_controller.php',
+    '/' . $url . '/logout' => ($isLoggedIn ? 'logout_controller.php' : 'login_controller.php'),
+    // A bejelentkezési státustól függetlenül ugyanazt a vezérlőt használó útvonalak
+    '/' . $url . '/decks' => ($isLoggedIn ? 'decks_controller.php' : 'login_controller.php') ,
+    '/' . $url . '/decks/deck-import' => ($isLoggedIn ? 'deck-import_controller.php' : 'login_controller.php') ,
+    '/' . $url . '/decks/public' => ($isLoggedIn ? 'public-decks_controller.php' : 'login_controller.php') ,
+    '/' . $url . '/deck' => ($isLoggedIn ? 'deck_controller.php' : 'login_controller.php') ,
+    '/' . $url . '/deck/card-flipping' => ($isLoggedIn ? 'card-flipping_controller.php' : 'login_controller.php') ,
+    '/' . $url . '/settings' => ($isLoggedIn ? 'settings_controller.php' : 'login_controller.php'),
 ];
 
 // Ellenőrizze, hogy létezik-e a kívánt útvonal

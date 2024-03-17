@@ -76,5 +76,59 @@
             Database::disconnect();
             return $count > 0;
         }
+
+        public function checkAndLogIn($username, $password){
+            try {
+                
+                // Connect to the database
+                Database::connect();
+        
+                // Check database connection
+                if (Database::$connection->connect_error) {
+                    throw new Exception("Database connection failed: " . Database::$connection->connect_error);
+                }
+                
+                // Prepare statement
+                $query = "SELECT user_pw FROM users WHERE user_name = ?";
+                $statement = Database::$connection->prepare($query);
+                if (!$statement) {
+                    throw new Exception("Prepare statement failed: " . Database::$connection->error);
+                }
+                
+                // Bind parameters
+                $statement->bind_param("s", $username);
+        
+                // Execute statement
+                if (!$statement->execute()) {
+                    throw new Exception("Execute statement failed: " . $statement->error);
+                }
+                
+                // Fetch result
+                $statement->bind_result($hashed_password);
+                $statement->fetch();
+                $statement->close();
+                
+                // Verify the password
+                if (!password_verify($password, $hashed_password)) {
+                    throw new Exception("Incorrect password.");
+                }
+                
+                // Set up session for the logged-in user
+                session_start();
+                $_SESSION['username'] = $username;
+                $_SESSION['loggedIn'] = "yes";
+                
+                // Successful login
+                return true;
+                
+            } catch (Exception $e) {
+                // Handle any exceptions
+                echo "Error: login failed: " . $e->getMessage();
+                return false;
+            } finally {
+                // Disconnect from the database
+                Database::disconnect();
+            }
+        }
     }
 ?>
