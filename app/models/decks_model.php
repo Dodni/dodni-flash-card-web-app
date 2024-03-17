@@ -195,82 +195,82 @@ class DecksModel {
         }
     }
 
-public function createDeck($csvFile, $csvFileName, $deckCreator, $userId) {
-    $start = microtime(true);
-    $newDeckId = 0;
-    try {
-        // Connect to the database
-        Database::connect();
+    public function createDeck($csvFile, $csvFileName, $deckCreator, $userId) {
+        $start = microtime(true);
+        $newDeckId = 0;
+        try {
+            // Connect to the database
+            Database::connect();
 
-        // Begin transaction
-        Database::$connection->begin_transaction();
-        
-        // Query to get the maximum deck_id
-        $maxIdQuery = "SELECT MAX(deck_id) AS max_id FROM decks";
-        $result = Database::$connection->query($maxIdQuery);
-        if (!$result) {
-            throw new Exception("Failed to get the maximum deck_id.");
+            // Begin transaction
+            Database::$connection->begin_transaction();
+            
+            // Query to get the maximum deck_id
+            $maxIdQuery = "SELECT MAX(deck_id) AS max_id FROM decks";
+            $result = Database::$connection->query($maxIdQuery);
+            if (!$result) {
+                throw new Exception("Failed to get the maximum deck_id.");
+            }
+            $row = $result->fetch_assoc();
+            $maxId = $row['max_id'];    
+
+            // Increment the maximum deck_id or set to 1 if there are no existing records
+            $newDeckId = ($maxId === null) ? 1 : $maxId + 1;
+
+            // Insert a new deck
+            $query = "INSERT INTO decks (deck_id, deck_name, deck_create_date, deck_creator, deck_owner_id, deck_last_time_used) VALUES (?, ?, ?, ?, ?, NOW() )";
+            $statement = Database::$connection->prepare($query);
+            if (!$statement) {
+                throw new Exception("Failed to prepare the insert statement: " . Database::$connection->error);
+            }
+            $currentDate = date("Y-m-d");
+            $bind_result = $statement->bind_param("isssi", $newDeckId, $csvFileName, $currentDate, $deckCreator, $userId);
+            if (!$bind_result) {
+                throw new Exception("Failed to bind parameters: " . $statement->error);
+            }
+            $execute_result = $statement->execute();
+            if (!$execute_result) {
+                throw new Exception("Failed to execute the query: " . $statement->error);
+            }
+            $statement->close();
+            
+            //Insert cards from CSV
+            $insertCardsResult = $this->insertCardsFromCsv($csvFile, $newDeckId);
+            if (!$insertCardsResult) {
+                throw new Exception("Failed to insert cards from CSV.");
+            }
+
+            // Insert card settings
+            $insertSettingsResult = $this->insertCardSettings($newDeckId, $userId);
+            if (!$insertSettingsResult) {
+                throw new Exception("Failed to insert card settings.");
+            }
+
+            // Commit the transaction
+            Database::$connection->commit();
+
+            // End time
+            $end = microtime(true);
+
+            // Execution time
+            $executionTime = $end - $start;
+
+            // Print the result
+            echo "Execution time: " . $executionTime . " seconds";
+            echo "Transaction successfully completed.";
+
+            // Return the new deck ID
+            return $newDeckId;
+        } catch (Exception $e) {
+            // Rollback transaction on error
+            Database::$connection->rollback();
+            echo "Error occurred during transaction: " . $e->getMessage();
+            return false;
+        } finally {
+            // Disconnect from the database
+            Database::disconnect();
         }
-        $row = $result->fetch_assoc();
-        $maxId = $row['max_id'];    
-
-        // Increment the maximum deck_id or set to 1 if there are no existing records
-        $newDeckId = ($maxId === null) ? 1 : $maxId + 1;
-
-        // Insert a new deck
-        $query = "INSERT INTO decks (deck_id, deck_name, deck_create_date, deck_creator, deck_owner_id, deck_last_time_used) VALUES (?, ?, ?, ?, ?, NOW() )";
-        $statement = Database::$connection->prepare($query);
-        if (!$statement) {
-            throw new Exception("Failed to prepare the insert statement: " . Database::$connection->error);
-        }
-        $currentDate = date("Y-m-d");
-        $bind_result = $statement->bind_param("isssi", $newDeckId, $csvFileName, $currentDate, $deckCreator, $userId);
-        if (!$bind_result) {
-            throw new Exception("Failed to bind parameters: " . $statement->error);
-        }
-        $execute_result = $statement->execute();
-        if (!$execute_result) {
-            throw new Exception("Failed to execute the query: " . $statement->error);
-        }
-        $statement->close();
-        
-        //Insert cards from CSV
-        $insertCardsResult = $this->insertCardsFromCsv($csvFile, $newDeckId);
-        if (!$insertCardsResult) {
-            throw new Exception("Failed to insert cards from CSV.");
-        }
-
-        // Insert card settings
-        $insertSettingsResult = $this->insertCardSettings($newDeckId, $userId);
-        if (!$insertSettingsResult) {
-            throw new Exception("Failed to insert card settings.");
-        }
-
-        // Commit the transaction
-        Database::$connection->commit();
-
-        // End time
-        $end = microtime(true);
-
-        // Execution time
-        $executionTime = $end - $start;
-
-        // Print the result
-        echo "Execution time: " . $executionTime . " seconds";
-        echo "Transaction successfully completed.";
-
-        // Return the new deck ID
-        return $newDeckId;
-    } catch (Exception $e) {
-        // Rollback transaction on error
-        Database::$connection->rollback();
-        echo "Error occurred during transaction: " . $e->getMessage();
-        return false;
-    } finally {
-        // Disconnect from the database
-        Database::disconnect();
     }
-}
 
     private function insertCardsFromCsv($csvFile, $deckId) {
         try {
