@@ -3,7 +3,7 @@
 // Könyvtár az útvonalakhoz és vezérlőkhöz
 $url = "card";
 session_start();
-$isLoggedIn = ($_SESSION['loggedIn'] != "yes") ? false : true ;
+$isLoggedIn = isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === "yes";
 
 $routes = [
     '/' . $url . '/' => 'home_controller.php',
