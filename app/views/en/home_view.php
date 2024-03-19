@@ -23,3 +23,4 @@
     <?php include_once 'footer_view.php'; ?>
 </body>
 </html>
+    

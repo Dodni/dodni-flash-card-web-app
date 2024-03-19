@@ -10,10 +10,9 @@ class DeckController {
         $deckName = $decksModel->getDeckNameByID($deckID);
         $oneDeck = $decksModel->get10Cards($deckID);
         //$tenCards = $decksModel->getGivenAmountCards(1,15);
-
+        
         $deckSettingsModel = new DeckSettingsModel();
-        $deckSettingsData = $deckSettingsModel->getDeckSettingsData(1,1); // ideiglenes adattal feltoltve
-        //var_dump ($deckSettingsData);
+        $deckSettingsData = $deckSettingsModel->getDeckSettingsData($_SESSION["user_id"], $deckID); // ideiglenes adattal feltoltve
 
         $knownCardsNumber = $decksModel->getKnownCardsNumber($deckID);
 

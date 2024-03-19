@@ -43,7 +43,7 @@ class SignUpController {
             $usersModel = new UsersModel();
             $result = $usersModel->createUser($_POST['username'], $_POST['email'], $_POST['password']);
             
-            return $result; // it waits a true xd
+            return $result; // it waits a true 
     }
 }
 

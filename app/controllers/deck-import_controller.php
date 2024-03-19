@@ -12,8 +12,6 @@ class DeckImportController {
     }
 
     function uploadCsvToDatabase($csvFile) {
-        // I'll do these later 
-        
         $deck_creator = $_SESSION['username'];
         $deck_owner_id = $_SESSION['user_id'];
         

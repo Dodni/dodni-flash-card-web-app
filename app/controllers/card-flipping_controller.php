@@ -52,15 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($cardsNumberForTheSession > 0) {
             $controller->showNewCard($decks, $cardsNumberForTheSession);
         } else {
-            //echo "No more cards";
-            
-            //$url = BASE_URL . 'deck';
-            //header('Location: ' . $url);
-            //exit();
-            //var_dump($deck_id);
             include_once 'app/controllers/deck_controller.php';
             $deckController = new DeckController();
-            $deckController->showOneDeck($deck_id, "asd");
+            $deckController->showOneDeck($deck_id);
         }
     }
 }

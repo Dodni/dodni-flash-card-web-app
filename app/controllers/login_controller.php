@@ -42,14 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] != 'POST') {
         include_once "app/controllers/decks_controller.php";
         
     } else {
-        echo "sikertelen!!!";
         $controller->showLoginPage();
 
     }
-} else {
-    echo "The Log was not successful!";
-    $controller->showLoginPage();
-
 }
 
 ?>
