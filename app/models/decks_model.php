@@ -10,7 +10,7 @@ class DecksModel {
         
             // Prepare and execute the query using a prepared statement
             // deck_owner_id is here the user_id i just had a mistake
-            $query = "SELECT * FROM decks WHERE deck_owner_id = ?";
+            $query = "SELECT * FROM decks WHERE deck_owner_id = ? ORDER BY deck_last_time_used DESC";
             $statement = Database::$connection->prepare($query);
             if (!$statement) {
                 throw new Exception("Prepare statement failed: " . Database::$connection->error);
