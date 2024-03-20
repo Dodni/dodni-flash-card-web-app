@@ -10,7 +10,7 @@
                         <div class="centered-container-two-side">
                             <div class="text-center">
                                 <?php echo "<h2>" . $decks[0]["card_first"] . "</h2>"; ?>
-                                <p>voice listen again</p>
+                                <a id="trigger_me" onclick="speech_text()">listen</a>
                             </div>
                         </div>
 
@@ -19,7 +19,7 @@
                         <div class="centered-container-two-side">
                             <div class="text-center">
                                 <?php echo "<h2>" .  $decks[0]["card_second"]  . "</h2>"; ?>
-                                <p>voice listen again</p>
+                                <a id="trigger_me2" onclick="speech_text2()">listen</a>
                             </div>
                         </div>
 
@@ -79,7 +79,9 @@
                         var utterance2 = new SpeechSynthesisUtterance('<?php echo $decks[0]["card_second"]; ?>');
 
                         // Felolvassuk a szöveget
+                        utterance.lang = "en-US";
                         synthesis.speak(utterance);
+                        
                         utterance2.lang = 'hu-HU';
                         synthesis.speak(utterance2);
                     } else {
@@ -87,6 +89,16 @@
                         console.error('A böngésző nem támogatja a beszédfelolvasást.');
                     }
                 }
+                
+                
+                function speech_text2() {
+                    var synthesis = window.speechSynthesis;
+                    var utterance = new SpeechSynthesisUtterance('<?php echo $decks[0]["card_second"]; ?>');
+                    utterance.lang = "hu-HU";
+                    synthesis.speak(utterance);
+                }
+                $('#trigger_me2').trigger('click');
+                
         </script>
     </head>
     <body>
@@ -97,8 +109,9 @@
                     <div class="text-center">
                         <p class="text-monospace pb-5" >Cards more left : <?php echo $cardsNumberForTheSession;?></p>
                         <?php echo "<h2>" . $decks[0]["card_first"] . "</h2>"; ?>
-                        <p>voice</p>
-
+                        
+                        <a id="trigger_me" onclick="speech_text()">listen</a>
+                        
                         <button class="flip-button fixed-bottom" onclick="flipCard()">Flip</button>
                     </div>
                 </div>
@@ -109,13 +122,27 @@
 </html>
 
 <script>
+    /*
     if ('speechSynthesis' in window) {
         var synthesis = window.speechSynthesis;
 
-        var utterance = new SpeechSynthesisUtterance('<?php echo $decks[0]["card_first"]; ?>');
+        var utterance = new SpeechSynthesisUtterance('<?php // echo $decks[0]["card_first"]; ?>');
+        
+        utterance.lang = "en-US"; // Korrigáltam az utterance változót
 
         synthesis.speak(utterance);
     } else {
         console.error('A böngésző nem támogatja a beszédfelolvasást.');
     }
+    */
+</script>
+    
+<script>
+    function speech_text() {
+        var synthesis = window.speechSynthesis;
+        var utterance = new SpeechSynthesisUtterance('<?php echo $decks[0]["card_first"]; ?>');
+        utterance.lang = "en-US";
+        synthesis.speak(utterance);
+    }
+    $('#trigger_me').trigger('click');
 </script>
