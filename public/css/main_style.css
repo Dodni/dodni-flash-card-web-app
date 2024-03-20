@@ -150,6 +150,11 @@ footer {
 }
 
 /* Deck view */
+@media (max-width: 575px) {
+    .language-select {
+        width: 60%;
+    }
+}
 .flip-button {
     width: 100%;
     margin: 0px;
