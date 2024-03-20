@@ -14,4 +14,7 @@
 ![Total Stars](https://img.shields.io/github/stars/Dodni/dodni-flash-card-web-app?style=social)
 
 # Sources used:
-- **very_simple_skeleton_php_8_mvc_framework [(Link)](https://github.com/Dodni/very_simple_skeleton_php_8_mvc_framework/tree/main)**: This web app based on my php 8 MVC skeleton framework
+- **Very_simple_skeleton_php_8_mvc_framework [(Link)](https://github.com/Dodni/very_simple_skeleton_php_8_mvc_framework/tree/main)**: This web app based on my php 8 MVC skeleton framework
+- **Bootsrap 4.5.2 [(Link)](https://getbootstrap.com/docs/4.5/getting-started/introduction/)**: CSS framework for fast website development
+- **Popper JS 2.5.3 [(Link)]([https://github.com/Dodni/very_simple_skeleton_php_8_mvc_framework/tree/main](http://popper.js.org)**: CSS framework for easy moving elements and fast website development
+
