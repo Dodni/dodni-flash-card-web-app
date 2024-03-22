@@ -5,7 +5,7 @@
 
 # The full documentation is coming soon!
 
- Software Design, Software Requirements Specification and Back-End, Front-End development: **Donát Fehér** **[(Link)](https://github.com/dodni)**
+ Software Design, Engineering and Full Stack development: **Donát Fehér** **[(Link)](https://github.com/dodni)**
  
 ![Total Downloads](https://img.shields.io/github/downloads/Dodni/dodni-flash-card-web-app/total)
 
