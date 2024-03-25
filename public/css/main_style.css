@@ -159,7 +159,31 @@ footer {
 }
 
 /* Deck-flipping view */
+.container-first-page {
+    display: flex;
+    justify-content: center; /* Vízszintesen középre igazítás */
+    align-items: center; /* Függőlegesen középre igazítás */
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 63px); /* A konténer magassága legyen egyenlő a viewport magasságával */
+}
+
+.container-second-page {
+    display: flex;
+    justify-content: center; /* Vízszintesen középre igazítás */
+    align-items: center; /* Függőlegesen középre igazítás */
+    position: relative;
+    width: 100%;
+    height: calc(50vh - 63px); /* A konténer magassága legyen egyenlő a viewport magasságával */
+}
+
+.text-center {
+    text-align: center; /* Szöveg középre igazítása */
+}
+
 .flip-button {
+    position: absolute;
+    bottom: 0;
     width: 100%;
     margin: 0px;
     transition: background-color 0.3s, color 0.3s; /* Átmenet az egér fölötti állapotban */
@@ -193,7 +217,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15vh 0 15vh 0;
+    padding: 15% 0 15% 0;
 }
 
 /* card view style */
@@ -211,14 +235,6 @@ footer {
     text-decoration: none;
     border-radius: 0.25rem; /* Kerekített sarkok */
 }
-
-/* @media (max-width: 600px) {
-    .card-box {
-      width: 30vw; 
-      height: 30vw;
-    }
-} 
-*/
 
 .card-checkbox {
     /* Minden alap tulajdonság törlése */
