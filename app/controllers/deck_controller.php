@@ -8,12 +8,12 @@ class DeckController {
 
         $decksModel = new DecksModel();
         $deckName = $decksModel->getDeckNameByID($deckID);
-        $oneDeck = $decksModel->get10Cards($deckID);
+        $oneDeck = $decksModel->get10Cards($deckID); // IMPORTANT! NEED FOR THE CARD-FLIPPING VIEW AND CONTROLLER!!
         //$tenCards = $decksModel->getGivenAmountCards(1,15);
         
         $deckSettingsModel = new DeckSettingsModel();
         $deckSettingsData = $deckSettingsModel->getDeckSettingsData($_SESSION["user_id"], $deckID); // ideiglenes adattal feltoltve
-
+        $deckLanguageData = $deckSettingsModel->getVoiceLanguages();
         $knownCardsNumber = $decksModel->getKnownCardsNumber($deckID);
 
         if (file_exists($viewPath)) {
