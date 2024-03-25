@@ -364,5 +364,47 @@ class DecksModel {
             return false;
         }
     }
+
+    public function getPublicDecks() {
+        try {
+            // Establish database connection
+            Database::connect();
+            
+            // Initialize empty array for storing data
+            $data = [];
+        
+            // Prepare and execute the query using a prepared statement
+            // deck_owner_id is here the user_id i just had a mistake
+            $query = 'SELECT * FROM `decks` INNER JOIN deck_settings ON decks.deck_id = deck_settings.deck_id WHERE deck_settings.deck_settings_public = "Y"; ';
+            $statement = Database::$connection->prepare($query);
+            if (!$statement) {
+                throw new Exception("Prepare statement failed: " . Database::$connection->error);
+            }
+            
+            // Execute the statement
+            if (!$statement->execute()) {
+                throw new Exception("Execute statement failed: " . $statement->error);
+            }
+            
+            // Get the result set
+            $result = $statement->get_result();
+        
+            // Fetch data row by row and store it in the array
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        
+            // Close statement and database connection
+            $statement->close();
+            Database::disconnect();
+        
+            // Return the fetched data
+            return $data;
+        } catch (Exception $e) {
+            // Handle any exceptions
+            echo "Error fetching decks by user ID: " . $e->getMessage();
+            return false;
+        }
+    }
 }
 ?>
