@@ -151,10 +151,14 @@ footer {
 
 /* Deck view */
 @media (max-width: 575px) {
-    .language-select {
-        width: 60%;
+    .row {
+        flex-wrap: nowrap !important;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
     }
 }
+
+/* Deck-flipping view */
 .flip-button {
     width: 100%;
     margin: 0px;
