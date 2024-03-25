@@ -9,7 +9,7 @@
         <main>
             <div class="container text-center mt-2">
                 <h1>Public Decks</h1>
-                <p>Coming soon..</p>
+                <?php var_dump ($publicDecks);?>
             </div>
         </main>
         <?php include_once 'footer_view.php'; ?>
