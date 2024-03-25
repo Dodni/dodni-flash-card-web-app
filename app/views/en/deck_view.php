@@ -9,29 +9,69 @@
         <?php include_once 'header_view.php'; ?>
         <main>
             <div class="container text-center mt-2 mb-5">
-                <h3><?php echo $deckName ?></h3>
-                <div class="m-5">
-                    <p>Settings:</p>
-                    <p>Maximum cards per session: <?php echo $deckSettingsData[0]["deck_settings_max_flip"]?></p>
-                    <p>Coming soon..</p>
+                <h3><?php echo $deckName;?></h3>
+                <div class="mt-2">
+                    <form action="#" method="post">
+                        <div class="form-group row">
+                            <label for="deck_settings_max_flip" class="col-sm-4 col-form-label">Maximum cards per session:</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="deck_settings_max_flip" name="deck_settings_max_flip">
+                                    <?php
+                                    $options = array(10, 25, 50, 100, 200, 300, 400, 500);
+                                    foreach ($options as $option) {
+                                        $selected = ($deckSettingsData[0]["deck_settings_max_flip"] == $option) ? "selected" : "";
+                                        echo "<option value='$option' $selected>$option</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="desk_settings_public" class="col-sm-4 col-form-label">Deck public status:</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" name="desk_settings_public" id="desk_settings_public">
+                                    <?php if ($deckSettingsData[0]["desk_settings_public"] == "N") : ?>
+                                        <option value="N" selected>No</option>
+                                        <option value="Y">Yes</option>
+                                    <?php else : ?>
+                                        <option value="N">No</option>
+                                        <option value="Y" selected>Yes</option>
+                                    <?php endif; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Front:</label>
+                            <div class="col-sm-8">
+                                <select class="form-control language-select" name="selected_language_front">
+                                    <?php foreach ($deckLanguageData as $language): ?>
+                                        <?php $selected = ($language['card_language_id'] == $deckSettingsData[0]['deck_first_column_language_id']) ? 'selected' : ''; ?>
+                                        <option value="<?php echo $language['card_language_id']; ?>" <?php echo $selected ?>><?php echo $language['card_language_name']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Back:</label>
+                            <div class="col-sm-8">
+                                <select class="form-control language-select" name="selected_language_back">
+                                    <?php foreach ($deckLanguageData as $language): ?>
+                                        <?php $selected = ($language['card_language_id'] == $deckSettingsData[0]['deck_second_column_language_id']) ? 'selected' : ''; ?>
+                                        <option value="<?php echo $language['card_language_id']; ?>" <?php echo $selected ?>><?php echo $language['card_language_name']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-12 text-center">
+                                <button type="submit" class="custom-button">Save</button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+                <div class="">
+                    <p>Statistics: Coming soon..</p>
                 </div>
-                <div class="m-5">
-                    <p>Statistics:</p>
-                    <p>Coming soon..</p>
-                </div>
-                <?php
-                    /*
-                    // Loop through the array and display each card's details
-                    foreach ($oneDeck as $card) {
-                        echo "Card ID: " . htmlspecialchars($card["card_id"]) . "";
-                        echo "First Word: " . htmlspecialchars($card["card_first"]) . "";
-                        echo "Second Word: " . htmlspecialchars($card["card_second"]) . "";
-                        echo "Known: " . ($card["card_known"] ? "Yes" : "No") . "";
-                        echo "Deck ID: " . htmlspecialchars($card["deck_id"]) . "";
-                        echo "";
-                    }
-                    */
-                ?>
             </div>
             <form action="<?php echo BASE_URL; ?>deck/card-flipping" method="post" onsubmit="return validateForm()">
                 <div class="container pt-2">
@@ -72,6 +112,7 @@
         <?php include_once 'footer_view.php'; ?>
     </body>
 </html>
+
 <script>
     // It counts the chosen checkboxes real values for the card-flipping
     function updateKnownCardsNumber() {
