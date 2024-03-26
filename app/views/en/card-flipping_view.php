@@ -29,6 +29,8 @@
                             <div class="col p-0">
                                 <form action="card-flipping" method="post" onsubmit="return card-flipping">
                                     <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
+                                    <input type="hidden" name="deck_settings_language_front" value="<?php echo $_POST["deck_settings_language_front"]; ?>">
+                                    <input type="hidden" name="deck_settings_language_back" value="<?php echo $_POST["deck_settings_language_back"]; ?>">
                                     <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
                                     <input type="hidden" name="card_id" value="<?php echo $decks[0]["card_id"];?>">
                                     <input type="hidden" name="card_known" value="1">
@@ -38,7 +40,8 @@
                             <div class="col p-0">
                                 <form action="card-flipping" method="post" onsubmit="return card-flipping">
                                     <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
-                                    <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
+                                    <input type="hidden" name="deck_settings_language_front" value="<?php echo $_POST["deck_settings_language_front"]; ?>">
+                                    <input type="hidden" name="deck_settings_language_back" value="<?php echo $_POST["deck_settings_language_back"]; ?>">                                   <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
                                     <input type="hidden" name="card_id" value="<?php echo $decks[0]["card_id"];?>">
                                     <input type="hidden" name="card_known" value="2">
                                     <input type="submit" class="hard-button" value="Hard">
@@ -47,7 +50,8 @@
                             <div class="col p-0">
                                 <form action="card-flipping" method="post" onsubmit="return card-flipping">
                                     <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
-                                    <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
+                                    <input type="hidden" name="deck_settings_language_front" value="<?php echo $_POST["deck_settings_language_front"]; ?>">
+                                    <input type="hidden" name="deck_settings_language_back" value="<?php echo $_POST["deck_settings_language_back"]; ?>">                                    <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
                                     <input type="hidden" name="card_id" value="<?php echo $decks[0]["card_id"];?>">
                                     <input type="hidden" name="card_known" value="3">
                                     <input type="submit" class="good-button" value="Good">
@@ -56,6 +60,8 @@
                             <div class="col p-0">
                                 <form action="card-flipping" method="post" onsubmit="return card-flipping">
                                     <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
+                                    <input type="hidden" name="deck_settings_language_front" value="<?php echo $_POST["deck_settings_language_front"]; ?>">
+                                    <input type="hidden" name="deck_settings_language_back" value="<?php echo $_POST["deck_settings_language_back"]; ?>">
                                     <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
                                     <input type="hidden" name="card_id" value="<?php echo $decks[0]["card_id"];?>">
                                     <input type="hidden" name="card_known" value="4">
@@ -80,10 +86,10 @@
                         var utterance2 = new SpeechSynthesisUtterance('<?php echo $decks[0]["card_second"]; ?>');
 
                         // Felolvassuk a szöveget
-                        utterance.lang = "en-US";
+                        utterance.lang = "<?php echo $_POST["deck_settings_language_front"] ?>";
                         synthesis.speak(utterance);
                         
-                        utterance2.lang = 'hu-HU';
+                        utterance2.lang = '<?php echo $_POST["deck_settings_language_back"] ?>';
                         synthesis.speak(utterance2);
                     } else {
                         // Ha a böngésző nem támogatja a SpeechSynthesis API-t
@@ -109,7 +115,8 @@
                 <div class="container-first-page">
                     <div class="text-center">
                         <p class="text-monospace">Cards more left : <?php echo $cardsNumberForTheSession;?></p>
-                        <?php echo "<h2>" . $decks[0]["card_first"] . "</h2>"; ?>
+                        <?php echo "<h2>" . $decks[0]["card_first"] . "</h2>";?>
+                        
                         <a id="trigger_me" onclick="speech_text()">listen</a>
                     </div>
                     <button class="flip-button fixed-bottom" onclick="flipCard()">Flip</button>
@@ -140,7 +147,7 @@
     function speech_text() {
         var synthesis = window.speechSynthesis;
         var utterance = new SpeechSynthesisUtterance('<?php echo $decks[0]["card_first"]; ?>');
-        utterance.lang = "en-US";
+        utterance.lang = "<?php echo $_POST["deck_settings_language_front"] ?>"; 
         synthesis.speak(utterance);
     }
     $('#trigger_me').trigger('click');

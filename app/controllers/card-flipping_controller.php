@@ -16,6 +16,8 @@ class CardFlippingController {
 
 $controller = new CardFlippingController();
 
+# var_dump ($_POST);
+
 //deck to card-flipping view
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if deck_id is sent in the POST request
@@ -25,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cardsKnown = $_POST['options'];
         $cardsMaxAmount = $_POST["cardsMaxAmount"];
         $cardsNumberForTheSession = $_POST["cardsNumberForTheSession"];
+        
         $decksModel = new DecksModel();    
         $decks = $decksModel->getGivenAmountCards($deck_id, $cardsKnown, $cardsMaxAmount);
         if ($cardsNumberForTheSession < $cardsMaxAmount) {
@@ -43,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $deck_id = $decks[0]["deck_id"];
         $cardsNumberForTheSession = $_POST["cardsNumberForTheSession"];
 
+        
         $decksModel = new DecksModel();
         $decksModel->updateCardKnownState($card_id, $card_known, $deck_id);
 

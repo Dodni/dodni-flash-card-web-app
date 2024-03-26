@@ -29,6 +29,43 @@ class DeckSettingsModel {
         return $data;
     }
 
+    public function updateDeckSettingsData($data) {
+        try {
+            // Establish database connection
+            Database::connect();
+    
+            // Update deck_settings table
+            $query = "UPDATE deck_settings SET deck_settings_max_flip = ?, deck_settings_public = ?, deck_first_column_language = ?, deck_second_column_language = ?, deck_first_column_language_id = ?, deck_second_column_language_id = ? WHERE deck_id = ?";
+            $statement = Database::$connection->prepare($query);
+            if (!$statement) {
+                throw new Exception("Error preparing deck settings update statement: " . Database::$connection->error);
+            }
+    
+            // Bind parameters
+            $statement->bind_param("issiiii", $data['deck_settings_max_flip'], $data['deck_settings_public'], $data['deck_settings_language_front'], $data['deck_settings_language_back'], $data['deck_settings_language_front'], $data['deck_settings_language_back'], $data['deck_id']);
+    
+            // Execute the statement
+            if (!$statement->execute()) {
+                throw new Exception("Error updating deck settings: " . $statement->error);
+            }
+    
+            $statement->close();
+    
+            // Close database connection
+            Database::disconnect();
+    
+            // Operation was successful
+            return true;
+        } catch (Exception $e) {
+            // Handle any exceptions
+            echo "Error updating deck setting: " . $e->getMessage();
+            return false;
+        } finally {
+            // Ensure database connection is closed
+            Database::disconnect();
+        }
+    }
+
     public function getVoiceLanguages()
     {
         // Establish database connection
