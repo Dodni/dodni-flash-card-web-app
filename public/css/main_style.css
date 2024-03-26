@@ -150,11 +150,71 @@ footer {
 }
 
 /* Deck view */
+/* Deck-Settings rows */
 @media (max-width: 575px) {
     .row {
         flex-wrap: nowrap !important;
         margin-right: 0 !important;
         margin-left: 0 !important;
+    }
+}
+
+.full-page-no-roll-container {
+    justify-content: center; /* Vízszintesen középre igazítás */
+    align-items: center; /* Függőlegesen középre igazítás */
+    width: 100%;
+    height: calc(100vh - 63px); /* A konténer magassága legyen egyenlő a viewport magasságával */
+}
+
+.settings-container {
+    width: 95%;
+    height: 25vh;
+    overflow-y: scroll; /* Görgetősáv hozzáadása */
+    border: 1px solid #ccc;
+    padding: 0 2%;
+    margin: 0 auto; /* A margin-et automatikusra állítsuk, hogy középre igazítsuk */
+    position: relative;
+    border-radius: 5px; /* Lekerekített sarkok */
+}
+
+/* A böngésző specifikus görgetősáv stílusok */
+.settings-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.settings-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+.settings-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.statistics-container {
+    width: 95%;
+    height: 20vh;
+    border: 1px solid #ccc;
+    padding: 0 2%;
+    margin: 0 auto; /* A margin-et automatikusra állítsuk, hogy középre igazítsuk */
+    position: relative;
+    border-radius: 5px; /* Lekerekített sarkok */
+}
+
+@media (min-width: 575px) {
+        .card-label-container {
+        padding: calc(100vh - 98vh);
+        margin: 0 auto; /* A margin-et automatikusra állítsuk, hogy középre igazítsuk */
+        position: relative;
+        border-radius: 5px; /* Lekerekített sarkok */
+    }
+}
+
+@media (max-width: 575px) {
+        .card-label-container {
+        padding: calc(100vh - 92vh);
+        margin: 0 auto; /* A margin-et automatikusra állítsuk, hogy középre igazítsuk */
+        position: relative;
+        border-radius: 5px; /* Lekerekített sarkok */
     }
 }
 
@@ -165,7 +225,7 @@ footer {
     align-items: center; /* Függőlegesen középre igazítás */
     position: relative;
     width: 100%;
-    height: calc(100vh - 63px); /* A konténer magassága legyen egyenlő a viewport magasságával */
+    height: calc(100vh - 40vh); /* A konténer magassága legyen egyenlő a viewport magasságával */
 }
 
 .container-second-page {
