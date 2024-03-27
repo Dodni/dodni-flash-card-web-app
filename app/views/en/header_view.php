@@ -12,7 +12,7 @@
                 </form>
             </div>
             <div class = "border ml-1 rounded">
-                <button id="themeButton" onclick="toggleTheme()" class="btn btn-light ">☼</button> 
+                <button id="themeButton" onclick="toggleTheme()" class="btn btn-light ">☾</button> 
             </div>
         </div>
         
