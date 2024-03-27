@@ -13,5 +13,6 @@ class ContactController {
 }
 
 $controller = new ContactController();
+
 $controller->showContactPage();
 ?>

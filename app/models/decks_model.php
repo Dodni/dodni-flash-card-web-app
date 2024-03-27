@@ -44,7 +44,6 @@ class DecksModel {
             return false;
         }
     }
-    
     public function get10Cards($deckID) {
         // Establish database connection
         Database::connect();

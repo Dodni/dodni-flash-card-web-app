@@ -16,5 +16,6 @@ class PublicDecksController {
     }
 }
 $controller = new PublicDecksController();
+
 $controller->showPublicDecksPage();
 ?>

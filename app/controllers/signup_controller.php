@@ -43,30 +43,24 @@ class SignUpController {
             $usersModel = new UsersModel();
             $result = $usersModel->createUser($_POST['username'], $_POST['email'], $_POST['password']);
             
-            # It waits a true 
-            return $result; 
-    }
-
-    public function start(){
-        # It checks the request from the signup view
-        if (!($_SERVER["REQUEST_METHOD"] == 'POST' 
-            && isset($_POST['username'])
-            && isset($_POST['email'])
-            && isset($_POST['password'])
-            && isset($_POST['termsCheckbox']))) {
-            $this->showSignUpPage();
-        } elseif ($result = $this->checkAndInsert()) {
-            echo "The registration was successful!";
-            include_once "app/controllers/decks_controller.php";
-        } else {
-            echo "The registration is not successfully!";
-            $this->showSignUpPage();
-        }
+            return $result; // it waits a true 
     }
 }
 
 $controller = new SignUpController();
-$controller->start();
 
+if (!($_SERVER["REQUEST_METHOD"] == 'POST' 
+        && isset($_POST['username'])
+        && isset($_POST['email'])
+        && isset($_POST['password'])
+        && isset($_POST['termsCheckbox']))) {
+    $controller->showSignUpPage();
+} elseif ($result = $controller->checkAndInsert()) {
+    echo "The registration was successful!";
+    include_once "app/controllers/decks_controller.php";
+} else {
+    echo "The registration is not successfully!";
+    $controller->showSignUpPage();
+}
 
 ?>

@@ -11,7 +11,7 @@ class DeckImportController {
         }
     }
 
-    private function uploadCsvToDatabase($csvFile) {
+    function uploadCsvToDatabase($csvFile) {
         $deck_creator = $_SESSION['username'];
         $deck_owner_id = $_SESSION['user_id'];
         
@@ -29,19 +29,17 @@ class DeckImportController {
             include_once 'app/controllers/decks_controller.php';
         }
     }
-
-
-    public function start() {
-        // Example: Call the function during a POST request
-        if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES['csvFile'])) {
-            $this->uploadCsvToDatabase($_FILES['csvFile']);
-        } else {
-            $this->showDeckImportView();
-        }
-    }
+    
 }
 
 $controller = new DeckImportController();
-$controller->start();
+
+// Example: Call the function during a POST request
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_FILES['csvFile'])) {
+    $controller->uploadCsvToDatabase($_FILES['csvFile']);
+} else {
+    $controller->showDeckImportView();
+}
+
 
 ?>
