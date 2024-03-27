@@ -12,7 +12,7 @@ function enableDarkTheme() {
     var themeButton = document.getElementById("themeButton");
 
     body.classList.add("dark-theme");
-    themeButton.textContent = "☾"; // Hold ikon
+    themeButton.textContent = "☼"; // Hold ikon
 
     // Mentés az adattárolásban
     localStorage.setItem("darkThemeEnabled", "true");
@@ -24,7 +24,7 @@ function disableDarkTheme() {
     var themeButton = document.getElementById("themeButton");
 
     body.classList.remove("dark-theme");
-    themeButton.textContent = "☼"; // Nap ikon
+    themeButton.textContent = "☾"; // Nap ikon
 
     // Mentés az adattárolásban
     localStorage.setItem("darkThemeEnabled", "false");
