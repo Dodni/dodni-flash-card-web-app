@@ -102,7 +102,7 @@
                 </div>
 
                 <div class="pt-0">
-                    <div class="card-label-container mt-n1">
+                    <div class="card-label-container">
                         <form action="<?php echo BASE_URL; ?>deck/card-flipping" method="post" onsubmit="return validateForm()">
                             <div class="container ">
                                 <div class="row justify-content-center   " >

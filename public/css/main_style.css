@@ -205,7 +205,7 @@ footer {
 
 @media (min-width: 575px) {
         .card-label-container {
-        padding: calc(100vh - 98vh);
+        padding: calc(100vh - 99vh);
         margin: 0 auto; /* A margin-et automatikusra állítsuk, hogy középre igazítsuk */
         position: relative;
         border-radius: 5px; /* Lekerekített sarkok */

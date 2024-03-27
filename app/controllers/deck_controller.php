@@ -14,14 +14,18 @@ class DeckController {
     public function showOneDeck($deckID, $cardsStatisticsInOneSession = NULL) {
         $viewPath = 'app/views/en/deck_view.php';
 
+        # Declaring the variables for the future easier using
         $decksModel = $this->decksModel;
         $deckSettingsModel = $this->deckSettingsModel;
 
         $deckName = $decksModel->getDeckNameByID($deckID);
-        $oneDeck = $decksModel->get10Cards($deckID); // IMPORTANT! NEED FOR THE CARD-FLIPPING VIEW AND CONTROLLER!!
+        
+        # IMPORTANT! NEED FOR THE CARD-FLIPPING VIEW AND CONTROLLER!!
+        $oneDeck = $decksModel->get10Cards($deckID); 
+        
         //$tenCards = $decksModel->getGivenAmountCards(1,15); # not used
 
-        # color classes
+        # color classes for the statistics piles
         $colors = [
             1 => "fail-color",
             2 => "hard-color",
@@ -29,11 +33,12 @@ class DeckController {
             4 => "easy-color",
         ];
 
+        # if it does null then does not show it
         if ($cardsStatisticsInOneSession != NULL) {
-            // Maximális érték a tömbben
+            # The maximum value in one array
             $maxValue = max($cardsStatisticsInOneSession);
 
-            // Az arány kiszámítása
+            # The ratio calculates
             $ratio =  10 / $maxValue;
         }
         
@@ -48,8 +53,8 @@ class DeckController {
         }
     }
 
-    public function updateAndShowOneDeck($data)
-    {
+    # It tries to update the deck settings and 
+    public function updateAndShowOneDeck($data) {
         if ($this->deckSettingsModel->updateDeckSettingsData($data) == true) {
             echo "Settings saved successfully!";
         } else {
@@ -58,36 +63,37 @@ class DeckController {
 
         $this->showOneDeck($_POST["deck_id"]);
     }
+
+    public function start() {
+        // Processing the POST request
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            
+            # It comes from the deck settings on the deck view
+            if (isset($_POST["deck_id"]) && 
+                isset($_POST["deck_name"]) &&
+                isset($_POST["deck_settings_max_flip"]) &&
+                isset($_POST["deck_settings_public"]) &&
+                isset($_POST["deck_settings_language_front"]) &&
+                isset($_POST["deck_settings_language_back"]) ) {
+                
+                $this->updateAndShowOneDeck($_POST);
+            }
+            
+            # It comes from the decks page
+            if (isset($_POST["deck_id"]) && isset($_POST["deck_name"])) {
+
+                // Here you can continue with operations related to the POST request
+                // such as database operations, etc.
+
+                $this->showOneDeck($_POST["deck_id"]);
+            } 
+        } else {
+            include_once "app/controllers/decks_controller.php";
+        }
+    }
 }
 
 $controller = new DeckController();
-
-# var_dump ($_POST);
-
-// Processing the POST request
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check if deck_id is sent
-    if (isset($_POST["deck_id"]) && 
-        isset($_POST["deck_name"]) &&
-        isset($_POST["deck_settings_max_flip"]) &&
-        isset($_POST["deck_settings_public"]) &&
-        isset($_POST["deck_settings_language_front"]) &&
-        isset($_POST["deck_settings_language_back"]) ) {
-        
-        $controller->updateAndShowOneDeck($_POST);
-    }
-    
-    if (isset($_POST["deck_id"]) && isset($_POST["deck_name"])) {
-
-        // Here you can continue with operations related to the POST request
-        // such as database operations, etc.
-
-        $controller->showOneDeck($_POST["deck_id"]);
-    } 
-} else {
-    include_once "app/controllers/decks_controller.php";
-}
-
-
+$controller->start();
 
 ?>
