@@ -11,7 +11,7 @@ class DeckController {
         $this->deckSettingsModel = new DeckSettingsModel();
     }
 
-    public function showOneDeck($deckID) {
+    public function showOneDeck($deckID, $cardsStatisticsInOneSession = NULL) {
         $viewPath = 'app/views/en/deck_view.php';
 
         $decksModel = $this->decksModel;
@@ -19,9 +19,25 @@ class DeckController {
 
         $deckName = $decksModel->getDeckNameByID($deckID);
         $oneDeck = $decksModel->get10Cards($deckID); // IMPORTANT! NEED FOR THE CARD-FLIPPING VIEW AND CONTROLLER!!
-        //$tenCards = $decksModel->getGivenAmountCards(1,15);
+        //$tenCards = $decksModel->getGivenAmountCards(1,15); # not used
+
+        # color classes
+        $colors = [
+            1 => "fail-color",
+            2 => "hard-color",
+            3 => "good-color",
+            4 => "easy-color",
+        ];
+
+        if ($cardsStatisticsInOneSession != NULL) {
+            // Maximális érték a tömbben
+            $maxValue = max($cardsStatisticsInOneSession);
+
+            // Az arány kiszámítása
+            $ratio =  10 / $maxValue;
+        }
         
-        $deckSettingsData = $deckSettingsModel->getDeckSettingsData($_SESSION["user_id"], $deckID); // ideiglenes adattal feltoltve
+        $deckSettingsData = $deckSettingsModel->getDeckSettingsData($_SESSION["user_id"], $deckID); 
         $deckLanguageData = $deckSettingsModel->getVoiceLanguages();
         $knownCardsNumber = $decksModel->getKnownCardsNumber($deckID);
 
@@ -40,7 +56,7 @@ class DeckController {
             echo "Settings saving failed!";
         }
 
-        $this->showOneDeck($_POST["deck_id"], $_POST["deck_name"]);
+        $this->showOneDeck($_POST["deck_id"]);
     }
 }
 
@@ -66,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Here you can continue with operations related to the POST request
         // such as database operations, etc.
 
-        $controller->showOneDeck($_POST["deck_id"], $_POST["deck_name"]);
+        $controller->showOneDeck($_POST["deck_id"]);
     } 
 } else {
     include_once "app/controllers/decks_controller.php";

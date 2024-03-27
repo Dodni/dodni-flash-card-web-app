@@ -12,6 +12,7 @@
                 
                 <div class="m-1">
                     <div class="settings-container pt-3">
+                        <p>Settings:</p>
                         <form action="<?php echo BASE_URL; ?>deck" method="post">
                             <input type="hidden" name="deck_id" value="<?php echo $oneDeck[0]["deck_id"]; ?>">
                             <input type="hidden" name="deck_name" value="<?php echo $deckName; ?>">
@@ -82,13 +83,26 @@
                 
                 <div class="m-1 pt-1">
                     <div class="statistics-container pt-3">
-                        <p>Statistics: </p>
-                        <p>Coming soon..</p>
+                        <p>Statistics from last session: </p>
+                        <?php if ($cardsStatisticsInOneSession != NULL) { ?>
+                        <div class="container">
+                            <div class="row">
+                                <?php foreach ($cardsStatisticsInOneSession as $key => $value): ?>
+                                    <?php $height = $value * $ratio; ?>
+                                    <div class="col">
+                                        <div class="<?php echo $colors[$key]; ?>" style="height: <?php echo $height; ?>vh;">
+                                            <?php echo $value; ?>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <?php } ?>
                     </div>
                 </div>
 
-                <div class="pt-1">
-                    <div class="card-label-container">
+                <div class="pt-0">
+                    <div class="card-label-container mt-n1">
                         <form action="<?php echo BASE_URL; ?>deck/card-flipping" method="post" onsubmit="return validateForm()">
                             <div class="container ">
                                 <div class="row justify-content-center   " >

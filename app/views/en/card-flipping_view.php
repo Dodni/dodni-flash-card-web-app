@@ -7,6 +7,7 @@
                 function flipCard() {
                     var container = document.querySelector(".change");
                     container.innerHTML = `
+                    <!DOCTYPE html>
                     <div class="container-second-page">
                         <div class="text-center">
                             <p class="text-monospace">Cards more left : <?php echo $cardsNumberForTheSession;?></p>
@@ -23,12 +24,13 @@
                             <a id="trigger_me2" onclick="speech_text2()">listen</a>
                         </div>
                     </div>
-
+                    
                     <div class="joined-buttons fixed-bottom">
                         <div class="row">
                             <div class="col p-0">
                                 <form action="card-flipping" method="post" onsubmit="return card-flipping">
                                     <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
+                                    <input type="hidden" name="cards_statistics_in_one_session" value="<?php echo htmlspecialchars(serialize($cardsStatisticsInOneSession)); ?>">
                                     <input type="hidden" name="deck_settings_language_front" value="<?php echo $_POST["deck_settings_language_front"]; ?>">
                                     <input type="hidden" name="deck_settings_language_back" value="<?php echo $_POST["deck_settings_language_back"]; ?>">
                                     <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
@@ -40,8 +42,10 @@
                             <div class="col p-0">
                                 <form action="card-flipping" method="post" onsubmit="return card-flipping">
                                     <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
+                                    <input type="hidden" name="cards_statistics_in_one_session" value="<?php echo htmlspecialchars(serialize($cardsStatisticsInOneSession)); ?>">
                                     <input type="hidden" name="deck_settings_language_front" value="<?php echo $_POST["deck_settings_language_front"]; ?>">
-                                    <input type="hidden" name="deck_settings_language_back" value="<?php echo $_POST["deck_settings_language_back"]; ?>">                                   <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
+                                    <input type="hidden" name="deck_settings_language_back" value="<?php echo $_POST["deck_settings_language_back"]; ?>">                                   
+                                    <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
                                     <input type="hidden" name="card_id" value="<?php echo $decks[0]["card_id"];?>">
                                     <input type="hidden" name="card_known" value="2">
                                     <input type="submit" class="hard-button" value="Hard">
@@ -50,8 +54,10 @@
                             <div class="col p-0">
                                 <form action="card-flipping" method="post" onsubmit="return card-flipping">
                                     <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
+                                    <input type="hidden" name="cards_statistics_in_one_session" value="<?php echo htmlspecialchars(serialize($cardsStatisticsInOneSession)); ?>">
                                     <input type="hidden" name="deck_settings_language_front" value="<?php echo $_POST["deck_settings_language_front"]; ?>">
-                                    <input type="hidden" name="deck_settings_language_back" value="<?php echo $_POST["deck_settings_language_back"]; ?>">                                    <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
+                                    <input type="hidden" name="deck_settings_language_back" value="<?php echo $_POST["deck_settings_language_back"]; ?>">                                    
+                                    <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
                                     <input type="hidden" name="card_id" value="<?php echo $decks[0]["card_id"];?>">
                                     <input type="hidden" name="card_known" value="3">
                                     <input type="submit" class="good-button" value="Good">
@@ -60,6 +66,7 @@
                             <div class="col p-0">
                                 <form action="card-flipping" method="post" onsubmit="return card-flipping">
                                     <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
+                                    <input type="hidden" name="cards_statistics_in_one_session" value="<?php echo htmlspecialchars(serialize($cardsStatisticsInOneSession)); ?>">
                                     <input type="hidden" name="deck_settings_language_front" value="<?php echo $_POST["deck_settings_language_front"]; ?>">
                                     <input type="hidden" name="deck_settings_language_back" value="<?php echo $_POST["deck_settings_language_back"]; ?>">
                                     <input type="hidden" name="cardsNumberForTheSession" value="<?php echo $cardsNumberForTheSession;?>">
