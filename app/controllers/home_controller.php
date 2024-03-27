@@ -16,7 +16,6 @@ class HomeController {
 }
 
 $controller = new HomeController();
-
 $controller->showHomePage();
 
 

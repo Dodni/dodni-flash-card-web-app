@@ -11,6 +11,5 @@ class AboutController {
     }
 }
 $controller = new AboutController();
-
 $controller->showAboutPage();
 ?>

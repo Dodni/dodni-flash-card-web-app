@@ -2,6 +2,13 @@
 include_once 'app/models/decks_model.php';
 
 class CardFlippingController {
+    private $decksModel;
+
+    public function __construct() {
+        # We need this formula if we don't want to code redundance
+        $this->decksModel = new DecksModel();
+    }
+
     public function showNewCard($decks, $cardsNumberForTheSession, $cardsStatisticsInOneSession) {
         $viewPath = 'app/views/en/card-flipping_view.php';
 
@@ -14,10 +21,11 @@ class CardFlippingController {
     }
 
     public function startFlipping() {
-        //deck to card-flipping view
+        # First it comes from the (one) deck page to the card-flipping page,
+        # Then the card flipping starts and the second if goes forward
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            // This come from deck page&controller, after the card flipping starts
+            # This come from deck page & controller, after the card flipping starts
             if (isset($_POST["deck_id"])) {
 
                 $deck_id = $_POST["deck_id"];
@@ -33,8 +41,7 @@ class CardFlippingController {
                     4 => 0,
                 ];
                 
-                $decksModel = new DecksModel();    
-                $decks = $decksModel->getGivenAmountCards($deck_id, $cardsKnown, $cardsMaxAmount);
+                $decks = $this->decksModel->getGivenAmountCards($deck_id, $cardsKnown, $cardsMaxAmount);
 
                 # It check the cards max amount what you checked on the deck view
                 # Example: if the session number 100 but the checked cards only 40 then it will be 40 not 100
@@ -72,10 +79,12 @@ class CardFlippingController {
                         break;
                 }
 
-                $decksModel = new DecksModel();
-                $decksModel->updateCardKnownState($card_id, $card_known, $deck_id);
+                $this->decksModel->updateCardKnownState($card_id, $card_known, $deck_id);
 
-                array_shift($decks); // Delete first (uses) deck (we go through on the full deck)
+                # Delete first (uses) deck (we go through on the full deck)
+                array_shift($decks); 
+                
+                # It decrees the number of the session. Example: it was 10 and now will be 9. when it'll 0 then the session ends
                 $cardsNumberForTheSession--;
                 
                 if ($cardsNumberForTheSession > 0) {
