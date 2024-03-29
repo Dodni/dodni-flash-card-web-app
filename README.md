@@ -19,4 +19,7 @@
 - **Popper JS 2.5.3 [(Link)](http://popper.js.org)**: Popper used for easy moving elements and fast website development
 - **jQuery 2.5.3 [(Link)](https://jquery.com)**: jQuery needed for the bootstrap and popperjs combinations 
 - **SpeechSynthesisUtterance [(Link)](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance)**: SpeechSynthesisUtterance API used for the TTS (text-to-speach) technology that reads digital text aloud at the Cards Flipping Page
+- **paginationjs [(Link)](#)**: Text coming here
+- **paginationjs CSS [(Link)](#)**: Text coming here
+- **Font Awesome [(Link)](https://fontawesome.com/)**: Text coming here
 
