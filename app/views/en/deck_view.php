@@ -10,9 +10,10 @@
             <div class="text-center p-2 full-page-no-roll-container">
                 <h3><?php echo $deckName;?></h3>
                 
+                <!-- Settings -->
                 <div class="m-1">
                     <div class="settings-container pt-3">
-                        <p>Settings:</p>
+                        <p class="font-weight-bold text-monospace">Settings:</p>
                         <form action="<?php echo BASE_URL; ?>deck" method="post">
                             <input type="hidden" name="deck_id" value="<?php echo $oneDeck[0]["deck_id"]; ?>">
                             <input type="hidden" name="deck_name" value="<?php echo $deckName; ?>">
@@ -78,12 +79,18 @@
                                 </div>
                             </div>
                         </form>
+                        <div class="form-group row">
+                            <div class="col-sm-12 text-center">
+                                <form action="<?php #echo BASE_URL; ?>#" method="post"><input type="submit" class="btn btn-danger custom-button"value="Deck DELETE"></form>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
+                <!-- Statistics -->
                 <div class="m-1 pt-1">
                     <div class="statistics-container pt-3">
-                        <p>Statistics from last session: </p>
+                        <p class="font-weight-bold text-monospace">Statistics from last session: </p>
                         <?php if ($cardsStatisticsInOneSession != NULL) { ?>
                         <div class="container">
                             <div class="row">
@@ -91,7 +98,7 @@
                                     <?php $height = $value * $ratio; ?>
                                     <div class="col">
                                         <div class="<?php echo $colors[$key]; ?>" style="height: <?php echo $height; ?>vh;">
-                                            <?php echo $value; ?>
+                                            <p><?php echo $value; ?></p>
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
@@ -101,7 +108,8 @@
                     </div>
                 </div>
 
-                <div class="pt-0">
+                <!-- Cards section -->
+                <div class="pt-2">
                     <div class="card-label-container">
                         <form action="<?php echo BASE_URL; ?>deck/card-flipping" method="post" onsubmit="return validateForm()">
                             <div class="container ">
@@ -151,7 +159,8 @@
 </html>
 
 <script>
-    // It counts the chosen checkboxes real values for the card-flipping
+    // It counts the chosen checkboxes real values for the card-flipping page
+    // It needs because of the stack overflow
     function updateKnownCardsNumber() {
         var checkedBoxes = document.querySelectorAll('input[name="options[]"]:checked');
         var sum = 0;
