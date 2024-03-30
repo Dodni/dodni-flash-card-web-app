@@ -26,7 +26,7 @@
                     </div>
                     
                     <div class="joined-buttons fixed-bottom">
-                        <div class="row">
+                        <div class="row mx-0">
                             <div class="col p-0">
                                 <form action="card-flipping" method="post" onsubmit="return card-flipping">
                                     <input type="hidden" name="decks" value="<?php echo htmlspecialchars(serialize($decks)); ?>">
