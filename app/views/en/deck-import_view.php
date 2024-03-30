@@ -25,9 +25,13 @@
                             </div>
                         </form>
                     </div>
-                    <div class="container-fluid mt-2 mb-5">
-                        <p class="mb-4 font-weight-bold">Example:</p>
+                    <div class="container-fluid mt-5 mb-5">
+                        <p class="mb-3">Write your deck like this in Excel, or find one suitable for yourself in the Public Decks.</p>
                         <img class="rounded img-fluid" src="<?php echo BASE_URL; ?>public/img/english-hungarian-words-in-excel.png" alt="English to Hungarian words in Excel" height="400">
+                    </div>
+                    <div>
+                        <p class="mb-3">Download your CSV file from Excel and then import it into the application.</p>
+                        <img class="rounded img-fluid" src="<?php echo BASE_URL; ?>public/img/tutorial.png" alt="Tutorial how to download a CSV file from excel" height="400">
                     </div>
                 </div>
             </div>
