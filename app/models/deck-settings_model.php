@@ -1,7 +1,6 @@
 <?php
 class DeckSettingsModel {
-    public function getDeckSettingsData($userID, $deckID)
-    {
+    public function getDeckSettingsData($userID, $deckID) {
         // Establish database connection
         Database::connect();
 
@@ -66,8 +65,7 @@ class DeckSettingsModel {
         }
     }
 
-    public function getVoiceLanguages()
-    {
+    public function getVoiceLanguages() {
         // Establish database connection
         Database::connect();
 
@@ -93,6 +91,5 @@ class DeckSettingsModel {
         // Return the fetched data
         return $data;
     }
-    
 }
 ?>
