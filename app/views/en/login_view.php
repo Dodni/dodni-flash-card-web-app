@@ -23,7 +23,7 @@
                                     <input type="password" id="password" class="form-control" name="password"  placeholder="yourpassword">
                                 </div>
                                 <div class="form-group text-center">
-                                    <button type="submit" class="btn btn-primary">Log In</button>
+                                    <button type="submit" class="blue-button">Log In</button>
                                 </div>
                                 
                                 <div class="form-group text-center">
@@ -31,7 +31,7 @@
                                 </div>
                             </form>
                             <div class="text-center">
-                                <p> Don't have an account? <a href="<?php echo BASE_URL; ?>signup">Sign up</a></p>
+                                <p> Don't have an account? <a class="a-blue" href="<?php echo BASE_URL; ?>signup">Sign up</a></p>
                             </div>
                         </div>
                     </div>

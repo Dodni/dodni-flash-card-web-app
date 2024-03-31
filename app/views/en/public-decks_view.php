@@ -61,7 +61,7 @@
             html += '<form action="#" method="post" class="container-fluid p-0 m-0">';
             html += '<input type="hidden" name="deck_id" value="' + deck.deck_id + '">';
             html += '<input type="hidden" name="deck_name" value="' + deck.deck_name + '">';
-            html += '<button type="submit" class="custom-button-purple" value="' + deck.deck_id + '">' + deck.deck_name + '</button>';
+            html += '<button type="submit" class="custom-button-blue" value="' + deck.deck_id + '">' + deck.deck_name + '</button>';
             html += '</form>';
             html += '</td>';
             html += '</tr>';

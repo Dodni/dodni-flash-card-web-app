@@ -39,7 +39,7 @@
                                     <label class="form-check-label" for="termsCheckbox">I accept the Terms of Service and Privacy Policy</label>
                                 </div>
                                 <div class="form-group text-center">
-                                    <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
+                                    <button type="submit" class="blue-button mt-3">Sign Up</button>
                                 </div>
                             </form>
 
