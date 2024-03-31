@@ -25,10 +25,10 @@ body {
 
 /* header view style */
 header {
-    background-color: #4CAF50; /* Zöld szín */
+    background-color: #449DD1; 
     color: #fff;
-    padding: 4px 0 0 0;
-    text-align: left; /* Balra igazítás */
+    padding: 3.5px 0 0 0;
+    text-align: left; 
 }
 
 .header-item {
@@ -53,7 +53,7 @@ h1 {
     padding-bottom: 5px;
     font-size: 3em;
     margin-bottom: 20px;
-    color: #4CAF50;
+    color: #449DD1;
 }
 
 nav {
@@ -77,21 +77,28 @@ p {
 
 a {
     text-decoration: none;
+    color: none;
     font-weight: bold;
     letter-spacing: 0.05em;
     word-spacing: 0.1em;
     transition: color 0.3s;
 }
 
+a:hover {
+    color: #0056b3;
+    text-decoration: none !important;
+}
+
 nav > a:hover {
     color: #00457a;
 }
 
-.green-button {
+.blue-button {
     display: inline-block;
-    background-color: #4CAF50 !important;
+    background-color: #449DD1 !important;
     color: #fff;
     padding: 12px 24px;
+    border: none;
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s;
@@ -99,8 +106,18 @@ nav > a:hover {
     word-spacing: 0.1em;
 }
 
-.green-button:hover {
-    background-color: #45a049;
+.blue-button:hover {
+    
+    display: inline-block;
+    background-color: #2f6f93 !important;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
 }
 
 footer {
@@ -152,14 +169,13 @@ footer {
     }
 }
 
-
 @media (min-width: 576px) {
     .custom-button-blue {
         width: 50%;
         margin: 0 auto;
         transition: background-color 0.3s, color 0.3s; /* Átmenet az egér fölötti állapotban */
-        background-color: #068D9D; /* Alapértelmezett zöld háttérszín */
-        color: #ffffff; /* Alapértelmezett fehér szövegszín */
+        background-color: #8eb8e5; /* Alapértelmezett zöld háttérszín */
+        color: #000000; /* Alapértelmezett fehér szövegszín */
         height: 40px; /* Függőlegesen nagyobb gomb */
         border-radius: 5px; /* Lekerekített sarkok */
         border: none; /* Kék körvonal */
@@ -177,8 +193,8 @@ footer {
         width: 95%;
         margin: 0 auto;
         transition: background-color 0.3s, color 0.3s; /* Átmenet az egér fölötti állapotban */
-        background-color: #068D9D; /* Alapértelmezett zöld háttérszín */
-        color: #ffffff; /* Alapértelmezett fehér szövegszín */
+        background-color: #8eb8e5; /* Alapértelmezett zöld háttérszín */
+        color: #000000; /* Alapértelmezett fehér szövegszín */
         height: 40px; /* Függőlegesen nagyobb gomb */
         border-radius: 5px; /* Lekerekített sarkok */
         border: none; /* Kék körvonal */
@@ -191,8 +207,8 @@ footer {
     }
 }
 
-/* Deck view */
-/* Deck-Settings rows */
+/* Deck view
+Deck-Settings rows */
 @media (max-width: 575px) {
     .row {
         flex-wrap: nowrap !important;
@@ -218,7 +234,6 @@ footer {
     border-radius: 5px; /* Lekerekített sarkok */
 }
 
-/* A böngésző specifikus görgetősáv stílusok */
 .settings-container::-webkit-scrollbar {
     width: 10px;
 }
@@ -350,7 +365,6 @@ footer {
     cursor: pointer;
 }
 
-/* Piros keret stílus a kattintás után */
 .card-checkbox:checked + .card-label-new, .card-checkbox:checked + .card-label-fail, .card-checkbox:checked + .card-label-hard, .card-checkbox:checked + .card-label-good, .card-checkbox:checked + .card-label-easy {
     display: inline-flex; /* inline-flex az inline-block helyett */
     justify-content: center; /* Szöveg középre igazítása vízszintesen */
@@ -577,11 +591,11 @@ footer {
 }
 
 @media (min-width: 576px) {
-    .custom-button-purple {
+    .custom-button-blue {
         width: 50%;
         margin: 0 auto;
         transition: background-color 0.3s, color 0.3s; /* Átmenet az egér fölötti állapotban */
-        background-color: #5F00BA; /* Alapértelmezett zöld háttérszín */
+        background-color: #3a7ca5; /* Alapértelmezett zöld háttérszín */
         color: #ffffff; /* Alapértelmezett fehér szövegszín */
         height: 40px; /* Függőlegesen nagyobb gomb */
         border-radius: 5px; /* Lekerekített sarkok */
@@ -590,17 +604,17 @@ footer {
         line-height: 40px; /* Szöveg függőleges középre igazítása */
     }
 
-    .custom-button-purple:hover {
-        background-color: #2E7D32; /* Sötétebb zöld szín egér fölött */
+    .custom-button-blue:hover {
+        background-color: #2e6181; /* Sötétebb zöld szín egér fölött */
     }
 }
 
 @media (max-width: 575px) {
-    .custom-button-purple {
+    .custom-button-blue {
         width: 95%;
         margin: 0 auto;
         transition: background-color 0.3s, color 0.3s; /* Átmenet az egér fölötti állapotban */
-        background-color: #5F00BA; /* Alapértelmezett zöld háttérszín */
+        background-color: #3a7ca5; /* Alapértelmezett zöld háttérszín */
         color: #ffffff; /* Alapértelmezett fehér szövegszín */
         height: 40px; /* Függőlegesen nagyobb gomb */
         border-radius: 5px; /* Lekerekített sarkok */
@@ -609,9 +623,19 @@ footer {
         line-height: 40px; /* Szöveg függőleges középre igazítása */
     }
 
-    .custom-button-purple:hover {
-        background-color: #2E7D32; /* Sötétebb zöld szín egér fölött */
+    .custom-button-blue:hover {
+        background-color: #2e6181; /* Sötétebb zöld szín egér fölött */
     }
 }
 
+/* Account setting: Settings view */
+.layer-border {
+    border: 1px solid #dee2e6 !important;
+    border-radius: .25rem;
+}
 
+.label-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
