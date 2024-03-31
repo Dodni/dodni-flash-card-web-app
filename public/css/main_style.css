@@ -7,25 +7,28 @@
 
 /* Dark theme style */
 .dark-theme {
-    background-color: #333; 
-    color: #eee; 
+    background-color: #fff !important;
+    color: #333 !important;
 }
 
 /* Main view style */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    color: #333;
     margin: 0;
-    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff !important;
+    text-align: left;
+    background-color: #212529 !important;
 }
 
 /* header view style */
 header {
-    background-color: #4CAF50; /* Zöld szín */
+    background-color: #449DD1; 
     color: #fff;
-    padding: 5px 0 0 0;
-    text-align: left; /* Balra igazítás */
+    padding: 3.5px 0 0 0;
+    text-align: left; 
 }
 
 .header-item {
@@ -50,7 +53,7 @@ h1 {
     padding-bottom: 5px;
     font-size: 3em;
     margin-bottom: 20px;
-    color: #4CAF50;
+    color: #449DD1;
 }
 
 nav {
@@ -74,21 +77,28 @@ p {
 
 a {
     text-decoration: none;
+    color: none;
     font-weight: bold;
     letter-spacing: 0.05em;
     word-spacing: 0.1em;
     transition: color 0.3s;
 }
 
+a:hover {
+    color: #0056b3;
+    text-decoration: none !important;
+}
+
 nav > a:hover {
     color: #00457a;
 }
 
-.green-button {
+.blue-button {
     display: inline-block;
-    background-color: #4CAF50 !important;
+    background-color: #449DD1 !important;
     color: #fff;
     padding: 12px 24px;
+    border: none;
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s;
@@ -96,8 +106,18 @@ nav > a:hover {
     word-spacing: 0.1em;
 }
 
-.green-button:hover {
-    background-color: #45a049;
+.blue-button:hover {
+    
+    display: inline-block;
+    background-color: #2f6f93 !important;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
 }
 
 footer {
@@ -149,8 +169,137 @@ footer {
     }
 }
 
-/* Deck view */
+@media (min-width: 576px) {
+    .custom-button-blue {
+        width: 50%;
+        margin: 0 auto;
+        transition: background-color 0.3s, color 0.3s; /* Átmenet az egér fölötti állapotban */
+        background-color: #8eb8e5; /* Alapértelmezett zöld háttérszín */
+        color: #000000; /* Alapértelmezett fehér szövegszín */
+        height: 40px; /* Függőlegesen nagyobb gomb */
+        border-radius: 5px; /* Lekerekített sarkok */
+        border: none; /* Kék körvonal */
+        text-align: center; /* Szöveg középre igazítása */
+        line-height: 40px; /* Szöveg függőleges középre igazítása */
+    }
+
+    .custom-button-blue:hover {
+        background-color: #1D3461; /* Sötétebb zöld szín egér fölött */
+    }
+}
+
+@media (max-width: 575px) {
+    .custom-button-blue {
+        width: 95%;
+        margin: 0 auto;
+        transition: background-color 0.3s, color 0.3s; /* Átmenet az egér fölötti állapotban */
+        background-color: #8eb8e5; /* Alapértelmezett zöld háttérszín */
+        color: #000000; /* Alapértelmezett fehér szövegszín */
+        height: 40px; /* Függőlegesen nagyobb gomb */
+        border-radius: 5px; /* Lekerekített sarkok */
+        border: none; /* Kék körvonal */
+        text-align: center; /* Szöveg középre igazítása */
+        line-height: 40px; /* Szöveg függőleges középre igazítása */
+    }
+
+    .custom-button-blue:hover {
+        background-color: #1D3461; /* Sötétebb zöld szín egér fölött */
+    }
+}
+
+/* Deck view
+Deck-Settings rows */
+@media (max-width: 575px) {
+    .row {
+        flex-wrap: nowrap !important;
+    }
+}
+
+.full-page-no-roll-container {
+    justify-content: center; /* Vízszintesen középre igazítás */
+    align-items: center; /* Függőlegesen középre igazítás */
+    width: 100%;
+    height: calc(100vh - 63px); /* A konténer magassága legyen egyenlő a viewport magasságával */
+}
+
+.settings-container {
+    width: 95%;
+    height: 25vh;
+    overflow-x: hidden;
+    overflow-y: scroll; /* Görgetősáv hozzáadása */
+    border: 1px solid #ccc;
+    padding: 0 2%;
+    margin: 0 auto; /* A margin-et automatikusra állítsuk, hogy középre igazítsuk */
+    position: relative;
+    border-radius: 5px; /* Lekerekített sarkok */
+}
+
+.settings-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.settings-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+.settings-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.statistics-container {
+    width: 95%;
+    height: 20vh;
+    border: 1px solid #ccc;
+    padding: 0 2%;
+    margin: 0 auto; /* A margin-et automatikusra állítsuk, hogy középre igazítsuk */
+    position: relative;
+    border-radius: 5px; /* Lekerekített sarkok */
+}
+
+@media (min-width: 575px) {
+        .card-label-container {
+        padding: calc(100vh - 100vh);
+        margin: 0 auto; /* A margin-et automatikusra állítsuk, hogy középre igazítsuk */
+        position: relative;
+        border-radius: 5px; /* Lekerekített sarkok */
+    }
+}
+
+@media (max-width: 575px) {
+        .card-label-container {
+        padding: calc(100vh - 92vh);
+        margin: 0 auto; /* A margin-et automatikusra állítsuk, hogy középre igazítsuk */
+        position: relative;
+        border-radius: 5px; /* Lekerekített sarkok */
+    }
+}
+
+/* Deck-flipping view */
+.container-first-page {
+    display: flex;
+    justify-content: center; /* Vízszintesen középre igazítás */
+    align-items: center; /* Függőlegesen középre igazítás */
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 40vh); /* A konténer magassága legyen egyenlő a viewport magasságával */
+}
+
+.container-second-page {
+    display: flex;
+    justify-content: center; /* Vízszintesen középre igazítás */
+    align-items: center; /* Függőlegesen középre igazítás */
+    position: relative;
+    width: 100%;
+    height: calc(50vh - 63px); /* A konténer magassága legyen egyenlő a viewport magasságával */
+}
+
+.text-center {
+    text-align: center; /* Szöveg középre igazítása */
+}
+
 .flip-button {
+    position: absolute;
+    bottom: 0;
     width: 100%;
     margin: 0px;
     transition: background-color 0.3s, color 0.3s; /* Átmenet az egér fölötti állapotban */
@@ -184,7 +333,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15vh 0 15vh 0;
+    padding: 15% 0 15% 0;
 }
 
 /* card view style */
@@ -195,21 +344,13 @@ footer {
 }
 
 .card-box {
-    width: 18vw; 
-    height: 17vw;
+    width: 17vw; 
+    height: 16vw;
     padding: 0;
     margin: 0 1vw; /* 1% -os margó a viewport szélességéhez képest */
     text-decoration: none;
     border-radius: 0.25rem; /* Kerekített sarkok */
 }
-
-/* @media (max-width: 600px) {
-    .card-box {
-      width: 30vw; 
-      height: 30vw;
-    }
-} 
-*/
 
 .card-checkbox {
     /* Minden alap tulajdonság törlése */
@@ -224,7 +365,6 @@ footer {
     cursor: pointer;
 }
 
-/* Piros keret stílus a kattintás után */
 .card-checkbox:checked + .card-label-new, .card-checkbox:checked + .card-label-fail, .card-checkbox:checked + .card-label-hard, .card-checkbox:checked + .card-label-good, .card-checkbox:checked + .card-label-easy {
     display: inline-flex; /* inline-flex az inline-block helyett */
     justify-content: center; /* Szöveg középre igazítása vízszintesen */
@@ -234,7 +374,6 @@ footer {
     font-size: 1em;
     cursor: pointer;
     text-decoration: none;
-    color: rgb(0, 0, 0);
     border-radius: 0.50rem; /* Kerekített sarkok */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Árnyék */
     text-align: center;
@@ -249,8 +388,8 @@ footer {
     display: inline-flex; /* inline-flex az inline-block helyett */
     justify-content: center; /* Szöveg középre igazítása vízszintesen */
     align-items: center; /* Szöveg középre igazítása függőlegesen */
-    width: 18vw; 
-    height: 17vw;
+    width: 17vw; 
+    height: 16vw;
     font-size: 1em;
     cursor: pointer;
     text-decoration: none;
@@ -266,8 +405,8 @@ footer {
     display: inline-flex; /* inline-flex az inline-block helyett */
     justify-content: center; /* Szöveg középre igazítása vízszintesen */
     align-items: center; /* Szöveg középre igazítása függőlegesen */
-    width: 18vw; 
-    height: 17vw;
+    width: 17vw; 
+    height: 16vw;
     font-size: 1em;
     cursor: pointer;
     text-decoration: none;
@@ -283,8 +422,8 @@ footer {
     display: inline-flex; /* inline-flex az inline-block helyett */
     justify-content: center; /* Szöveg középre igazítása vízszintesen */
     align-items: center; /* Szöveg középre igazítása függőlegesen */
-    width: 18vw; 
-    height: 17vw;
+    width: 17vw; 
+    height: 16vw;
     font-size: 1em;
     cursor: pointer;
     text-decoration: none;
@@ -300,8 +439,8 @@ footer {
     display: inline-flex; /* inline-flex az inline-block helyett */
     justify-content: center; /* Szöveg középre igazítása vízszintesen */
     align-items: center; /* Szöveg középre igazítása függőlegesen */
-    width: 18vw; 
-    height: 17vw;
+    width: 17vw; 
+    height: 16vw;
     font-size: 1em;
     cursor: pointer;
     text-decoration: none;
@@ -317,8 +456,8 @@ footer {
     display: inline-flex; /* inline-flex az inline-block helyett */
     justify-content: center; /* Szöveg középre igazítása vízszintesen */
     align-items: center; /* Szöveg középre igazítása függőlegesen */
-    width: 18vw; 
-    height: 17vw;
+    width: 17vw; 
+    height: 16vw;
     font-size: 1em;
     cursor: pointer;
     text-decoration: none;
@@ -387,6 +526,38 @@ footer {
     font-size: 1.5rem;
 }
 
+.fail-color {
+    background-color: #ee4266;
+    font-weight: bold;
+    text-align: center;
+    border-top: 3px solid #ee4266;
+    font-size: 1.5rem;
+}
+
+.hard-color {
+    background-color: #ffd23f;
+    font-weight: bold;
+    text-align: center;
+    border-top: 3px solid #ffd23f;
+    font-size: 1.5rem;
+}
+
+.good-color {
+    background-color: #45c8e2;
+    font-weight: bold;
+    text-align: center;
+    border-top: 3px solid #45c8e2;
+    font-size: 1.5rem;
+}
+
+.easy-color {
+    background-color: #20c670;
+    font-weight: bold;
+    text-align: center;
+    border-top: 3px solid #20c670;
+    font-size: 1.5rem;
+}
+
 @media (min-width: 575px) {
     .fail-button:hover, .fail-button:active {
         background-color: #ee1111;
@@ -405,3 +576,66 @@ footer {
     }
 }
 
+/* Public Decks */
+.table-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%; /* Az egész cellát kitölti */
+}
+
+.paginationjs {
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 576px) {
+    .custom-button-blue {
+        width: 50%;
+        margin: 0 auto;
+        transition: background-color 0.3s, color 0.3s; /* Átmenet az egér fölötti állapotban */
+        background-color: #3a7ca5; /* Alapértelmezett zöld háttérszín */
+        color: #ffffff; /* Alapértelmezett fehér szövegszín */
+        height: 40px; /* Függőlegesen nagyobb gomb */
+        border-radius: 5px; /* Lekerekített sarkok */
+        border: none; /* Kék körvonal */
+        text-align: center; /* Szöveg középre igazítása */
+        line-height: 40px; /* Szöveg függőleges középre igazítása */
+    }
+
+    .custom-button-blue:hover {
+        background-color: #2e6181; /* Sötétebb zöld szín egér fölött */
+    }
+}
+
+@media (max-width: 575px) {
+    .custom-button-blue {
+        width: 95%;
+        margin: 0 auto;
+        transition: background-color 0.3s, color 0.3s; /* Átmenet az egér fölötti állapotban */
+        background-color: #3a7ca5; /* Alapértelmezett zöld háttérszín */
+        color: #ffffff; /* Alapértelmezett fehér szövegszín */
+        height: 40px; /* Függőlegesen nagyobb gomb */
+        border-radius: 5px; /* Lekerekített sarkok */
+        border: none; /* Kék körvonal */
+        text-align: center; /* Szöveg középre igazítása */
+        line-height: 40px; /* Szöveg függőleges középre igazítása */
+    }
+
+    .custom-button-blue:hover {
+        background-color: #2e6181; /* Sötétebb zöld szín egér fölött */
+    }
+}
+
+/* Account setting: Settings view */
+.layer-border {
+    border: 1px solid #dee2e6 !important;
+    border-radius: .25rem;
+}
+
+.label-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

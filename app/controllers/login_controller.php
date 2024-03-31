@@ -15,6 +15,7 @@ class LoginController {
         }
         
     }
+
     public function checkAndLogIn($username, $password) {
         $usersModel = new UsersModel();
         $result = $usersModel->checkAndLogIn($username, $password);
@@ -24,32 +25,31 @@ class LoginController {
         
         return true;
     }
+
+    public function start() {
+        if ($_SERVER["REQUEST_METHOD"] != 'POST') {
+            $this->showLoginPage();
+        
+        } elseif ($_SERVER["REQUEST_METHOD"] == 'POST' 
+                    && isset($_POST['user_name']) 
+                    && isset($_POST['password'])
+                    && $_POST['user_name'] != NULL
+                    && $_POST['password'] != NULL) 
+            {
+            if ($this->checkAndLogIn($_POST['user_name'], $_POST['password'])) {
+                echo "You logged in successfully!";
+                include_once "app/controllers/decks_controller.php";
+                
+            } else {
+                $this->showLoginPage();
+        
+            }
+        }
+    }    
 }
 
 $controller = new LoginController();
+$controller->start();
 
-if ($_SERVER["REQUEST_METHOD"] != 'POST') {
-    $controller->showLoginPage();
-
-} elseif ($_SERVER["REQUEST_METHOD"] == 'POST' 
-            && isset($_POST['user_name']) 
-            && isset($_POST['password'])
-            && $_POST['user_name'] != NULL
-            && $_POST['password'] != NULL) 
-    {
-    if ($controller->checkAndLogIn($_POST['user_name'], $_POST['password'])) {
-        echo "You logged in successfully!";
-        include_once "app/controllers/decks_controller.php";
-        
-    } else {
-        echo "sikertelen!!!";
-        $controller->showLoginPage();
-
-    }
-} else {
-    echo "The Log was not successful!";
-    $controller->showLoginPage();
-
-}
 
 ?>

@@ -34,7 +34,7 @@
                                     <label class="form-check-label" for="termsCheckbox">I accept the Terms of Service and Privacy Policy</label>
                                 </div>
                                 <div class="text-center container">
-                                    <button type="submit" class="btn btn-primary">Send Message</button>
+                                    <button type="submit" class="blue-button">Send Message</button>
                                 </div>
                             </form>
                         </div>
