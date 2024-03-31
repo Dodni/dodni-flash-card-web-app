@@ -4,9 +4,7 @@ class ContactController {
         
         $viewPath = 'app/views/en/contact_view.php';
         
-        // Ellenőrizzük, hogy a fájl létezik-e
         if (file_exists($viewPath)) {
-            // Betöltjük és megjelenítjük a nézetet
             include_once $viewPath;
         } else {
             echo "A megadott nézetfájl nem található.";
@@ -14,9 +12,6 @@ class ContactController {
     }
 }
 
-// Példányosítjuk a HomeController osztályt
 $controller = new ContactController();
-
-// Meghívjuk a showHomePage() metódust a HomeController-ből
 $controller->showContactPage();
 ?>

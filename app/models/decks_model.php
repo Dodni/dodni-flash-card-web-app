@@ -10,7 +10,7 @@ class DecksModel {
         
             // Prepare and execute the query using a prepared statement
             // deck_owner_id is here the user_id i just had a mistake
-            $query = "SELECT * FROM decks WHERE deck_owner_id = ?";
+            $query = "SELECT * FROM decks WHERE deck_owner_id = ? ORDER BY deck_last_time_used DESC";
             $statement = Database::$connection->prepare($query);
             if (!$statement) {
                 throw new Exception("Prepare statement failed: " . Database::$connection->error);
@@ -44,6 +44,7 @@ class DecksModel {
             return false;
         }
     }
+    
     public function get10Cards($deckID) {
         // Establish database connection
         Database::connect();
@@ -300,7 +301,7 @@ class DecksModel {
                         $query = "INSERT INTO cards (card_id, card_first, card_second, card_known, deck_id) VALUES (NULL, ?, ?, 0, ?)";
                         $statement = Database::$connection->prepare($query);
                         if (!$statement) {
-                            throw new Exception("Failed to prepare the insert statement.");
+                            throw new Exception("Failed to prepare the insert statement, because the columns have problems.");
                         }
                         $bind_result = $statement->bind_param("ssi", $column1, $column2, $deckId);
                         if (!$bind_result) {
@@ -337,10 +338,10 @@ class DecksModel {
             $deckPublic = "N";
     
             // Insert the card settings
-            $query = "INSERT INTO `deck_settings` (`deck_settings_id`, `deck_settings_max_flip`, `user_id`, `deck_id`, `desk_settings_public`) VALUES (NULL, ?, ?, ?, ?);";
+            $query = "INSERT INTO `deck_settings` (`deck_settings_id`, `deck_settings_max_flip`, `user_id`, `deck_id`, `deck_settings_public`) VALUES (NULL, ?, ?, ?, ?);";
             $statement = Database::$connection->prepare($query);
             if (!$statement) {
-                throw new Exception("Failed to prepare the insert statement.");
+                throw new Exception("Failed to prepare the insert statement, because the card settings have problems.");
             }
             $bind_result = $statement->bind_param("iiis", $deckMaxFlip, $userId, $deckId, $deckPublic);
             if (!$bind_result) {
@@ -361,6 +362,48 @@ class DecksModel {
             echo "Error occurred during transaction: " . $e->getMessage();
     
             // Return false on failure
+            return false;
+        }
+    }
+
+    public function getPublicDecks() {
+        try {
+            // Establish database connection
+            Database::connect();
+            
+            // Initialize empty array for storing data
+            $data = [];
+        
+            // Prepare and execute the query using a prepared statement
+            // deck_owner_id is here the user_id i just had a mistake
+            $query = 'SELECT * FROM `decks` INNER JOIN deck_settings ON decks.deck_id = deck_settings.deck_id WHERE deck_settings.deck_settings_public = "Y"; ';
+            $statement = Database::$connection->prepare($query);
+            if (!$statement) {
+                throw new Exception("Prepare statement failed: " . Database::$connection->error);
+            }
+            
+            // Execute the statement
+            if (!$statement->execute()) {
+                throw new Exception("Execute statement failed: " . $statement->error);
+            }
+            
+            // Get the result set
+            $result = $statement->get_result();
+        
+            // Fetch data row by row and store it in the array
+            while ($row = $result->fetch_assoc()) {
+                $data[] = $row;
+            }
+        
+            // Close statement and database connection
+            $statement->close();
+            Database::disconnect();
+        
+            // Return the fetched data
+            return $data;
+        } catch (Exception $e) {
+            // Handle any exceptions
+            echo "Error fetching decks by user ID: " . $e->getMessage();
             return false;
         }
     }
