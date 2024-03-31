@@ -25,5 +25,5 @@
 - **XAMPP [(Link)](https://www.apachefriends.org)**: A free and open-source cross-platform web server solution stack package developed by Apache Friends, consisting mainly of the Apache HTTP Server, MariaDB database, and interpreters for scripts written in the PHP and Perl programming languages.
   - Apache/2.4.56 (Unix) OpenSSL/1.1.1t PHP/8.0.28 mod_perl/2.0.12 Perl/v5.34.1
   - Database client version: libmysql - mysqlnd 8.0.28
-  - PHP extension: mysqli(https://www.php.net/manual/en/book.mysqli.php) curl([https://www.php.net/manual/en/book.mysqli.php](https://www.php.net/manual/en/book.curl.php)) mbstring (https://www.php.net/manual/en/book.mbstring.php)
+  - PHP extension: mysqli[(Link)](https://www.php.net/manual/en/book.mysqli.php) curl[(Link)](https://www.php.net/manual/en/book.curl.php) mbstring[(Link)](https://www.php.net/manual/en/book.mbstring.php)
   - PHP version: 8.0.28
