@@ -81,7 +81,10 @@
                         </form>
                         <div class="form-group row">
                             <div class="col-sm-12 text-center">
-                                <form action="<?php #echo BASE_URL; ?>#" method="post"><input type="submit" class="btn btn-danger custom-button"value="Deck DELETE"></form>
+                                <!--
+                                    <form action="" method="post"></form>
+                                 -->
+                                <input type="submit" class="btn btn-danger custom-button"value="Deck DELETE" onclick="showAlert()">
                             </div>
                         </div>
                     </div>
@@ -170,5 +173,10 @@
     });
         document.getElementById('cardsNumberForTheSession').value = sum;
         document.getElementById('submitButton').disabled = sum === 0;
-            }
+    }
+
+    function showAlert() {
+        alert("Not available on this trial version.");
+    }
+
 </script>
