@@ -1,7 +1,7 @@
 # This project is currently under development!!!
 
 # Dodni's Flash Card Web App
- I used one flash card app, but it's not free anymore so I decided that, I'm gonna create an own one.
+ I used one flash card app, but it's not free anymore so I decided that, I'm going to create an own one.
 
 # The full documentation is coming soon!
 
