@@ -11,7 +11,7 @@
                     <div class="container-second-page">
                         <div class="text-center">
                             <p class="text-monospace">Cards more left : <?php echo $cardsNumberForTheSession;?></p>
-                            <?php echo "<h2>" . $decks[0]["card_first"] . "</h2>"; ?>
+                            <?php echo "<h3>" . $decks[0]["card_first"] . "</h3>"; ?>
                             <a id="trigger_me" onclick="speech_text()">listen</a>
                         </div>
                     </div>
@@ -20,7 +20,7 @@
                     
                     <div class="container-second-page">
                         <div class="text-center">
-                            <?php echo "<h2>" .  $decks[0]["card_second"]  . "</h2>"; ?>
+                            <?php echo "<h3>" .  $decks[0]["card_second"]  . "</h3>"; ?>
                             <a id="trigger_me2" onclick="speech_text2()">listen</a>
                         </div>
                     </div>
@@ -89,14 +89,14 @@
                         var synthesis = window.speechSynthesis;
 
                         // Létrehozunk egy beszédfelolvasáshoz szükséges objektumot
-                        var utterance = new SpeechSynthesisUtterance('<?php echo $decks[0]["card_first"]; ?>');
-                        var utterance2 = new SpeechSynthesisUtterance('<?php echo $decks[0]["card_second"]; ?>');
+                        var utterance = new SpeechSynthesisUtterance("<?php echo $decks[0]['card_first']; ?>");
+                        var utterance2 = new SpeechSynthesisUtterance("<?php echo $decks[0]['card_second']; ?>");
 
                         // Felolvassuk a szöveget
-                        utterance.lang = "<?php echo $_POST["deck_settings_language_front"] ?>";
+                        utterance.lang = "<?php echo $_POST['deck_settings_language_front'] ?>";
                         synthesis.speak(utterance);
                         
-                        utterance2.lang = '<?php echo $_POST["deck_settings_language_back"] ?>';
+                        utterance2.lang = "<?php echo $_POST['deck_settings_language_back'] ?>";
                         synthesis.speak(utterance2);
                     } else {
                         // Ha a böngésző nem támogatja a SpeechSynthesis API-t
@@ -106,10 +106,10 @@
                 
                 
                 function speech_text2() {
-                    var synthesis = window.speechSynthesis;
-                    var utterance = new SpeechSynthesisUtterance('<?php echo $decks[0]["card_second"]; ?>');
-                    utterance.lang = "hu-HU";
-                    synthesis.speak(utterance);
+                    var synthesis2 = window.speechSynthesis;
+                    var utterance2 = new SpeechSynthesisUtterance("<?php echo $decks[0]['card_second']; ?>");
+                    utterance2.lang = "<?php echo $_POST["deck_settings_language_back"]; ?>";
+                    synthesis2.speak(utterance2);
                 }
                 $('#trigger_me2').trigger('click');
                 
@@ -122,7 +122,7 @@
                 <div class="container-first-page">
                     <div class="text-center">
                         <p class="text-monospace">Cards more left : <?php echo $cardsNumberForTheSession;?></p>
-                        <?php echo "<h2>" . $decks[0]["card_first"] . "</h2>";?>
+                        <?php echo "<h3>" . $decks[0]["card_first"] . "</h3>";?>
                         
                         <a id="trigger_me" onclick="speech_text()">listen</a>
                     </div>

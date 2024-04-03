@@ -311,10 +311,6 @@ Deck-Settings rows */
     font-size: 1.5rem;
 }
 
-.flip-button:hover, .flip-button:active  {
-    background-color: #3b3b3b; /* Sötétebb zöld szín egér fölött */
-}
-
 .centered-container {
     display: flex;
     justify-content: center;

@@ -93,7 +93,7 @@
                 <!-- Statistics -->
                 <div class="m-1 pt-1">
                     <div class="statistics-container pt-3">
-                        <p class="font-weight-bold text-monospace">Statistics from last session: </p>
+                        <p class="font-weight-bold text-monospace">Statistics from the last session: </p>
                         <?php if ($cardsStatisticsInOneSession != NULL) { ?>
                         <div class="container">
                             <div class="row">
