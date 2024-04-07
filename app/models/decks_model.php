@@ -45,6 +45,7 @@ class DecksModel {
         }
     }
     
+    # it needs for the card flipping
     public function get10Cards($deckID) {
         // Establish database connection
         Database::connect();
@@ -72,7 +73,7 @@ class DecksModel {
     
         // Return the fetched data
         return $data;
-    }
+    } 
 
     public function getGivenAmountCards($deckID, $cardsKnown, $cardsNumbers) {
         // Establish database connection
@@ -223,6 +224,7 @@ class DecksModel {
             if (!$result) {
                 throw new Exception("Failed to get the maximum deck_id.");
             }
+
             $row = $result->fetch_assoc();
             $maxId = $row['max_id'];    
 
@@ -235,25 +237,29 @@ class DecksModel {
             if (!$statement) {
                 throw new Exception("Failed to prepare the insert statement: " . Database::$connection->error);
             }
+
             $currentDate = date("Y-m-d");
             $bind_result = $statement->bind_param("isssi", $newDeckId, $csvFileName, $currentDate, $deckCreator, $userId);
             if (!$bind_result) {
                 throw new Exception("Failed to bind parameters: " . $statement->error);
             }
+
             $execute_result = $statement->execute();
+            
             if (!$execute_result) {
                 throw new Exception("Failed to execute the query: " . $statement->error);
             }
+
             $statement->close();
             
             //Insert cards from CSV
-            $insertCardsResult = $this->insertCardsFromCsv($csvFile, $newDeckId);
+            $insertCardsResult = $this->insertCardsFromCsv($csvFile, $newDeckId, $userId);
             if (!$insertCardsResult) {
                 throw new Exception("Failed to insert cards from CSV.");
             }
 
             // Insert card settings
-            $insertSettingsResult = $this->insertCardSettings($newDeckId, $userId);
+            $insertSettingsResult = $this->insertDeckSettings($newDeckId, $userId);
             if (!$insertSettingsResult) {
                 throw new Exception("Failed to insert card settings.");
             }
@@ -283,8 +289,8 @@ class DecksModel {
             Database::disconnect();
         }
     }
-
-    private function insertCardsFromCsv($csvFile, $deckId) {
+    
+    private function insertCardsFromCsv($csvFile, $deckId, $userId) {
         try {
             if ($csvFile == NULL) {
                 throw new Exception("The CSV file cannot be NULL!");
@@ -298,7 +304,7 @@ class DecksModel {
                         $column2 = $data[1]; // Second column
         
                         // Insert the card
-                        $query = "INSERT INTO cards (card_id, card_first, card_second, card_known, deck_id) VALUES (NULL, ?, ?, 0, ?)";
+                        $query = "INSERT INTO cards (card_id, card_first, card_second, deck_id) VALUES (NULL, ?, ?, ?)";
                         $statement = Database::$connection->prepare($query);
                         if (!$statement) {
                             throw new Exception("Failed to prepare the insert statement, because the columns have problems.");
@@ -311,7 +317,26 @@ class DecksModel {
                         if (!$execute_result) {
                             throw new Exception("Failed to execute the query: " . $statement->error);
                         }
+                        
+    
+                        // Insert into cards_known table
+                        $cardId = $statement->insert_id; // Get the last inserted card_id
                         $statement->close();
+                        
+                        $query2 = "INSERT INTO cards_known (card_known_id, card_id, card_known, deck_id, user_id) VALUES (NULL, ?, 0, ?, ?)";
+                        $statement2 = Database::$connection->prepare($query2);
+                        if (!$statement2) {
+                            throw new Exception("Failed to prepare the insert statement for cards_known: " . Database::$connection->error);
+                        }
+                        $bind_result2 = $statement2->bind_param("iii", $cardId, $deckId, $userId);
+                        if (!$bind_result2) {
+                            throw new Exception("Failed to bind parameters for the insert statement for cards_known: " . $statement2->error);
+                        }
+                        $execute_result2 = $statement2->execute();
+                        if (!$execute_result2) {
+                            throw new Exception("Failed to execute the insert query for cards_known: " . $statement2->error);
+                        }
+                        $statement2->close();
                     } else {
                         fclose($fileHandle);
                         echo "Error: Invalid format row: " . implode(",", $data);
@@ -330,20 +355,17 @@ class DecksModel {
             return false;
         }
     }
-
-    private function insertCardSettings($deckId, $userId) {
-        try {
-            // Temporary data
-            $deckMaxFlip = 100;
-            $deckPublic = "N";
     
+
+    private function insertDeckSettings($deckId, $userId) {
+        try {
             // Insert the card settings
-            $query = "INSERT INTO `deck_settings` (`deck_settings_id`, `deck_settings_max_flip`, `user_id`, `deck_id`, `deck_settings_public`) VALUES (NULL, ?, ?, ?, ?);";
+            $query = "INSERT INTO `deck_settings` (`deck_settings_id`, `user_id`, `deck_id`) VALUES (NULL, ?, ?);";
             $statement = Database::$connection->prepare($query);
             if (!$statement) {
                 throw new Exception("Failed to prepare the insert statement, because the card settings have problems.");
             }
-            $bind_result = $statement->bind_param("iiis", $deckMaxFlip, $userId, $deckId, $deckPublic);
+            $bind_result = $statement->bind_param("ii", $userId, $deckId);
             if (!$bind_result) {
                 throw new Exception("Failed to bind parameters: " . $statement->error);
             }
