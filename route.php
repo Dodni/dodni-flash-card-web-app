@@ -6,6 +6,8 @@ session_start();
 $isLoggedIn = isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === "yes";
 
 $routes = [
+    // Nem kell bejelentekzeni hozza
+    '/' . $url . '/tutorial' => 'tutorial_controller.php' ,
     // Ha $isLoggedIn true akkor a decks-et nyissa meg kulonben a vezerloket
     '/' . $url . '/' => ($isLoggedIn ? 'decks_controller.php' : 'home_controller.php') ,
     '/' . $url .'/home' => ($isLoggedIn ? 'decks_controller.php' : 'home_controller.php') ,
