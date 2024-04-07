@@ -42,8 +42,10 @@ class LoginController {
                 
             } else {
                 $this->showLoginPage();
-        
             }
+        } elseif ($_SERVER["REQUEST_METHOD"] == 'POST' && $_POST['user_name'] == "" || $_POST['password'] == "" ) {
+            echo "The login in is failed! The user name or the password was wrong!";
+            $this->showLoginPage();
         }
     }    
 }
