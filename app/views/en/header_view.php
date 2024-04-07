@@ -31,11 +31,14 @@
                 <li class="nav-item <?php echo isset($_SESSION['username']) ? '' : 'd-none'; ?>">
                     <a class="nav-link" href="<?php echo BASE_URL;?>decks/public">Public Decks</a>
                 </li>
-                <li class="nav-item <?php echo isset($_SESSION['username']) ? '' : 'd-none'; ?>">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>settings">Setting</a>
-                </li>
                 <li class="nav-item <?php echo !isset($_SESSION['username']) ? '' : 'd-none'; ?>">
                     <a class="nav-link" href="<?php echo BASE_URL;?>about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>tutorial">Tutorial</a>
+                </li>
+                <li class="nav-item <?php echo isset($_SESSION['username']) ? '' : 'd-none'; ?>">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>settings">Setting</a>
                 </li>
                 <li class="nav-item <?php echo !isset($_SESSION['username']) ? '' : 'd-none'; ?>">
                     <a class="nav-link" href="<?php echo BASE_URL;?>contact">Contact</a>
