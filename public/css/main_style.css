@@ -290,7 +290,7 @@ Deck-Settings rows */
     align-items: center; /* Függőlegesen középre igazítás */
     position: relative;
     width: 100%;
-    height: calc(50vh - 63px); /* A konténer magassága legyen egyenlő a viewport magasságával */
+    height: calc(45vh - 63px); /* A konténer magassága legyen egyenlő a viewport magasságával */
 }
 
 .text-center {
