@@ -19,10 +19,11 @@ class DeckController {
         $deckSettingsModel = $this->deckSettingsModel;
 
         $deckName = $decksModel->getDeckNameByID($deckID);
-        
+
         # IMPORTANT! NEED FOR THE CARD-FLIPPING VIEW AND CONTROLLER!!
-        $oneDeck = $decksModel->get10Cards($deckID); 
+        $oneDeck = $decksModel->getOneCard($deckID); 
         
+        #var_dump ($oneDeck);
         //$tenCards = $decksModel->getGivenAmountCards(1,15); # not used
 
         # color classes for the statistics piles
