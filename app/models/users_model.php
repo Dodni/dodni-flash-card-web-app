@@ -170,7 +170,6 @@
                 }
                 
                 // Set up session for the logged-in user
-                session_start();
                 $_SESSION['user_id'] = $user_id;
                 $_SESSION['username'] = $username;
                 $_SESSION['loggedIn'] = "yes";

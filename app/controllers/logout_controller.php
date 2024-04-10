@@ -1,8 +1,6 @@
 <?php
 class LogOutController {
     public function logOut() {
-        session_start();
-        
         $_SESSION = array();
         
         session_destroy();
