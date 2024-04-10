@@ -20,6 +20,7 @@ $routes = [
     '/' . $url . '/decks' => ($isLoggedIn ? 'decks_controller.php' : 'login_controller.php') ,
     '/' . $url . '/decks/deck-import' => ($isLoggedIn ? 'deck-import_controller.php' : 'login_controller.php') ,
     '/' . $url . '/decks/public' => ($isLoggedIn ? 'public-decks_controller.php' : 'login_controller.php') ,
+    '/' . $url . '/decks/public-deck' => ($isLoggedIn ? 'public-deck_controller.php' : 'login_controller.php') ,
     '/' . $url . '/deck' => ($isLoggedIn ? 'deck_controller.php' : 'login_controller.php') ,
     '/' . $url . '/deck/card-flipping' => ($isLoggedIn ? 'card-flipping_controller.php' : 'login_controller.php') ,
     '/' . $url . '/settings' => ($isLoggedIn ? 'settings_controller.php' : 'login_controller.php'),
