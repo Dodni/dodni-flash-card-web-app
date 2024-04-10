@@ -635,3 +635,24 @@ Deck-Settings rows */
     justify-content: center;
     align-items: center;
 }
+
+/* Tutorial Page*/
+
+.video-mobile {
+    border: 1px solid white;
+    border-radius: 1%;
+    max-height: 50%;
+    max-width: 100%;
+}
+
+.video-desktop {
+    border: 1px solid white; 
+    border-radius: 1%; 
+    width: 100%;
+}
+
+.border-50 {
+    border: 1px solid #dee2e6 !important;
+    width: 50%; 
+    margin: auto;
+}

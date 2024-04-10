@@ -10,28 +10,40 @@
             <div class="container text-center mt-2">
                 <h1>Tutorial</h1>
                 <div class="container mt-2 col-md-8">
-                    <h2>How to use our application in 5 steps</h2>
+                    <h2 class="mb-4">How to Use Our Application in 5 Simple Steps</h2>
+                    <h4>1. Sign Up or Log In</h4>
                     <p>
-                        1.	<u><b >Sign Up or Log In:</b></u> Begin by either <a href="<?php echo BASE_URL; ?>signup">signing up</a> for a new account or <a href="<?php echo BASE_URL; ?>login">logging</a> into an existing one.
+                        Begin by either <a href="<?php echo BASE_URL; ?>signup">signing up</a> for a new account or <a href="<?php echo BASE_URL; ?>login">logging in</a> to an existing one.
                     </p>
+                    <div class="border-50 mb-4"></div>
+                    <h4>2. Upload Your Deck or Choose from Public Decks</h4>
                     <p>
-                        2.	<u><b>Include and upload your deck (.CSV file) or find one appropriate deck on the Public Decks:</b></u> You can either upload your own deck in CSV format on the <a href="<?php echo BASE_URL; ?>decks/deck-import">Import new Deck</a> page or explore and select a suitable deck from the <a href="<?php echo BASE_URL; ?>decks/public">Public Decks</a> section.
+                        You can either upload your own deck in CSV format on the <a href="<?php echo BASE_URL; ?>decks/deck-import">Import new Deck</a> page or explore and select a suitable deck from the <a href="<?php echo BASE_URL; ?>decks/public">Public Decks</a> section.
                     </p>
+                    <div class="border-50 mb-4"></div>
+                    <h4>3. Open Your Deck</h4>
                     <p>
-                        3.	<u><b>Open your deck on the Decks page:</b></u> Once uploaded or selected, navigate to the <a href="<?php echo BASE_URL; ?>decks">Decks</a> page to access your chosen deck.
+                        Once uploaded or selected, navigate to the <a href="<?php echo BASE_URL; ?>decks">Decks</a> page to access your chosen deck.
                     </p>
+                    <div class="border-50 mb-4"></div>
+                    <h4>4. Select Known Boxes and Start Learning</h4>
                     <p>
-                        4.	<u><b>Select known box or boxes (new, hard, bad, good easy), then click to the Start button and it starts the card flipping learning method:</b></u> <span style="color: #449DD1;">Choose the boxes</span> that contain the cards <span style="color: #449DD1;">you already know</span>, then click the <span style="color: #449DD1;">Start button</span> to begin the <span style="color: #449DD1;">card flipping learning method</span>, where you’ll <span style="color: #449DD1;">review</span> and <span style="color: #449DD1;">learn</span> the content of the cards.
+                        Choose the boxes containing cards you which you would like to learn, then click the Start button to begin the card flipping learning method where you’ll review and learn the content of the cards.
                     </p>
-                    <p>
-                        5. <b>Learn and enjoy it!</b>
+                    <div class="border-50 mb-4"></div>
+                    <h4>5. Learn and Enjoy!</h4>
+                    <p class="mb-4">
+                        Dive into your learning journey and enjoy the process!
                     </p>
-                    <p class="mt-4">Presentation video about download a CSV file from Excel and then log in, include and upload it and finally utilize it:</p>
-                    <video style="border: 1px solid white; border-radius: 1%; width: 100%;" controls>
+                    
+                    <div class="border-50 mb-4"></div>
+                    <h4 class="mb-3">Watch our presentation video demonstrating how to download a CSV file from Excel, log in, upload the file, and start using it:</h4>
+                    <video class="video-desktop mb-4" controls>
                         <source src="public/videos/login-in-and-upload-a-deck.mp4" type="video/mp4">
                     </video>
-                    <p class="mt-3">Presentation video about a mobile view:</p>
-                    <video style="border: 1px solid white; border-radius: 1%; max-height: 50%; max-width: 100%;" controls>
+                    <div class="border-50 mb-4"></div>
+                    <h4 class="mb-3">Check out our presentation video showcasing the mobile view of our application:</h4>
+                    <video class="video-mobile" controls>
                         <source src="public/videos/video-from-the-application.mp4" type="video/mp4">
                     </video>
                 </div>
