@@ -46,7 +46,7 @@ class DecksModel {
     }
     
     # it needs for the card flipping
-    public function get10Cards($deckID) {
+    public function getOneCard($deckID) {
         // Establish database connection
         Database::connect();
         
@@ -84,11 +84,12 @@ class DecksModel {
     
         // Össze kell fűzni az összes elemet az SQL feltételben
         $conditions = implode(" or ", array_map(function($item) {
-            return "card_known = " . intval($item);
+            return "cards_known.card_known = " . intval($item);
         }, $cardsKnown));
-    
+        
         // Prepare and execute the query using a prepared statement
-        $query = "SELECT * FROM cards WHERE deck_id = ? AND ($conditions) ORDER BY RAND() LIMIT ?";
+        $query = "SELECT cards.*, cards_known.card_known FROM cards INNER JOIN cards_known 
+        ON cards.card_id = cards_known.card_id WHERE cards.deck_id = ? AND ($conditions) ORDER BY RAND() LIMIT ?";
         $statement = Database::$connection->prepare($query);
         $statement->bind_param("si", $deckID, $cardsNumbers); // Bind the parameters
         $statement->execute();
@@ -109,15 +110,14 @@ class DecksModel {
         return $data;
     }
 
-    public function updateCardKnownState($cardID, $cardKnown, $deckID)
-    {
+    public function updateCardKnownState($cardID, $cardKnown, $deckID) {
         try {
             // Establish database connection
             Database::connect();
             $currentDate = date("Y-m-d");
-            
+
             // Update card_known field
-            $queryCard = "UPDATE cards SET card_known = ? WHERE card_id = ?";
+            $queryCard = "UPDATE cards_known SET card_known = ? WHERE card_id = ?";
             $statementCard = Database::$connection->prepare($queryCard);
             if (!$statementCard) {
                 throw new Exception("Error preparing card update statement: " . Database::$connection->error);
@@ -148,13 +148,12 @@ class DecksModel {
         }
     }
 
-    public function getKnownCardsNumber($deckID)
-    {
+    public function getKnownCardsNumber($deckID) {
         // Establish database connection
         Database::connect();
         
         // Prepare and execute the query using a prepared statement
-        $query = "SELECT card_known, COUNT(*) AS count FROM cards WHERE deck_id = ? GROUP BY card_known ORDER BY card_known ASC";
+        $query = "SELECT card_known, COUNT(*) AS count FROM cards_known WHERE deck_id = ? GROUP BY card_known ORDER BY card_known ASC";
         $statement = Database::$connection->prepare($query);
         $statement->bind_param("i", $deckID); // Bind the parameters
         $statement->execute();
@@ -181,8 +180,7 @@ class DecksModel {
         return $counts;
     }
 
-    public function getDeckNameByID($deckID)
-    {
+    public function getDeckNameByID($deckID) {
         // Establish database connection
         Database::connect();
         
